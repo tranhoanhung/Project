@@ -1,0 +1,29 @@
+﻿@*<ul class="main-menu menu-right main-menu--white li-last-0">
+    
+    <li class="menu-item">
+        <a href="">Trang Chủ</a>
+    </li>
+</ul>*@
+
+<ul class="main-menu  main-menu--white li-last-0 ">
+    @*@foreach (var item in Model)
+        {
+            @Html.Action("submainmenu", "Modules", new { id = item.ID })
+        }*@
+    <li class="menu-item">
+        <a href="@Url.Action("Home","Site")">Trang Chủ</a>
+    </li>
+    <li class="menu-item">
+        <a href="~/bai-viet/gioi-thieu">Giới thiệu</a>
+    </li>
+    <li class="menu-item">
+        <a href="~/san-pham">Sản phẩm</a>
+    </li>
+    @Html.Action("Blog", "Modules")
+    
+    <li class="menu-item">
+        <a href="@Url.Action("contact","Site")">Liên hệ</a>
+    </li>
+</ul>
+
+

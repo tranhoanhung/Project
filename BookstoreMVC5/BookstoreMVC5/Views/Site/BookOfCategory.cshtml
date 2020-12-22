@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Category>
+@foreach (var item in Model)
+{
+    <div class="single-block">
+        <div class="home-right-block bg-white">
+            <div class="sb-custom-tab text-lg-left text-center">
+                <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="shop-tab2" data-toggle="tab"
+                           href="#shop2" role="tab" aria-controls="shop2" aria-selected="true">
+                            @item.name
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent2">
+                    <div class="tab-pane show active" id="shop2" role="tabpanel"
+                         aria-labelledby="shop-tab2">
+                        <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                             data-slick-setting='{
+                                                        "autoplay": true,
+                                                        "autoplaySpeed": 8000,
+                                                        "slidesToShow": 2,
+                                                        "rows":4,
+                                                        "dots":true
+                                                    }' data-slick-responsive='[
+                                                        {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                                        {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                                    ]'>
+                            @Html.Action("bookOfCategory", "Site", new { catId = item.ID })
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="men2" role="tabpanel" aria-labelledby="men-tab2">
+                        <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                             data-slick-setting='{
+                                                        "autoplay": true,
+                                                        "autoplaySpeed": 8000,
+                                                        "slidesToShow": 2,
+                                                        "rows":4,
+                                                        "dots":true
+                                                    }' data-slick-responsive='[
+                                                        {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                                        {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                                    ]'>
+                            <!--link-->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="woman2" role="tabpanel"
+                         aria-labelledby="woman-tab2">
+                        <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                             data-slick-setting='{
+                                                            "autoplay": true,
+                                                            "autoplaySpeed": 8000,
+                                                            "slidesToShow": 2,
+                                                            "rows":4,
+                                                            "dots":true
+                                                        }' data-slick-responsive='[
+                                                            {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                                            {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                                        ]'>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

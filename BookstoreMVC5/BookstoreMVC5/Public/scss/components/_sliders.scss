@@ -1,0 +1,456 @@
+/*>>>>>>>> Sliders <<<<<<<<<*/
+
+/*===== Brand Slider ======*/
+
+.sb-slick-slider {
+    position: relative;
+    .slick-dots {
+        display: flex;
+        justify-content: center;
+        li {
+            font-size: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 100%;
+            background: #d3d3d3;
+            margin: 4px;
+            display: block;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &.slick-active {
+                background: $primary-color;
+            }
+            button {
+                font-size: 0;
+            }
+        }
+    }
+    .product-card.card-style-list {
+        flex-direction: row !important;
+    }
+}
+
+.brand-slider {
+    position: relative;
+    padding:10px 0;
+    .single-slide {
+        opacity: .8;
+        img {
+            width: 100%;
+        }
+        &:hover{
+            opacity: 1;;
+        }
+    }
+}
+
+.hero-product-slider {
+    .single-slide {
+        margin: 0 0px;
+    }
+}
+
+.product-slider {
+    overflow: hidden;
+    .slick-list {
+        margin: 0 -1px;
+    }
+    .single-slide {
+        margin: 0 1px;
+    }
+    .slick-dots {
+        margin-top: 50px;
+    }
+    &.with-countdown {
+        &.countdown-single {
+            .slick-dots {
+                margin-top: 25px;
+                margin-bottom: 27px;
+            }
+        }
+    }
+    &.multiple-row {
+        >.slick-list {
+            margin: -40px -1px 0 -1px;
+        }
+        .single-slide {
+            margin-top: 40px !important;
+        }
+        .slick-dots {
+            margin-top: 25px;
+            // @include tablet {
+            //     margin-top: 50px;
+            // }
+        }
+    }
+}
+
+.slider-border-single-row {
+    .single-slide {
+        .product-card--body {
+            position: relative;
+            padding: 1px;
+            &::before {
+                position: absolute;
+                content: "";
+                background: #e5e5e5;
+                left: 0px;
+                top: 0;
+                height: 100%;
+                width: 1px;
+            }
+        }
+        &.slick-current {
+            .product-card--body {
+                &::before {
+                    height: 0%;
+                }
+            }
+        }
+    }
+    &.product-list-slider {
+        .product-card--body {
+            &::before {
+                height: 0;
+            }
+        }
+        .single-slide {
+            .product-card {
+                position: relative;
+                padding: 1px;
+                &::before {
+                    position: absolute;
+                    content: "";
+                    background: #e5e5e5;
+                    left: 0px;
+                    top: 0;
+                    height: 100%;
+                    width: 1px;
+                }
+            }
+            &.slick-current {
+                .product-card {
+                    &::before {
+                        height: 0%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.slider-border-multiple-row {
+    .single-slide {
+        .product-card--body {
+            position: relative;
+            padding: 1px;
+            &::before {
+                position: absolute;
+                content: "";
+                background: #e5e5e5;
+                left: 0px;
+                top: 0;
+                height: 100%;
+                width: 1px;
+            }
+        }
+    }
+    .slick-current.slick-slide {
+        >div {
+            .product-card--body {
+                &::before {
+                    height: 0%;
+                }
+            }
+        }
+    }
+    &.product-list-slider {
+        .product-card--body {
+            &::before {
+                height: 0;
+            }
+        }
+        .slick-slide {
+            .product-card {
+                position: relative;
+                padding-left: 10px; // padding-left: 1px;
+                &::before {
+                    position: absolute;
+                    content: "";
+                    background: #e5e5e5;
+                    left: 0px;
+                    top: 0;
+                    height: 100%;
+                    width: 1px;
+                }
+            }
+            &.slick-current {
+                >div {
+                    .product-card {
+                        &::before {
+                            height: 0%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.product-slider-nav {
+    >.slick-list {
+        margin: 0 -10px;
+    }
+    .single-slide {
+        margin: 0 10px;
+    }
+    .slick-arrow {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        border: 2px solid #e1e1e1;
+        background: #f7f7f9;
+        color: #9e9e9e;
+        text-align: center;
+        position: absolute;
+        z-index: 9;
+        cursor: pointer;
+        top: 50%; // opacity: 0;
+        transition: all 300ms ease-in;
+        border-radius: 100%;
+        font-size: 14px;
+        transform: translateY(-50%);
+        &.slick-next {
+            left: auto;
+            right: 0;
+        }
+    }
+    &.vertical-slider {
+        .slick-arrow {
+            transition: .4s;
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            color: #999;
+            background: #ECECEC;
+            text-align: center;
+            z-index: 1;
+            transition: all 0.3s ease;
+            @include mobile-lg {
+                transform: translate(-50%, 0%);
+                left: 50%;
+            }
+            &.slick-prev {
+                @include mobile-lg {
+                    top: 10px;
+                }
+                i {
+                    @include mobile-lg {
+                        &:before {
+                            content: "\f077"
+                        }
+                    }
+                }
+            }
+            &.slick-next {
+                @include mobile-lg {
+                    top: auto;
+                    bottom: 10px;
+                }
+                i {
+                    @include mobile-lg {
+                        &:before {
+                            content: "\f078"
+                        }
+                    }
+                }
+            }
+            &:hover {
+                color: #292929;
+            }
+        }
+        &:hover {
+            .slick-arrow {
+                &.slick-prev {
+                    @include mobile-lg {
+                        top: 0px;
+                    }
+                }
+                &.slick-next {
+                    @include mobile-lg {
+                        top: auto;
+                        bottom: 0px;
+                    }
+                }
+            }
+        }
+        >.slick-list {
+            @include mobile-lg {
+                margin: 0px 0;
+            }
+        }
+        .single-slide {
+            @include mobile-lg {
+                margin: 8px 0;
+            }
+        }
+    }
+}
+
+.blog-gallery-slider {
+    .single-image {
+        img {
+            width: 100%;
+        }
+    }
+    .slick-arrow {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        border: 2px solid #e1e1e1;
+        background: #f7f7f9;
+        color: #9e9e9e;
+        text-align: center;
+        position: absolute;
+        z-index: 9;
+        cursor: pointer;
+        top: 50%;
+        opacity: 0;
+        transition: all 300ms ease-in;
+        border-radius: 100%;
+        font-size: 14px;
+        transform: translateY(-50%);
+        &.slick-prev {
+            left: 20px;
+        }
+        &.slick-next {
+            right: 20px;
+        }
+        &:hover {
+            background: #292929;
+            border-color: #292929;
+            color: #fff;
+            transition: all 300ms ease-in;
+        }
+    }
+    &:hover {
+        >.slick-arrow {
+            opacity: 1;
+            &.slick-prev {
+                left: 25px;
+            }
+            &.slick-next {
+                right: 25px;
+            }
+        }
+    }
+} // slider progress bar
+.blog-slider {
+    position: relative;
+    >.slick-list {
+        margin: 0 -15px;
+    }
+    .single-slide {
+        margin: 0 15px;
+    }
+    .slick-dots {
+        margin-top: 60px;
+    }
+    .blog-card {
+        .image {
+            img {
+                width: 100%;
+            }
+        }
+    }
+    &.slider-one-column {
+        .blog-card {
+            @include mobile-lg {
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+.herobanner-progress {
+    animation: initial;
+    background: rgba(51, 51, 51, 0.9);
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+    z-index: 5;
+    opacity: 0.2;
+}
+
+.slick-current {
+    .herobanner-progress {
+        animation: hoFill 8000ms ease-in-out s normal;
+    }
+}
+
+@-webkit-keyframes hoFill {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes hoFill {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+[class*="hero-slider"] {
+    position: relative;
+    .slick-dots {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        li {
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: 1px solid transparent;
+            position: relative;
+            cursor: pointer;
+            &:before {
+                position: absolute;
+                content: "";
+                height: 8px;
+                width: 8px;
+                background: #3e444a;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                border-radius: 100%;
+            }
+            &.slick-active {
+                background: transparent;
+                border-color: $primary-color;
+                &:before {
+                    background: $primary-color;
+                }
+            }
+        }
+    }
+}

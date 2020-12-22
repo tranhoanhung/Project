@@ -1,0 +1,157 @@
+/*>>>>>>>> Tabs <<<<<<<<<*/
+
+.sb-custom-tab {
+    text-align: center;
+    .nav.nav-tabs {
+        display: inline-flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        border: 2px solid $border-color;
+        border-radius: 3px;
+        .nav-item {
+            font-size: 15px;
+            color: #282828;
+            line-height: 48px;
+            text-transform: capitalize;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: top;
+            padding: 0;
+            background: #fff;
+            position: relative;
+            margin: 1px;
+            border-radius: 3px;
+            .icon {
+                display: flex;
+                min-height: 48px;
+                align-items: flex-end;
+                justify-content: center;
+                margin-bottom: 13px;
+            }
+            .nav-link {
+                padding: 0 30px;
+                border: 2px solid transparent;
+                margin: -2px;
+                transition: border-color 0s, color .4s;
+                &.active,
+                &.show {
+                    border-color: $primary-color;
+                    color: $primary-color;
+                    ~.arrow-icon {
+                        opacity: 1;
+                    }
+                }
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+        .arrow-icon {
+            position: absolute;
+            left: calc(50% - 10px);
+            opacity: 0;
+            transition: 0s;
+            display: none;
+            @include desktops {
+                display: block;
+            }
+            &:before {
+                position: absolute;
+                content: "";
+                border-width: 15px 12px;
+                border-style: solid;
+                border-color: $primary-color transparent transparent transparent;
+            }
+            &:after {
+                position: absolute;
+                content: "";
+                border-width: 13px 10px;
+                border-style: solid;
+                left: 2px;
+                border-color: #fff transparent transparent transparent;
+                top: -2px;
+            }
+        }
+        &.nav-style-2 {
+            border-width: 0px 0px 1px 0px;
+            border-style: solid;
+            border-color: #e5e5e5;
+            .nav-item {
+                &:first-child {
+                    @include mobile {
+                        .nav-link {
+                            margin-left: 0 !important;
+                        }
+                    }
+                }
+                &:last-child {
+                    .nav-link {
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+            .nav-link {
+                border: none !important;
+                position: relative;
+                color: #222;
+                line-height: 30px;
+                text-transform: uppercase;
+                font-weight: 600;
+                cursor: pointer;
+                position: relative;
+                display: block;
+                font-size: 14px;
+                padding: 0 0 10px;
+                margin: -1px 10px;
+                @include mobile-lg{
+                    font-size: 15px;
+                    padding: 0 0 10px;
+                    margin: -1px 15px;
+                }
+                @include desktops {
+                    font-size: 20px;
+                    padding: 0 0 30px;
+                    margin: -1px 30px;
+                }
+                &:before {
+                    position: absolute;
+                    content: "";
+                    left: 10%;
+                    right: 10%;
+                    height: 2px;
+                    bottom: 0;
+                    background: transparent;
+                }
+                &.active,
+                &.show {
+                    color: $primary-color;
+                    &:before {
+                        background: $primary-color;
+                    }
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    .tab-content {
+        >.tab-pane {
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0s;
+            height: 0;
+            &.show,
+            &.active {
+                visibility: visible;
+                opacity: 1;
+                height: 100%;
+                .product-card {
+                    animation: .6s linear zoomIn;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Post>
+@foreach (var item in Model)
+{
+    <div class="single-slide">
+        <div class="blog-card">
+            <div class="image">
+                <img src="~/public/images/post/@item.img" alt="">
+            </div>
+            <div class="content">
+                <div class="content-header">
+                    <div class="date-badge">
+                        <span class="date">
+                            @*@DateTime.Now.Date.ToString("dd")*@
+                            @item.date_created.Value.ToString("dd")
+                        </span>
+                        <span class="month">
+                            @item.date_created.Value.ToString("MM")
+                        </span>
+                        <span class="yearselect">
+                            @item.date_created.Value.ToString("yyyy")
+                        </span>
+                    </div>
+                    <h3 class="title">
+                        <a href="~/bai-viet/@item.slug">@item.title</a>
+                    </h3>
+                </div>
+                <p class="meta-para"><i class="fas fa-user-edit"></i>Viết bởi <a href="#">admin</a></p>
+                <article class="blog-paragraph">
+                    <h2 class="sr-only">blog-paragraph</h2>
+                    <p class="text-lowercase">
+                        @item.title ...
+                    </p>
+                </article>
+                <a href="~/bai-viet/@item.slug" class="card-link">
+                    Đọc thêm <i class="fas fa-chevron-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}

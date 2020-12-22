@@ -1,0 +1,101 @@
+/*>>>>>>>> Color <<<<<<<<<*/
+
+.text-primary {
+    color: $primary-color !important;
+    &:hover {
+        color: $primary-color !important;
+    }
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #292929;
+}
+
+.text-black-2 {
+    color: #1a1f2b;
+}
+
+.bg-primary {
+    background: $primary-color !important;
+}
+
+.bg-gray {
+    background: #f6f6f6;
+}
+
+.bg-white {
+    background: #f6f6f6;
+}
+
+.bg-yellow {
+    background: #F1C40F;
+}
+
+.bg-red {
+    background: #f6f6f6;
+}
+
+.bg-green {
+    background: #A0D468;
+}
+
+.bg-beige {
+    background: #f5f5dc;
+}
+
+.bg-ghost-white {
+    background: $ghost-white;
+}
+
+.bg-shade-whisper {
+    background: $shade-whisper;
+}
+
+.bg-pink {
+    background: #FF7A7A;
+}
+
+.bg-yellow-2 {
+    background: #FFFF01;
+}
+
+.bg-dark-gray {
+    background: #2F4F4E;
+}
+
+.text-red {
+    color: #F00;
+}
+
+.bg-overlay {
+    &--white {
+        position: relative;
+        &:before {
+            background: #fff;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            opacity: .2;
+        }
+    }
+    &--dark {
+        position: relative;
+        &:before {
+            background: #000;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            opacity: .4;
+        }
+    }
+}

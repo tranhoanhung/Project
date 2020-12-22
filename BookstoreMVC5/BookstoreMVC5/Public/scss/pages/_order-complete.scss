@@ -1,0 +1,72 @@
+/*-- Order Complete --*/
+
+/*Order Complete Message*/
+.order-complete-message {
+    & h1 {
+        color: #333;
+        font-size: 36px;
+        line-height: 48px;
+        font-weight: 700;
+        @media #{$large-mobile} {
+            font-size: 26px;
+            line-height: 30px;
+        }
+    }
+    & p {
+        font-size: 24px;
+        font-weight: 300;
+        @media #{$large-mobile} {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+}
+.order-table-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/*Order Details List*/
+.order-details-list {
+    list-style: inside;
+    margin-bottom: 10px;
+}
+/*Order Details Table*/
+.order-details-table {
+    border: 1px solid #e5e5e5;
+    margin: 0;
+    & thead {
+        & tr {
+            & th {
+                font-weight: 400;
+                color: #333;
+                border: none;
+                border-right: 1px solid #e5e5e5;
+            }
+        }
+    }
+    & tbody {
+        & tr {
+            & td {
+                border-top: 1px solid #e5e5e5;
+                border-right: 1px solid #e5e5e5;
+                & .btn {
+                    padding: 6px 35px;
+                }
+            }
+        }
+    }
+    & tfoot {
+        & tr {
+            & th {
+                font-weight: 400;
+                color: #333;
+                border-right: 1px solid #e5e5e5;
+            }
+            & td {
+                border-top: 1px solid #e5e5e5;
+                border-right: 1px solid #e5e5e5;
+            }
+        }
+    }
+}

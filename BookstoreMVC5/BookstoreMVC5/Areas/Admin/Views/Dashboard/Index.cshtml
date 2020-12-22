@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+@{
+
+    var user = ViewBag.User;
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 bg-light">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6 ">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Small Box (Stat card) -->
+    <div class="container-fluid card">
+        <h5 class="mb-2 mt-4">Thống kê</h5>
+        <div class="row ">
+
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3></h3>
+                        <p>Tất cả sản phẩm</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="/Admin/product" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3> </h3>
+                        <p>Đơn hàng mới</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <a href="~/Admin/orders" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3></h3>
+                        <p>Liên hệ Mới</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <a href="~/admin/contact" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ./col -->
+
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner text-white">
+                        <h3></h3>
+                        <p>Tài Khoản khách hàng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <a href="~/Admin/user" class="small-box-footer ">
+                        <span class="text-white">More info <i class="fas fa-arrow-circle-right"></i></span>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- /.row -->
+    <!-- Main content -->
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <h5 class="mb-2">Info Box</h5>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info"><i class="nav-icon fas fa-chart-pie"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Loại Sản Phẩm</span>
+                            <span class="info-box-number"></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-success"><i class="nav-icon fas fa-newspaper"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Bài Viết</span>
+                            <span class="info-box-number"></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-warning "><i class="nav-icon fas fa-stream text-white"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Chủ đề bài viết</span>
+                            <span class="info-box-number"></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-danger"><i class="nav-icon fas fa-images"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Ảnh bìa</span>
+                            <span class="info-box-number"></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main content -->
+            <div>
+
+                <a href="~/Admin/statistics" class="btn btn-danger"> Xem Thống Kê Chi Tiết</a>
+            </div>
+        </div>
+
+
+        <!-- /.content -->
+        <script>
+                    $("#dashboard").addClass("active");
+        </script>

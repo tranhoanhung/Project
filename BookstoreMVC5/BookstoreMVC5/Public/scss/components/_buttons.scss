@@ -1,0 +1,134 @@
+/*>>>>>>>> Buttons <<<<<<<<<*/
+
+.btn {
+    border-radius: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 50px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+    &-outlined {
+        background: transparent;
+        border: 2px solid #ececec;
+        color: #333;
+        &:hover {
+            border: 2px solid $primary-color;
+            background: $primary-color;
+            color: $white-color;
+        }
+        &--primary {
+            background: transparent;
+            border: 2px solid $primary-color !important;
+            color: $primary-color;
+            &:hover {
+                background: $primary-color;
+                border-color: $primary-color !important;
+                color: $white-color !important;
+            }
+        }
+        &--white {
+            background: transparent;
+            border: 2px solid $white-color;
+            color: $white-color;
+            &:hover {
+                background: $primary-color;
+                border-color: $primary-color;
+                color: $white-color;
+            }
+        }
+        &--black {
+            background: transparent;
+            border: 2px solid $black-color-2;
+            color: $black-color-2;
+            &:hover {
+                background: $primary-color;
+                border-color: $primary-color;
+                color: $white-color;
+            }
+        }
+        &--red-faded {
+            background: transparent;
+            border: 2px solid $red-color-fade;
+            color: #ec776d !important;
+            &:hover {
+                background: $red-color-fade;
+                border-color: $red-color-fade;
+                color: $white-color !important;
+            }
+        }
+        &--pink {
+            background: transparent;
+            border: 2px solid $pink-color;
+            color: $pink-color !important;
+            &:hover {
+                background: $pink-color;
+                border-color: $pink-color;
+                color: $white-color !important;
+            }
+        }
+    }
+    &-rounded {
+        border-radius: 500px;
+    }
+    &-mid {
+        height: 40px;
+        width: 195px;
+    }
+    &--primary {
+        background: $primary-color;
+        color: #fff !important;
+        &:hover {
+            background: $black-color-2;
+            color: #fff;
+        }
+    }
+    &--yellow {
+        background: $yellow-color;
+        color: #282828 !important;
+        &:hover {
+            background: #fff;
+            color: #282828;
+        }
+    }
+    &-yellow-primary {
+        background: $yellow-color;
+        color: #282828 !important;
+        &:hover {
+            background: $primary-color;
+            color: #fff;
+        }
+    }
+}
+
+.btn-black {
+    height: 50px;
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    background: $black-color-2;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: Rubik, Arial, Helvetica, sans-serif;
+    box-shadow: none;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    text-shadow: none;
+    text-transform: uppercase;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    &:hover {
+        background: $primary-color;
+        color: $white-color;
+    }
+}

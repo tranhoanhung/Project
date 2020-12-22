@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Book>
+
+@foreach (var item in Model)
+{
+    string name = item.name;
+    int sale = (int)item.pricesale;
+    float price = (int)item.price - (int)item.price / 100 * (int)sale;
+
+    <li class="single-product">
+        <div class="product-image">
+            <img src="~/Public/images/product/@item.img" alt="">
+        </div>
+        @if (name.Length > 20)
+        {
+
+            <a href="~/san-pham/@item.slug"> <h5 class="product-title">@name.Substring(0, 20) ...</h5><span></span></a>
+        }
+        else
+        {
+            <a href="~/san-pham/@item.slug"> <h5 class="product-title">@item.name</h5><span></span></a>
+
+        }
+
+        <div class="count-input-block">
+            <input type="number" class="form-control text-center" id="quantity" value="1">
+            <div class="count-input-btns">
+                <button class="inc-ammount count-btn">
+                    <i class="zmdi zmdi-chevron-up"></i>
+                </button>
+                <button class="dec-ammount count-btn">
+                    <i class="zmdi zmdi-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+        <span class="price-new mt-0">@price.ToString("N0") đ</span>
+        <div class="add-cart-btn">
+            <a href="javascript:void(0);" onclick="addcart(@item.ID)" class="btn btn-outlined--primary">
+                <span class="plus-icon"></span>Thêm giỏ hàng
+            </a>
+        </div>
+    </li>
+}

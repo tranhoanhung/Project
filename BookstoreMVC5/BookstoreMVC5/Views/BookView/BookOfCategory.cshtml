@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Category>
+<div class="home-right-block bg-white">
+    <div class="sb-custom-tab   pt--30 pb--30">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="new1-tab" data-toggle="tab" href="#new1"
+                   role="tab" aria-controls="new1" aria-selected="true">
+                    Sách 1
+                </a>
+                <span class="arrow-icon"></span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="new2-tab" data-toggle="tab" href="#new2"
+                   role="tab" aria-controls="new2" aria-selected="true">
+                    Sách 2
+                </a>
+                <span class="arrow-icon"></span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="new3-tab" data-toggle="tab" href="#new3"
+                   role="tab" aria-controls="new3" aria-selected="false">
+                    Sách 3
+                </a>
+                <span class="arrow-icon"></span>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane show active" id="new1" role="tabpanel"
+                 aria-labelledby="new1-tab">
+                <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                     data-slick-setting='{
+                                    "autoplay": true,
+                                    "autoplaySpeed": 8000,
+                                    "slidesToShow": 2,
+                                    "rows":2,
+                                    "dots":true
+                                }' data-slick-responsive='[
+                                    {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                    {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                ]'>
+                    @Html.Action("bookOfCategory", "BookView", new { catId = 4 })
+
+                </div>
+            </div>
+            <div class="tab-pane" id="new2" role="tabpanel" aria-labelledby="new2-tab">
+                <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                     data-slick-setting='{
+                                                                    "autoplay": true,
+                                                                    "autoplaySpeed": 8000,
+                                                                    "slidesToShow": 2,
+                                                                    "rows":2,
+                                                                    "dots":true
+                                                                }' data-slick-responsive='[
+                                                                    {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                                                    {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                                                ]'>
+                    @Html.Action("bookOfCategory", "BookView", new { catId = 3 })
+                </div>
+            </div>
+            <div class="tab-pane" id="new3" role="tabpanel" aria-labelledby="new3-tab">
+                <div class="product-slider product-list-slider multiple-row slider-border-multiple-row  sb-slick-slider"
+                     data-slick-setting='{
+                                                                                                    "autoplay": true,
+                                                                                                    "autoplaySpeed": 8000,
+                                                                                                    "slidesToShow": 2,
+                                                                                                    "rows":2,
+                                                                                                    "dots":true
+                                                                                                }'
+                     data-slick-responsive='[
+                                                                                                    {"breakpoint":992, "settings": {"slidesToShow": 2,"rows": 3} },
+
+                                                                                                    {"breakpoint":768, "settings": {"slidesToShow": 1} }
+                                                                                                ]'>
+                    @Html.Action("bookOfCategory", "BookView", new { catId = 5 })
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

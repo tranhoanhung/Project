@@ -1,0 +1,110 @@
+/*--
+    Elements - Accordion
+------------------------------------------------------*/
+.faq-area {
+    .inner {
+        h1 {
+            font-size: 36px;
+            line-height: 1.2;
+            font-weight: 700;
+            padding-bottom: 30px;
+            // responsive
+            @media #{$large-mobile} {
+                font-size: 24px;
+            }
+        }
+    }
+    .accordion-2 {
+        @media #{$md-layout, $sm-layout} {
+            margin-top: 30px;
+        }
+    }
+}
+/*Accordion*/
+.accordion {
+    & .card {
+        border: 1px solid rgba(169,174,189,0.30) !important;
+        border-radius: 4px !important;
+        background-color: #fff;
+        margin-bottom: 20px;
+        transition: all 0.3s ease 0s;
+        &:last-child {
+            margin-bottom: 0px;
+        }
+        &.open {
+            border-color: #e5e5e5 !important;
+            box-shadow: 0 0 87px 0 rgba(41,44,58,.1);
+        }
+        & .card-header {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            & h5 {
+                margin: 0;
+                & button {
+                    border: none;
+                    background-color: transparent;
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    line-height: 24px;
+                    font-weight: 400;
+                    padding: 15px 30px;
+                    position: relative;
+                    color: #333;
+                    &::before, &::after {
+                        position: absolute;
+                        content: "";
+                        background-color: #333;
+                        top: 50%;
+                        margin-top: -1px;
+                        width: 10px;
+                        height: 2px;
+                        right: 20px;
+                        transition: all 0.3s ease 0s;
+                    }
+                    &.collapsed {
+                        &::after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+            & h5 {
+                margin: 0;
+                & button {
+                    border: none;
+                    background-color: transparent;
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    font-size: 14px;
+                    line-height: 24px;
+                    font-weight: 700;
+                    padding: 15px 30px;
+                    position: relative;
+                    color: #333;
+                    &::before, &::after {
+                        position: absolute;
+                        content: "";
+                        background-color: #333;
+                        top: 50%;
+                        margin-top: -1px;
+                        width: 10px;
+                        height: 2px;
+                        right: 20px;
+                        transition: all 0.3s ease 0s;
+                    }
+                    &.collapsed {
+                        &::after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+        }
+        & .card-body {
+            padding: 0 30px 30px;
+        }
+    }
+}

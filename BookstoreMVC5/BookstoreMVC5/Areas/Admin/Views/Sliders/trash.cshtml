@@ -1,0 +1,136 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Slider>
+
+@{
+    ViewBag.Title = "trash";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thùng Rác Ảnh Bìa</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quản Lý Sản Phẩm</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+    <section class="container-fluid ">
+        <div class=" bg-white card  ">
+            <div class="row justify-content-end">
+                <div class="col-md-3">
+                    <div class=" pt-1 ml-5 float-right mr-3">
+                        <a class="text-white btn-sm btn-danger " href="~/admin/Sliders">Thoát</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9  w-100 ">
+                    @*@Html.Partial("_MessgeAlert")*@
+                </div>
+                <div class="col-md-12 p-3">
+
+                    <table class="table px-3 table-striped table-bordered dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>tên slider</th>
+                                <th>Ngày Tạo</th>
+                                <th>Chức Năng</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td><img width="20px" src="~/public/images/bg-images/@Html.DisplayFor(modelItem => item.img)"></td>
+                                    <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.name)</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item.date_created)</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-light text-success border" href="@Url.Action("Retrash", "Sliders", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                        <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("Delete", "Sliders", new { id = item.ID })">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-cam">@Html.DisplayFor(modelItem => item.ID)</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $("#slider").addClass("active");
+    </script>
+
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.img)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sort)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>*@

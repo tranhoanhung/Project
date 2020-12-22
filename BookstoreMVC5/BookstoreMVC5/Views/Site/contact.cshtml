@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Liên hệ</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- contact area Start -->
+<main class="contact_area inner-page-sec-padding-bottom">
+    <div class="container bg-white p-3">
+        <div class="row">
+            <div class="col-sm-12  ">
+                @*@Html.Partial("_MessgeAlertc")*@
+            </div>
+            <div class="col-lg-6">
+                <div class="contact_form">
+                    <h3 class="ct_title">Gủi liên hệ cho chúng tôi</h3>
+                    <form  action="~/lien-he" method="POST" class="contact-form">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Tên bạn<span class="required">*</span></label>
+                                    <input type="text" id="con_name" name="fullname" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>email của bạn <span class="required">*</span></label>
+                                    <input type="email" id="con_email" name="email" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Số điện thoại <span class="required">*</span></label>
+                                    <input type="tel" id="con_email" name="phone" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Tiêu đề <span class="required">*</span></label>
+                                    <input type="text" id="con_email" name="title" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Lời nhắn</label>
+                                    <textarea id="con_message" name="detail"
+                                              class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-btn">
+                                    <button type="submit" class="btn btn-black w-100"
+                                           >
+                                        Gửi
+                                    </button>
+                                </div>
+                                <div class="form__output"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-output">
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="ct_title">Chúng tôi trên bản đồ</h3>
+                <div id="google-map">
+                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1589.2977290597446!2d106.77467835332413!3d10.813988160604293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317526f6e84f2a9b%3A0xbfef62e73045a0c7!2zOTksIDYgxJDGsOG7nW5nIHPhu5EgMTEsIFBoxrDhu5tjIELDrG5oLCBRdeG6rW4gOSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1595820013211!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- contact area End -->
+<!--<div class="contact-bottom-info inner-page-sec-padding-bottom">
+    <div class="container">
+        <div class="row">-->
+            <!--Contact Information Start-->
+            <!--<div class="col-lg-3 col-sm-6 col-12 mb-30">
+                <div class="contact-info">
+                    <span class="icon"><i class="fa fa-phone"></i></span>
+                    <div class="content">
+                        <h3 class="title">Liên hệ bằng SDT</h3>
+                        <p>0975271384<br> 0975271384</p>
+                    </div>
+                </div>
+            </div>-->
+            <!--Contact Information End-->
+            <!--Contact Information Start-->
+            <!--<div class="col-lg-3 col-sm-6 col-12 mb-30">
+                <div class="contact-info">
+                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                    <div class="content">
+                        <h3 class="title">CLiên hệ bằng email</h3>
+                        <p>vanhungdev@gmail.com <br> vanhungdev@gmail.com </p>
+                    </div>
+                </div>
+            </div>-->
+            <!--Contact Information End-->
+            <!--Contact Information Start-->
+            <!--<div class="col-lg-3 col-sm-6 col-12 mb-30">
+                <div class="contact-info">
+                    <span class="icon"><i class="fa fa-map-marker"></i></span>
+                    <div class="content">
+                        <h3 class="title">Đến với chúng tôi</h3>
+                        <p>105 Lê văn việt <br> quận 9 TP.HCM</p>
+                    </div>
+                </div>
+            </div>-->
+            <!--Contact Information End-->
+            <!--Contact Information Start-->
+            <!--<div class="col-lg-3 col-sm-6 col-12 mb-30">
+                <div class="contact-info">
+                    <span class="icon"><i class="fa fa-users"></i></span>
+                    <div class="content">
+                        <h3 class="title">Mạng xã hôi</h3>
+                        <ul class="social-list list-inline">
+                            <li class="single-social facebook"><a href=""><i class="ion ion-social-facebook"></i></a></li>
+                            <li class="single-social twitter"><a href=""><i class="ion ion-social-twitter"></i></a></li>
+                            <li class="single-social google"><a href=""><i class="ion ion-social-googleplus-outline"></i></a></li>
+                            <li class="single-social youtube"><a href=""><i class="ion ion-social-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+            <!--Contact Information End-->
+        <!--</div>
+    </div>
+</div>-->

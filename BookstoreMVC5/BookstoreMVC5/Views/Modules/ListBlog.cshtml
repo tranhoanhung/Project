@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Topic>
+<li class="menu-item has-children">
+    <a href="javascript:void(0)">
+        Blog <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </a>
+
+    <ul class="sub-menu">
+        <li class="cat-item "><a href="~/bai-viet">Bài viết nổi bật</a></li>
+        @foreach (var item in Model)
+        {
+            <li class="cat-item "><a href="~/bai-viet/@item.slug">@item.name</a></li>
+        }
+
+    </ul>
+</li>

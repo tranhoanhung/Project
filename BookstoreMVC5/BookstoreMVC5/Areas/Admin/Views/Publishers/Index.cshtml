@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Quản Lý nhà xuất bản</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quản Lý nhà xuất bản</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+    <section class="container-fluid ">
+        <div class=" bg-white card  ">
+            <div class="row justify-content-end">
+                <div class="col-md-3">
+                    <div class=" pt-1 ml-5">
+                        <a class="text-white btn-sm btn-success" href="~/admin/publishers/Create">Thêm nhà xuất bản <i class="fas fa-plus"></i></a>
+                        <a class="text-white btn-sm btn-danger " href="~/admin/publishers/trash">Thùng rác<i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9  w-100 ">
+                    @Html.Partial("_MessgeAlert")
+                </div>
+                <div class="col-md-12 p-3">
+
+                    <table id="myTable1" class="table  table-striped table-bordered dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th width="30%">Tên chủ đề</th>
+                                <th width="20%">Link</th>
+                                <th width="20%">Chức Năng</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-cam">@Html.DisplayFor(modelItem => item.ID)</td>
+                                    <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.name)</a></td>
+                                    <td> @Html.DisplayFor(modelItem => item.slug)</td>
+                                    <td>
+                                        @*@if (item.status == 1)
+                                        {
+                                            <a class="btn btn-sm btn-light text-success border a33" href="@Url.Action("Status", "publisher", new { id = item.ID })"> <i class="fas fa-toggle-on"></i> </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-sm btn-light text-danger border a33" href="@Url.Action("Status", "publisher", new { id = item.ID })"> <i class="fas fa-toggle-off"></i> </a>
+                                        }*@
+                                        <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("Deltrash", "publishers", new { id = item.ID })"> <i class="fas fa-trash-alt"></i></a>
+                                        <a class="btn btn-sm btn-light text-warning border" href="@Url.Action("Edit", "publishers", new { id = item.ID })">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $("#publisher").addClass("active");
+    </script>
+
+
+

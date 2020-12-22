@@ -1,0 +1,450 @@
+/*>>>>>>>> Hero Area <<<<<<<<<*/
+
+.hero-area {
+    .home-content {
+        border-radius: 3px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        @include tablet {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            min-height: 400px;
+        }
+        @include desktops {
+            min-height: 440px;
+        }
+        @include large-desktops {
+            min-height: 410px;
+        }
+        @include extra-large-desktops {
+            min-height: 560px;
+        }
+        h1 {
+            color: #333333;
+            text-transform: capitalize;
+            font-weight: 600;
+            position: relative;
+            padding: 0;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-size: 22px;
+            @include mobile-lg {
+                font-size: 30px;
+            }
+            @include tablet {
+                line-height: 1;
+                font-size: 40px;
+            }
+            @include large-desktops {
+                font-size: 45px;
+            }
+            @include extra-large-desktops {
+                font-size: 60px;
+            }
+        }
+        h2 {
+            color: #333;
+            font-weight: 300;
+            font-style: italic;
+            text-transform: capitalize;
+            margin: 0;
+            line-height: 1.2;
+            padding: 0;
+            font-size: 16px;
+            @include mobile-lg {
+                font-size: 16px;
+            }
+            @include tablet {
+                font-size: 22px;
+            }
+            @include desktops {
+                font-size: 22px;
+            }
+            @include large-desktops {
+                font-size: 30px;
+            }
+            @include extra-large-desktops {
+                font-size: 40px;
+            }
+        }
+        .btn {
+            line-height: 40px;
+            font-size: 13px;
+            text-transform: capitalize;
+            margin-top: 30px;
+            padding: 0 20px;
+            min-height: 40px;
+            @include mobile-lg {
+                margin-top: 45px;
+                padding: 0 30px;
+            }
+            @include large-desktops {
+                margin-top: 57px;
+                padding: 0 40px;
+                min-height: 57px;
+                font-size: 15px;
+            }
+        }
+        .hero-partial-image {
+            position: relative;
+            margin-bottom: 10px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            @include mobile {
+                width: 50%;
+            }
+            @include mobile-lg {
+                z-index: -1;
+                position: absolute;
+                width: 65%;
+            }
+            @include tablet {
+                margin-top: 25px;
+                top: 25px;
+                width: 70%;
+                bottom: auto;
+                top: 0;
+            }
+            @include desktops {
+                margin-left: 0;
+                width: 58%;
+            }
+            @include large-desktops {
+                width: 58%;
+            }
+            @include extra-large-desktops {
+                top: 35px;
+                width: auto;
+            }
+            img {
+                width: 100%;
+            }
+            &.image-left {
+                right: 0;
+                @include mobile-lg {
+                    right: -75px;
+                }
+                @include tablet {
+                    margin-left: -20px;
+                    left: 0;
+                    right: auto;
+                    bottom: auto;
+                    width: 65%;
+                }
+                @include desktops {
+                    width: 58%;
+                    margin-left: 0px;
+                }
+                @include large-desktops {
+                    width: 45%;
+                }
+                @include extra-large-desktops {
+                    width: auto;
+                    margin-left: -60px;
+                }
+            }
+            &.image-right {
+                left: 0;
+                @include mobile-lg {
+                    left: auto;
+                    right: -75px;
+                }
+                @include tablet {
+                    right: 0;
+                    margin-right: 0px;
+                    width: 55%;
+                    margin-top: 50px;
+                }
+                @include large-desktops {
+                    width: 50%;
+                    margin-right: 60px;
+                    margin-top: 10px;
+                }
+                @include extra-large-desktops {
+                    // margin-right: -50px;
+                    margin-right: 0px;
+                    width: auto;
+                }
+            }
+        }
+        .home-content-inner {
+            &.content-right-side {
+                @include extra-large-desktops {
+                    padding-left: 85px
+                }
+            }
+        }
+    }
+    &.hero-slider-2 {
+        .home-content {
+            min-height: 330px;
+            @include mobile {
+                min-height: 355px;
+            }
+            @include tablet {
+                min-height: 430px
+            }
+            @include extra-large-desktops {
+                min-height: 530px;
+            }
+            .title-small {
+                font-size: 16px;
+                line-height: 1;
+                color: #3a3a3c;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+            .title-mid {
+                line-height: 28px;
+                color: $primary-color;
+                font-weight: 600;
+                @include mobile-lg {
+                    font-size: 22px;
+                }
+                @include tablet {
+                    font-size: 28px;
+                }
+            }
+            h2 {
+                letter-spacing: 3px;
+                color: #333333;
+                font-weight: 700;
+                font-style: normal;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+                font-size: 42px;
+                @include mobile-lg {
+                    font-size: 62px;
+                }
+                &.h2-v2 {
+                    letter-spacing: 0px;
+                    font-weight: 900;
+                    font-size: 25px;
+                    @include mobile {
+                        font-size: 32px;
+                    }
+                    @include mobile-lg {
+                        font-size: 40px;
+                    }
+                    @include tablet {
+                        font-size: 50px;
+                    }
+                    @include large-desktops {
+                        font-size: 60px;
+                    }
+                }
+            }
+            p {
+                line-height: 26px;
+                color: #333;
+                font-style: italic;
+                font-size: 13px;
+                @include mobile {
+                    font-size: 16px;
+                }
+                @include mobile-lg {
+                    font-size: 18px;
+                }
+            }
+            .btn {
+                margin-top: 20px;
+            }
+        }
+    }
+    &.hero-slider-3 {
+        .home-content {
+            min-height: 355px;
+            @include desktops {
+                min-height: 400px;
+            }
+            @include large-desktops {
+                min-height: 450px;
+            }
+            @include extra-large-desktops {
+                min-height: 595px;
+            }
+            text-align: center;
+            h1 {
+                color: #fff;
+                font-weight: 500;
+                font-style: normal;
+                margin-bottom: 12px;
+                text-transform: capitalize;
+                font-family: 'PT Serif', serif;
+                font-style: italic;
+                font-size: 33px;
+                @include mobile {
+                    font-size: 40px;
+                }
+                @include mobile-lg {
+                    font-size: 50px;
+                }
+                @include tablet {
+                    font-size: 55px;
+                }
+            }
+            h2 {
+                font-weight: 500;
+                color: #fff;
+                font-family: 'PT Serif', serif;
+                font-size: 20px;
+                line-height: 25px;
+                @include mobile {
+                    font-size: 24px;
+                    line-height: 28px;
+                }
+                @include mobile-lg {
+                    font-size: 30px;
+                    line-height: 32px;
+                }
+                @include tablet {
+                    font-size: 33px;
+                    line-height: 35px;
+                }
+                @include large-desktops {
+                    font-size: 40px;
+                    line-height: 40px;
+                }
+            }
+            .btn {
+                margin-top: 45px;
+            }
+        }
+    }
+    &.hero-slider-4 {
+        .home-content {
+            padding-left: 20px;
+            padding-right: 40px;
+            height: 300px;
+            @include mobile-lg {
+                height: 420px;
+            }
+            @include tablet {
+                padding-left: 30px;
+                padding-right: 30px;
+                height: 420px;
+            }
+            @include desktops {
+                padding-left: 30px;
+                padding-right: 30px;
+                min-height: 100%;
+            }
+            .title-small {
+                line-height: 1;
+                color: $pink-color;
+                font-weight: 600;
+                margin-bottom: 5px;
+                font-size: 20px;
+                @include tablet {
+                    font-size: 28px;
+                }
+            }
+            h1 {
+                color: #333;
+                font-weight: 900;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+                font-style: normal;
+                font-size: 33px;
+                @include mobile-lg {
+                    font-size: 44px;
+                }
+                @include desktops {
+                    font-size: 50px;
+                }
+                @include large-desktops {
+                    font-size: 55px;
+                }
+                @include extra-large-desktops {
+                    letter-spacing: -3px;
+                    font-size: 60px;
+                }
+                &.v2 {
+                    font-family: 'PT Serif', serif;
+                    letter-spacing: 0;
+                    color: #fff;
+                    font-weight: 500;
+                    font-style: italic;
+                    text-transform: capitalize;
+                    font-size: 33px;
+                    @include mobile-lg {
+                        font-size: 44px;
+                    }
+                    @include desktops {
+                        font-size: 50px;
+                    }
+                    @include large-desktops {
+                        font-size: 55px;
+                    }
+                    @include extra-large-desktops {
+                        letter-spacing: -3px;
+                        font-size: 60px;
+                    }
+                }
+            }
+            h2 {
+                font-weight: 500;
+                color: #fff;
+                font-style: italic;
+                text-transform: capitalize;
+                font-family: 'PT Serif', serif;
+                font-size: 18px;
+                line-height: 20px;
+                @include tablet {
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+                @include desktops {
+                    font-size: 40px;
+                    line-height: 40px;
+                }
+            }
+            p {
+                font-size: 18px;
+                line-height: 24px;
+                font-style: italic;
+                color: #fff;
+                @include mobile-lg {
+                    color: #333;
+                }
+            }
+            .btn {
+                margin-top: 20px;
+                @include tablet {
+                    margin-top: 45px;
+                }
+            }
+        }
+    }
+}
+
+.hero-products-group-slider {
+    >.slick-list {
+        margin: -10px;
+    }
+    .product-card {
+        border: 2px solid #eeeeee;
+        border-radius: 3px;
+        padding: 20px 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px; // &:last-child {
+        //     margin-bottom: 0px;
+        // }
+        .card-image {
+            width: 135px;
+        }
+    }
+}
+
+[class*="hero-slider-"] {
+    .single-slide {
+        border-radius: 3px;
+    }
+}

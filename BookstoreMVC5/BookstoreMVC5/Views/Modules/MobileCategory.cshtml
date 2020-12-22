@@ -1,0 +1,18 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Category>
+<nav class="category-nav white-nav bg-primary ">
+    <div>
+        <a href="javascript:void(0)" class="category-trigger">
+            <i class="fa fa-bars"></i>Danh mục sách
+        </a>
+        <ul class="category-menu">
+            @foreach (var item in Model)
+            {
+                <li class="cat-item "><a href="~/loai-sach/@item.slug">@item.name</a></li>
+            }
+
+            @*<li class="cat-item "><a href="#">Menu 1</a></li>
+            <li class="cat-item hidden-menu-item"><a href="#">Indoor Living</a></li>
+            <li class="cat-item"><a href="#" class="js-expand-hidden-menu">Xem thêm</a></li>*@
+        </ul>
+    </div>
+</nav>

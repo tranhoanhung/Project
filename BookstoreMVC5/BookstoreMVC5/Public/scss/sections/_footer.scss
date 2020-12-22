@@ -1,0 +1,148 @@
+/*>>>>>>>> Footer <<<<<<<<<*/
+
+.footer-title {
+    margin-bottom: 30px;
+    h3 {
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1;
+        color: #333;
+    }
+}
+
+.newsletter-form {
+    .btn {
+        margin-top: 9px;
+    }
+}
+
+.footer-contact {
+    p {
+        position: relative;
+        margin-bottom: 14px;
+        display: flex; // align-items: center;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .label {
+        color: #333;
+        font-size: 15px;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+}
+
+.footer-list {
+    margin-top: 25px;
+}
+
+.normal-list {
+    li {
+        padding: 5px 0;
+        a {
+            transition: all 300ms ease;
+        }
+        &:hover {
+            a {
+                // transform: translateX(5px);
+                color: $primary-color;
+            }
+        }
+    }
+    &--inline {
+        display: flex;
+        justify-content: center;
+        @include tablet {
+            justify-content: flex-end;
+        }
+        li {
+            margin: 0 6px;
+            @include mobile {
+                margin: 0 15px;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &:hover {
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.social-block {
+    .title {
+        font-size: 16px;
+        line-height: 1;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0;
+        color: #333;
+        display: block;
+        padding-bottom: 8px;
+    }
+}
+
+.social-list {
+    .single-social {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        z-index: 1;
+        transition: all 0.5s ease-in-out;
+        margin-right: 7px;
+        margin-top: 10px;
+        &.facebook {
+            background: #2b5893;
+        }
+        &.twitter {
+            background: #1ea8d4;
+        }
+        &.google {
+            background: #f96c4b;
+        }
+        &.youtube {
+            background: #de0f0f;
+        }
+        &:hover {
+            background-color: #000;
+            a {
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    padding: 55px 0;
+    text-align: center;
+    background: #333;
+    .copyright-heading {
+        color: #fff;
+        margin-bottom: 40px;
+    }
+    .copyright-text {
+        background: none;
+        text-transform: capitalize;
+        font-weight: 400;
+        margin-top: 30px;
+        line-height: 24px;
+        color: #fff;
+        margin-bottom: 0;
+        a {
+            color: $primary-color;
+        }
+    }
+}

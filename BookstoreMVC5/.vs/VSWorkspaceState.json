@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BookstoreMVC5",
+    "\\BookstoreMVC5\\Areas",
+    "\\BookstoreMVC5\\Areas\\Admin",
+    "\\BookstoreMVC5\\Areas\\Admin\\Controllers",
+    "\\BookstoreMVC5\\Areas\\Admin\\Views",
+    "\\BookstoreMVC5\\Areas\\Admin\\Views\\Books",
+    "\\BookstoreMVC5\\library",
+    "\\BookstoreMVC5\\Models",
+    "\\BookstoreMVC5\\Public"
+  ],
+  "SelectedNode": "\\BookstoreMVC5\\Areas\\Admin\\Views\\Books\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

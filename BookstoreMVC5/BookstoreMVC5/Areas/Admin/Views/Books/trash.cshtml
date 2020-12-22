@@ -1,0 +1,217 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Book>
+
+@{
+    ViewBag.Title = "trash";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thùng Rác Sản Phẩm</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Admin">Home</a></li>
+                        <li class="breadcrumb-item active">Quản Lý Sản Phẩm</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <section class="container-fluid ">
+        <div class=" bg-white card  ">
+            <div class="row justify-content-end">
+                <div class="col-md-3">
+                    <div class=" pt-1 ml-5">
+                        <a class="text-white btn-sm btn-success" href="~/admin/Products/Create">Add Product <i class="fas fa-plus"></i></a>
+                        <a class="text-white btn-sm btn-danger " href="~/admin/Products/trash">Thùng rác<i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9  w-100 ">
+                    @*@Html.Partial("_MessgeAlert")*@
+                </div>
+                <div class="col-md-12 p-3">
+                    <table id="myTable" class="table table-inverse table-hover table-bordered">
+                        <thead>
+                            <tr>
+                            <tr>
+                                <th>ID</th>
+                                <th width="5%">Hình ảnh</th>
+                                <th>Tên Sách</th>
+                                <th>Danh mục sách</th>
+                                <th>Nhà xuất bản</th>
+                                <th width="5%">Giá Sách</th>
+                                <th>Ngày Tạo</th>
+                                <th>Chức Năng</th>
+                            </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td class="text-cam ">@Html.DisplayFor(modelItem => item.ID)</td>
+                                <td><img width="100px;" src="~/public/images/product/@Html.DisplayFor(modelItem => item.img)"></td>
+                                <td width="15%"><a class=" card-link " href=""> @Html.DisplayFor(modelItem => item.name)</a></td>
+                                <td width="15%">@Html.DisplayFor(modelItem => item.Category.name)</td>
+                                <td width="15%">@Html.DisplayFor(modelItem => item.Publisher.name)</td>
+                                @{ int sale = (int)item.pricesale;
+                                    float price = (int)item.price - (int)item.price / 100 * (int)sale;}
+                                @if (sale > 0)
+                                {
+                                    <td style="font-size:14px;">
+                                        <strike> @item.price.ToString("N0") VND</strike><br />
+                                        <span>@price.ToString("N0") VND</span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="font-size:14px;"> @item.price.ToString("N0") VND</td>
+                                }
+                                <td style="font-size:14px;">@Html.DisplayFor(modelItem => item.date_created)</td>
+                                <td>
+                                    <a class="btn btn-sm btn-light text-success border" href="@Url.Action("Retrash", "Books", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                    <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("deleteTrash", "Books", new { id = item.ID })">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $("#product").addClass("active");
+    </script>
+
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.slug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.detail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pricesale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.translator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pagesize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pagetotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_updated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher.name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.slug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.img)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.detail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pricesale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.translator)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pagesize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pagetotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_updated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>*@

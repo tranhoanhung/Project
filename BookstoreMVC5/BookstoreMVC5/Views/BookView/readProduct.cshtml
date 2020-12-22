@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Book>
+@{ var cate = ViewBag.category;}
+@foreach (var item in Model)
+{
+    int sale = (int)item.pricesale;
+    float price = (int)item.price - (int)item.price / 100 * (int)sale;
+
+    
+
+    <!---->
+    <div class="single-slide">
+        <div class="product-card card-style-list">
+            <div class="card-image">
+                <img src="~/Public/images/product/@item.img" alt="">
+            </div>
+            <div class="product-card--body">
+                <div class="product-header">
+                    <a href="" class="author">
+                        @item.name
+                    </a>
+                    <h3>
+                        <a href="product-details.html">
+                            @ViewBag.category
+                        </a>
+                    </h3>
+                </div>
+                <div class="price-block">
+                    <span class="price">@price.ToString("N0") đ</span>
+                    <del class="price-old">@item.price.ToString("N0") đ</del>
+                    <span class="price-discount">@item.pricesale%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

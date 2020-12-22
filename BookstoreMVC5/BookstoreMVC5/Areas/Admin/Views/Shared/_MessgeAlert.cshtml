@@ -1,0 +1,9 @@
+﻿@if (Message.has_flash())
+{
+    MessageModel ms = Message.get_flash();
+    <div id="AlertBox" class="float-left ">
+        <span class=" ml-3 badge badge-@ms.msg_css text-white ">@ms.msg</span>
+    </div>
+}
+
+

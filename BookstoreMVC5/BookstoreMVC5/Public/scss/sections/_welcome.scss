@@ -1,0 +1,44 @@
+/*>>>>>>>> Welcome <<<<<<<<<*/
+
+.welcome-content {
+    text-align: center;
+    .title-xs {
+        font-size: 14px;
+        color: #929292;
+        font-weight: 400;
+    }
+    .title-sep {
+        margin-top: 30px;
+        @include mobile-lg {
+            margin-top: 40px;
+        }
+    }
+    .welcome-description {
+        margin-top: 40px;
+        font-size: 14px;
+        @include tablet {
+            margin-top: 50px;
+        }
+        @include desktops {
+            margin-top: 60px;
+        }
+        color: #707070;
+        p {
+            letter-spacing: .025em;
+            line-height: 30px;
+        }
+    }
+    .author-block {
+        width: 100%;
+        clear: both;
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 20px;
+        @include tablet {
+            margin-top: 30px;
+        }
+        @include desktops {
+            margin-top: 45px;
+        }
+    }
+}

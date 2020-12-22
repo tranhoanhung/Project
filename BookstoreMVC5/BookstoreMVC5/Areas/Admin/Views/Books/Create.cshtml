@@ -1,0 +1,143 @@
+﻿@model BookstoreMVC5.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> status = new List<SelectListItem>();
+
+    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Hiển thị" };
+    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Ẩn" };
+    status.Add(statusitem1);
+    status.Add(statusitem2);
+}
+
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0 bg-light">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thêm Sản Phẩm</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Admin">Home</a></li>
+                        <li class="breadcrumb-item active">Thêm sản phẩm</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <section class="pt-2">
+        @Html.Partial("_MessgeAlert")
+        <div class="container bg-white p-4 card">
+            @using (Html.BeginForm("Create", "Books", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class=" row ">
+                    <div class="col-md-4">  </div>
+                    <div class="col-md-4"> <h3 class="text-center font-weight-bold text-success "> THÊM SẢN PHẨM</h3> </div>
+                    <div class="col-md-4 ">
+                        <div class="float-right">
+                            <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Lưu</button>
+                            <a href="~/admin/category" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i> Hủy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row ">
+                    <div class="col-md-8">
+                        <div>
+                            <label for="psw"><span>Tên Sản Phẩm</span></label>
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span>Chi tiết sản phẩm</span></label>
+                            @Html.TextAreaFor(model => model.detail, new
+                       {
+                           @class = "form-control textarea",
+                           @style = "width: 100%;font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+                       })
+                            @*@Html.EditorFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label for="psw"><span>Danh mục sản phẩm</span></label>
+                        <div>
+                            @Html.DropDownList("catid", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.catid, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span>Nhà xuất bản</span></label>
+                            @*@Html.EditorFor(model => model.publishing, new { htmlAttributes = new { @class = "form-control ckeditor" } })*@
+                            @Html.DropDownList("publishid", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.publishid, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span>Tác giả</span></label>
+                            @Html.EditorFor(model => model.author, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+                            @Html.ValidationMessageFor(model => model.author, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span>Dịch giả</span></label>
+                            @Html.EditorFor(model => model.translator, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.translator, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span>Số trang</span></label>
+                            @Html.EditorFor(model => model.pagetotal, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+                            @Html.ValidationMessageFor(model => model.pagetotal, "", new { @class = "text-danger" })
+
+                            <div>
+                                <label for="psw"><span>Kích thước khổ</span></label>
+                                @Html.EditorFor(model => model.pagesize, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+                                @Html.ValidationMessageFor(model => model.pagesize, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                <label for="psw"><span>Giá tiền</span></label>
+                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { min = "1000", step = "1000", Type = "number", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label for="psw"><span>Phần Trăm Khuyến mãi (mặc định 0%)</span></label>
+                                @Html.EditorFor(model => model.pricesale, new { htmlAttributes = new { min = "0", step = "1", max = "100", Type = "number", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.pricesale, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label for="psw"><span>Số lượng</span></label>
+                                @Html.EditorFor(model => model.number, new { htmlAttributes = new { min = "1", step = "1", Type = "number", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.number, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label for="psw"><span>Hình ảnh sản phẩm</span></label>
+                                <input type="file" class="form-control" name="img" />
+                                @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div>
+                                <label for="psw"><span>Trang Thái</span></label>
+                                @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </section>
+        <script>
+            $("#product").addClass("active");
+            // Summernote
+            $('.textarea').summernote()
+        </script>

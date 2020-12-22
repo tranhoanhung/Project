@@ -1,0 +1,166 @@
+
+.bg-greendark {
+  background: #008744 !important; }
+
+.header-middle {
+  /*background: #333;*/ 
+  background: #008744;
+}
+.header-bottom{
+    height: 49px;
+}
+.header-search-block2 {
+  position: relative; }
+  .header-search-block2 input {
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+    height: 52px;
+    float: none;
+    font-weight: 400;
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding: 0 125px 0 20px; }
+    .header-search-block2 input:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+  .header-search-block2 button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #62ab00;
+    border: 0;
+    line-height: 52px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0 35px;
+    color: #fff;
+    border-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+
+.bg-navy {
+  background: #393a44; }
+
+ .bg-gold {
+  background: #ffba00; }
+
+ .footer.footer ul.contact li {
+    font-size: 13px;
+    position: relative;
+    color: #444;
+    margin-bottom: 0px !important;
+    line-height: 20px;
+}
+.mid-footer .contact_mail .btn {
+    margin-top: -3px;
+}
+.btn-Lightgreen:hover, input.btn-Lightgreen[type="submit"]:hover {
+    background: #fff;
+    color: #008744;
+    border: 1px solid #008744;
+}
+.btn-Lightgreen, input.btn-Lightgreen[type="submit"] {
+    background: #008744;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    border: 1px solid transparent;
+    width: 100px;
+    height: 40px;
+}
+.mid-footer .contact_mail input {
+    width: 268px;
+    height: 40px;
+    border-radius: 3px;
+    margin-right: 8px;
+    margin-bottom: 0;
+    display: inline-block;
+    background: #f8f8f8;
+    padding: 0 20px;
+}
+
+.mid-footer .contact_mail .subscribe {
+    font-size: 14px;
+    height: 40px;
+}
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+.img-center-hover {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 67%;
+}
+.ajs-message.ajs-success {
+    color: #000 !important;
+    background-color: #d9ecda !important;
+    border-color: #26852b !important;
+    text-shadow: none !important;
+}
+
+.ajs-message.ajs-error {
+    color: #000 !important;
+    background-color: #F78181 !important;
+    border-color: #FF0000 !important;
+    text-shadow: none !important;
+}
+
+.ajs-message.ajs-warning {
+    color: #000 !important;
+    background-color: #F3F781 !important;
+    border-color: #FFFF00 !important;
+    text-shadow: none !important;
+}
+
+.single-slide:hover {
+    background-color: white;
+}
+
+.ajaxload-cart {
+    position: fixed;
+    background-color: rgba(255,255,255,0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    display: none;
+}
+
+    .ajaxload-cart > i {
+        font-size: 35px;
+        color: #62ab00;
+        position: absolute;
+        z-index: 1000000;
+        top: 350px;
+        left: 50%;
+        animation: rotate 0.2s infinite;
+    }
+
+.rotate {
+    animation: rotate 0.2s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

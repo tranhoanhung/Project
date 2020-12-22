@@ -1,0 +1,55 @@
+﻿@model BookstoreMVC5.Models.Order
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Đặt hàng thành công</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- order complete Page Start -->
+<section class="order-complete inner-page-sec-padding-bottom">
+    <div class="container bg-light">
+        <div class="row ">
+            <div class="col-12">
+                <div class="order-complete-message text-center">
+                    <h1>Thank you !</h1>
+                    <p>Đã nhận được đơn đặt hàng của bạn.</p>
+                </div>
+                <ul class="order-details-list">
+                    <li>Mã đơn hàng: <strong>@Model.ID</strong></li>
+                    <li>Tên khách hàng: <strong>@Model.deliveryname</strong></li>
+                    <li>Số thiện thoại: <strong>@Model.deliveryphone</strong></li>
+                    <li>Email: <strong>@Model.deliveryemail</strong></li>
+                    <li>địa chỉ nhận hàng: <strong>@Model.deliveryaddress</strong></li>
+                    <li>Ngày đặt hàng: <strong>@Model.date_created</strong></li>
+                    @*@if (ViewBag.paymentStatus == 1)
+                    {
+                        <li>Trạng thái thanh toán: <strong>Đã thanh toán</strong></li>
+                    }
+                    else
+                    {
+                        <li>Trạng thái thanh toán: <strong>Chưa thanh toán vui lòng thanh toán lại.</strong></li>
+                    }*@
+                    <li>Phương thức thanh toán: <strong>@ViewBag.Methodpayment.</strong></li>
+                </ul>
+                
+
+                <h3 class="order-table-title">Chi tiết đơn hàng</h3>
+                <div class="table-responsive">
+                    @Html.Action("productDetailCheckOut", "Checkout", new { orderId = Model.ID })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

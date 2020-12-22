@@ -1,0 +1,110 @@
+/******************************
+
+|--- Helpers
+|	|___ Media Query
+|	|___ Variables
+|	|___ Mixins
+|
+|--- Base
+|	|___ Fonts
+|	|___ Reset
+|	|___ Common
+|
+|--- Components
+|	|___ Color
+|	|___ countdown
+|	|___ Modal
+|	|___ Buttons
+|	|___ Images
+|	|___ Typography
+|	|___ Sliders
+|	|___ Card
+|	|___ products
+|	|___ Tabs
+|
+|--- Sections Styles
+|	|
+|	|___ Header
+|	|___ Hero Area
+|	|___ Welcome
+|	|___ Testimonial
+|	|___ Best Seller Block
+|	|___ Home Features
+|	|___ Footer
+|	|___ Layout
+|	|___ Breadcrumb
+|	|___ Sidebar
+|	|___ Comment
+|	|___ Comment
+|
+|--- Pages Styles
+|	|
+|	|___ Home
+|	|___ Shop
+|	|___ Product-details
+|	|___ Blog
+|	|___ Blog-details
+|	|___ Cart
+|	|___ Checkout
+|	|___ Contact
+|	|___ Compare
+|	|___ My-account
+|	|___ Login-register
+|	|___ About
+|	|___ Faq
+|	|___ 404
+|	|___ Portfolio
+|	|___ Service
+|	|___ order-complete
+|	|___ faq
+
+
+******************************/
+
+// testing
+// Helpers
+@import 'helpers/media-query';
+@import 'helpers/variables';
+@import 'helpers/mixins';
+// Base
+@import 'base/fonts';
+@import 'base/reset';
+@import 'base/common';
+// Components
+@import 'components/color';
+@import 'components/modal';
+@import 'components/buttons';
+@import 'components/images';
+@import 'components/typography';
+@import 'components/card';
+@import 'components/products';
+@import 'components/sliders';
+@import 'components/tabs';
+@import 'components/countdown';
+// Sections
+@import 'sections/header';
+@import 'sections/hero-area';
+@import 'sections/welcome';
+@import 'sections/testimonial';
+@import 'sections/best-seller-block';
+@import 'sections/home-features';
+@import 'sections/footer';
+@import 'sections/layout';
+@import 'sections/breadcrumb';
+@import 'sections/sidebar';
+@import 'sections/comment';
+// Pages
+@import 'pages/home';
+@import 'pages/shop';
+@import 'pages/product-details';
+@import 'pages/blog';
+@import 'pages/blog-details';
+@import 'pages/cart';
+@import 'pages/checkout';
+@import 'pages/compare';
+@import 'pages/contact';
+@import 'pages/login-register';
+@import 'pages/my-account';
+@import 'pages/order-complete';
+@import 'pages/faq';
+

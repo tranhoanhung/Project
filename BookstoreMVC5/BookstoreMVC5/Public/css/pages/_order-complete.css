@@ -1,0 +1,37 @@
+/*-- Order Complete --*/
+/*Order Complete Message*/
+.order-complete-message h1 {
+  color: #333;
+  font-weight: 600; }
+
+.order-complete-message p {
+  font-size: 24px;
+  font-weight: 300; }
+
+/*Order Details List*/
+.order-details-list {
+  list-style: inside;
+  margin-bottom: 10px; }
+
+/*Order Details Table*/
+.order-details-table {
+  border: 1px solid #e5e5e5;
+  margin: 0; }
+  .order-details-table thead tr th {
+    font-weight: 400;
+    color: #333;
+    border: none;
+    border-right: 1px solid #e5e5e5; }
+  .order-details-table tbody tr td {
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5; }
+    .order-details-table tbody tr td .btn {
+      padding: 6px 35px; }
+  .order-details-table tfoot tr th {
+    font-weight: 400;
+    color: #333;
+    border-top: 1px solid #aca0a0;
+    border-right: 1px solid #e5e5e5; }
+  .order-details-table tfoot tr td {
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5; }

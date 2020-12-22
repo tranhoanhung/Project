@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Book>
+@foreach (var item in Model)
+{
+    int sale = (int)item.pricesale;
+    float price = (int)item.price - (int)item.price / 100 * (int)sale;
+
+    <div class="single-slide">
+        <div class="product-card">
+
+            <div class="product-card--body">
+                <div class="card-image ">
+
+                    <img src="~/Public/images/product/@item.img" alt="" class="img-center">
+
+                    <div class="hover-contents">
+                        <a href="~/san-pham/@item.slug" class="hover-image">
+                            <img width="67%" src="~/Public/images/product/@item.img" alt="" class="img-center-hover">
+                        </a>
+                        <div class="hover-btns">
+                            <input type="hidden" id="quantity" value="1">
+                            <a href="javascript:void(0);" onclick="addcart(@item.ID)" class="single-btn">
+                                <i class="fas fa-shopping-basket"></i>
+                            </a>
+                            <a href="javascript:void(0);" onclick="addfavorite(@item.ID)" class="single-btn">
+                                <i class="fas fa-heart"></i>
+                            </a>
+                            <a href="compare.html" class="single-btn">
+                                <i class="fas fa-random"></i>
+                            </a>
+                            <a href="#" data-toggle="modal" data-target="#quickModal"
+                               class="single-btn">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-block">
+                    <span class="price">@price.ToString("N0") đ</span>
+                    <del class="price-old">@item.price.ToString("N0") đ</del>
+                    <span class="price-discount">@item.pricesale%</span>
+                </div>
+                <div class="count-down-block">
+                    <div class="product-countdown" data-countdown="12/20/2021"></div>
+                </div>
+
+                <div class="product-header pt-3">
+                    @foreach (var cate in ViewBag.category)
+                    {
+                        if (item.catid == cate.ID)
+                        {
+                            <a href="~/loai-sach/@cate.slug" class="author">
+                                @cate.name
+                            </a>
+
+                        }
+                        else { }
+
+                    }
+                    <h3>
+                        <a href="~/san-pham/@item.slug">
+                            @item.name
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

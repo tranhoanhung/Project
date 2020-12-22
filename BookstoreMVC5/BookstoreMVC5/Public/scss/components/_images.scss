@@ -1,0 +1,29 @@
+/*>>>>>>>> Images <<<<<<<<<*/
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+
+.border-bottom {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.overflow-image {
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    img {
+        transform: scale(1);
+        transition: .4s;
+        width: 100%;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+    }
+}

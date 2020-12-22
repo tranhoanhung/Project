@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+
+<!--Silder-->
+@Html.Action("Slider", "Modules")
+<!--end Silder-->
+
+<!--ADS-->
+@Html.Action("ADS", "Modules")
+<!--end ADS-->
+
+<!--Deal of the day-->
+@Html.Action("ProductDealOfDay", "Site")
+<!-- end deal of day-->
+
+<!--=================================
+Promotion Section One ---------------------------------------------slide khuyen mai
+===================================== -->
+<section class="section-margin">
+    <h2 class="sr-only">Promotion Section</h2>
+    <div class="container">
+        <div class="row space-db--30">
+            <div class="col-lg-6 mb--30">
+                <a href="" class="promo-image promo-overlay">
+                    <img src="~/public/images/others/promo-banner-with-text.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-lg-6 mb--30">
+                <a href="" class="promo-image promo-overlay">
+                    <img src="~/public/images/others/promo-banner-with-text-2.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--end promotion-->
+<!--=================================
+Home Slider Tab
+===================================== -->
+<section class="section-padding ">
+    <h2 class="sr-only">Home Tab Slider Section</h2>
+    <div class="container bg-white">
+        <div class="sb-custom-tab">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active" id="men-tab" data-toggle="tab" href="#men" role="tab"
+                       aria-controls="men" aria-selected="false">
+                        Sách mới
+                    </a>
+                    <span class="arrow-icon"></span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="woman-tab" data-toggle="tab" href="#woman" role="tab"
+                       aria-controls="woman" aria-selected="true">
+                        Sách bán chạy nhất
+                    </a>
+                    <span class="arrow-icon"></span>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane active" id="men" role="tabpanel" aria-labelledby="men-tab">
+                    <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                         data-slick-setting='{"autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":1,"dots":true}'
+                         data-slick-responsive='[{"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":320, "settings": {"slidesToShow": 1} }]'>
+
+                        <!--product new reladproduct-->
+                        @Html.Action("ProductNew", "Site")
+                        <!--end product new reladproduct-->
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
+                    <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                         data-slick-setting='{
+                                        "autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":1,"dots":true}'
+                         data-slick-responsive='[{"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":320, "settings": {"slidesToShow": 1} }]'>
+
+                        <!--product new reladproduct-->
+                        @Html.Action("Bestseller", "Site")
+                        <!--end product new reladproduct-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=================================
+Home Two Column Section
+===================================== -->
+<section class="bg-gray section-padding-top section-padding-bottom section-margin">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-4 mb--30 mb-lg--0">
+                <div class="home-left-sidebar">
+                    <div class="single-side  bg-white">
+                        <h2 class="home-sidebar-title">
+                            Flash sale
+                        </h2>
+                        <div class="product-slider countdown-single with-countdown sb-slick-slider"
+                             data-slick-setting='{
+                                        "autoplay": true,
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow": 1,
+                                        "dots":true
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":480, "settings": {"slidesToShow": 1} }
+                                    ]'>
+                            @Html.Action("FlashSale", "Site")
+
+                        </div>
+                    </div>
+
+                    <div class="single-side">
+                        <a href="#" class="promo-image promo-overlay">
+
+                            <img src="~/Public/images/others/promo-banner-small-with-text.jpg" />
+                        </a>
+                    </div>
+                    <div class="single-block bg-white">
+                        <h3 class="home-sidebar-title">
+                            CLIENT TESTIMONIALS
+                        </h3>
+                        <div class="sb-slick-slider testimonial-slider slider-one-column" data-slick-setting='{"autoplay": true,
+                                                                                                            "autoplaySpeed": 8000,
+                                                                                                            "slidesToShow":1,
+                                                                                                            "dots":true}'
+                             data-slick-responsive='[{"breakpoint":1200, "settings": {"slidesToShow": 1} },
+                                                    {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                                    {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                                    {"breakpoint":490, "settings": {"slidesToShow": 1} }]'>
+                            <div class="single-slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-image">
+
+                                        <img width="100px" height="100px" src="~/Public/images/others/home-side-promo.jpg" />
+                                    </div>
+                                    <div class="testimonial-body">
+                                        <article>
+                                            <h2 class="sr-only">Testimonial Article</h2>
+                                            <p>
+                                                version This is Photoshops of Lorem Ipsum. Proin gravida nibh vel
+                                                velit.Lorem ipsum dolor
+                                                sit amet, consectetur
+                                                adipiscing elit. In molestie augue magna. Pell..
+                                            </p>
+                                            <span class="d-block client-name">Rebecka Filson</span>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end-->
+                </div>
+                @*<div class="home-left-sidebar">
+                    
+                    </div>*@
+                    <!--end-->
+                </div>
+           
+            <div class="col-lg-8">
+                @Html.Action("bookCategory", "BookView")
+                @*<div class="home-right-side">
+                    @Html.Action("pagemany", "Site")
+
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-margin">
+    <div class="container bg-white p-4">
+        <div class="section-title">
+            <h2>BÀI VIẾT</h2>
+        </div>
+        <div class="blog-slider sb-slick-slider" data-slick-setting='{
+                "autoplay": true,
+                "autoplaySpeed": 8000,
+                "slidesToShow": 2,
+                "dots": true
+            }' data-slick-responsive='[
+                {"breakpoint":1200, "settings": {"slidesToShow": 1} }
+            ]'>
+            @Html.Action("postHome", "Site")
+            <!--end post-->
+        </div>
+    </div>
+</section>
+<!--=================================
+Promotion Section Two
+===================================== -->
+<section class="section-margin">
+    <h2 class="sr-only">Promotion Section</h2>
+    <div class="container">
+        <div class="promo-wrapper promo-type-four">
+            <a href="#" class="promo-image promo-overlay bg-image">
+                <img src="~/public/images/others/promo-banner-contained.jpg" alt="Alternate Text" />
+            </a>
+            <div class="promo-text w-100 justify-content-center justify-content-md-left">
+                <div class="row w-100">
+                    <div class="col-lg-8">
+                        <div class="promo-text-inner">
+                            <h2>Mua 10 tặng 1.</h2>
+                            <h3>Sinh nhật shop giảm sốc, giảm đến 65% .</h3>
+                            <a href="#" class="btn btn-outlined--red-faded">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

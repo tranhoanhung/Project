@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section bg-white">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Home</a></li>
+                    <li class="breadcrumb-item active">Đăng ký hoặc đăng nhập</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!--=============================================
+=            Login Register page content         =
+=============================================-->
+<main class="page-section inner-page-sec-padding-bottom">
+    <div class="container bg-white pt-3">
+
+        <div class="row">
+          
+            <div class="col-sm-12  ">  
+            @Html.Partial("_MessgeAlertc")</div>
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+                <!-- Login Form s-->
+                <form action="~/User/register" method="POST">
+                    <div class="login-form">
+                        <h4 class="login-title">Khách hàng mới</h4>
+                        <p><span class="font-weight-bold">Đăng ký   .</span></p>
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--15">
+                                <label for="email">Tên đăng nhập (không dấu và ký tự đặc biệt)</label>
+                                <input class="mb-0 form-control" type="text" placeholder="Tên Đăng Nhập" name="txtusername" required>
+                                
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="fullname">Tên đầy đủ</label>
+                                <input type="text" class="mb-0 form-control" placeholder="Tên Đầy Đủ" name="txtfullname" required>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="email">Email</label>
+                                <input class="mb-0 form-control" type="email" id="email" name="txtemail" placeholder="Nhập Email của bạn." required>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="email">SDT</label>
+                                <input class="mb-0 form-control" type="tel" name="txtphone" placeholder="Nhập SDT của bạn." required>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="email">Địa chỉ</label>
+                                <input class="mb-0 form-control" type="text" name="txtaddress" placeholder="Nhập Địa chỉ của bạn." required>
+                            </div>
+                            <div class="col-lg-6 mb--20">
+                                <label for="password">Mật khẩu</label>
+                                <input class="mb-0 form-control" type="password" name="txtpassword" id="password" placeholder="Nhập mật khẩu" required>
+                            </div>
+                            <div class="col-lg-6 mb--20">
+                                <label for="password">Nhập lại mật khẩu</label>
+                                <input class="mb-0 form-control" type="password" id="repeat-password" name="txtrepsassword" placeholder="Nhập lại mật khẩu" required>
+                                <span class="text-danger">@ViewBag.error</span>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-outlined">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form action="~/login" method="POST">
+                    <div class="login-form">
+                        <h4 class="login-title">Đã có tài khoản</h4>
+                        <p><span class="font-weight-bold">Đăng nhập</span></p>
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--15">
+                                <label for="email">Tên đăng nhập</label>
+                                <input class="mb-0 form-control" type="text" name="txtusername"
+                                       placeholder="Nhập tên đăng nhập">
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="password">Mật khẩu</label>
+                                <input class="mb-0 form-control" type="password" name="txtpassword" id="login-password" placeholder="Nhập mật khẩu">
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-outlined">Đăng nhập</button>
+                                <a class="btn btn-facebook" href="/User/LoginFacebook">
+                                    <i class="fab fa-facebook-square"></i>
+                                    Đăng nhập bằng Facebook
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

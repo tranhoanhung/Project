@@ -1,0 +1,293 @@
+﻿<div class="site-header header-2 mb--20 d-none d-lg-block">
+    <img width="100%" src="https://app2.jeoway.net/35/images/MMZ-Header-2h.png">
+    <!-- TOP -->
+    <div class="header-top header-top--style-2">
+        <div class="container">
+            <div class="row">
+                <!-- Header top menu left -->
+                <div class="col-lg-8">
+                    <ul class="header-top-list">
+                        <li>
+                            <a> Mở cửa: 9h đến 20h, chủ nhật 10h đến 19h</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Header top menu right -->
+                <div class="col-lg-4 flex-lg-right">
+                    <ul class="header-top-list">
+                        <li class="dropdown-trigger language-dropdown">
+                            @if (ViewBag.username == null)
+                            {
+                                <a href=""><i class="icons-left fas fa-user"></i>Tài khoản</a>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                <ul class="dropdown-box">
+                                    <li> <a href="~/login-logout">Đăng nhập</a></li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <a href=""><i class="icons-left fas fa-user"></i>Helu: @ViewBag.fullname</a>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                <ul class="dropdown-box">
+                                    <li> <a href="~/thong-tin-kh">Tài khoản</a></li>
+                                    <li> <a href="">Quản trị</a></li>
+                                    <li> <a href="~/logout">Thoát</a></li>
+                                </ul>
+                            }
+                        </li>
+                        <li>
+                            <a href=""><i class="icons-left fas fa-star"></i> Khuyến mãi hot</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- MIDDLE -->
+    <div class="header-middle pt--10 pb--10 ">
+        <div class="container ">
+            <div class="row align-items-center">
+                <!--Logo-->
+                <div class="col-lg-2">
+                    <a href="~/" class="site-brand">
+                        <img src="~/Public/images/logo_light.png" />
+                    </a>
+                </div>
+                <!--Search-->
+                <div class="col-lg-6">
+                    <div class="header-search-block ">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
+                            <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
+                            <button>Tìm kiếm</button>
+                        </form>
+                    </div>
+                </div>
+                <!--Login-Logout-->
+                <div class="col-lg-4">
+                    <div class="main-navigation flex-lg-right">
+                        <div class="cart-widget">
+                            <div class="login-block">
+                                <div class="header-phone color-white">
+                                    <div class="icon">
+                                        <i class="fas fa-headphones-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Hỗ trợ 24/7</p>
+                                        <p class="font-weight-bold number"> +84 783 403 999</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.Action("cart_header", "Cart")
+                        </div>
+                        <!-- include('menu.htm') -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BOTTOM -->
+    <div class="header-bottom bg-navy">
+        <div class="container">
+            <div class="row  ">
+                <!--Category-->
+                <div class="col-lg-3">
+                    @Html.Action("Category", "Modules") 
+                </div>
+
+                <!--Main menu-->
+                <div class="col-lg-9 ">
+                    <div class="main-navigation ">
+                        @Html.Action("Mainmenu", "Modules")
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--site menu-->
+<div class="site-mobile-menu">
+    <header class="mobile-header d-block d-lg-none pt--10 pb-md--10">
+        <div class="container">
+            <div class="row align-items-sm-end align-items-center">
+                <div class="col-md-4 col-7">
+                    <a href="index.html" class="site-brand">
+                        <img src="~/Public/images/logo_light.png" />
+                    </a>
+                </div>
+                <div class="col-md-5 order-3 order-md-2">
+                    <!--Mobilecategory-->
+                    <div class="header-search-block2 ">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
+                            <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
+                            <button>Tìm kiếm</button>
+                        </form>
+                    </div>
+                    
+                    @Html.Action("MobileCategory", "Modules")
+                </div>
+                <div class="col-md-3 col-5  order-md-3 text-right">
+                    <div class="mobile-header-btns header-top-widget">
+                        <ul class="header-links">
+                            <li class="sin-link">
+                                <a href="cart.html" class="cart-link link-icon"><i class="ion-bag"></i></a>
+                            </li>
+                            <li class="sin-link">
+                                <a href="javascript:" class="link-icon hamburgur-icon off-canvas-btn">
+                                    <i class="ion-navicon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Off Canvas Navigation Start-->
+    <aside class="off-canvas-wrapper">
+        <div class="btn-close-off-canvas">
+            <i class="ion-android-close"></i>
+        </div>
+        <div class="off-canvas-inner">
+            <!-- search box start -->
+            <div class="search-box offcanvas">
+                @*<form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
+                    <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
+                    <button>Tìm kiếm</button>
+                </form>*@
+                <form method="GET" action="~/tim-kiem/">
+                    <input type="search" name="keyw" placeholder="Tìm kiếm sách...">
+                    <button class="search-btn"><i class="ion-ios-search-strong"></i></button>
+                </form>
+            </div>
+            <!-- search box end -->
+            <!-- mobile menu start -->
+            <div class="mobile-navigation">
+                <!-- mobile menu navigation start -->
+                <nav class="off-canvas-nav">
+                    <ul class="mobile-menu main-mobile-menu">
+                        <div class="main-navigation ">
+                          @Html.Action("Mainmenu", "Modules")
+                        </div>
+                    </ul>
+                </nav>
+                <!-- mobile menu navigation end -->
+            </div>
+            <!-- mobile menu end -->
+            <nav class="off-canvas-nav">
+                <ul class="mobile-menu menu-block-2">
+                    <li class="menu-item-has-children">
+                        <a href="#">Tài khoản <i class="fas fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li><a href="">Thông tin</a></li>
+                            <li><a href="">Giỏ hàng</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="off-canvas-bottom">
+                <div class="contact-list mb--10">
+                    <a href="" class="sin-contact"><i class="fas fa-mobile-alt"></i>+84 783 403 999</a>
+                    <a href="" class="sin-contact"><i class="fas fa-envelope"></i>silverbullet99it@gmail.com</a>
+                </div>
+                <div class="off-canvas-social">
+                    <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="single-icon"><i class="fas fa-rss"></i></a>
+                    <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="single-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!--Off Canvas Navigation End-->
+</div>
+
+<!--menu hide-->
+<div class="sticky-init fixed-header common-sticky">
+    <div class=" d-none d-lg-block">
+        <div class="row align-items-center">
+        </div>
+        <div class="header-middle pt--10 pb--10 ">
+            <div class="container ">
+                <div class="row align-items-center">
+                    <!--Logo-->
+                    <div class="col-lg-2">
+                        <a href="~/" class="site-brand">
+                            <img src="~/Public/images/logo_light.png" />
+                        </a>
+                    </div>
+
+                    <!--Search-->
+                    <div class="col-lg-6">
+                        <div class="header-search-block ">
+                            <form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
+                                <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
+                                <button>Tìm kiếm</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--Login-Logout-->
+                    <div class="col-lg-4">
+                        <div class="main-navigation flex-lg-right">
+                            <div class="cart-widget">
+                                <div class="login-block">
+                                    <div class="header-phone color-white">
+                                        <div class="icon">
+                                            <i class="fas fa-headphones-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>Hỗ trợ 24/7</p>
+                                            <p class="font-weight-bold number"> +84 783 403 999</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @Html.Action("cart_header", "Cart")
+
+
+                            </div>
+                            <!-- include('menu.htm') -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom bg-navy">
+            <div class="container">
+                <div class="row  ">
+                    <!--Category-->
+                    <div class="col-lg-3">
+                        @Html.Action("Category", "Modules")
+                    </div>
+
+                    <!--Main menu-->
+                    <div class="col-lg-9 ">
+                        <div class="main-navigation ">
+                            @Html.Action("Mainmenu", "Modules")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .text-darkk ul li a {
+        color: #1a1717 !important;
+    }
+        .text-darkk ul li a:hover {
+            color: #62ab00 !important;
+        }
+</style>    
+
+        
+
+    

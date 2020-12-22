@@ -1,0 +1,23 @@
+.count-down-block {
+    display: flex;
+    margin-top: 22px;
+    justify-content: center;
+}
+
+.product-countdown {
+    display: inline-flex;
+    padding: 10px 15px;
+    border: 2px solid $border-color;
+    width: 215px; // margin-left: -5px;
+    .single-countdown {
+        padding-right: 15px;
+        span {
+            display: block;
+            font-weight: 600;
+             text-transform: capitalize;
+        }
+        &:last-child {
+            padding-right: 0px;
+        }
+    }
+}

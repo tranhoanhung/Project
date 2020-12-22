@@ -1,0 +1,83 @@
+/*--
+    Elements - Accordion
+------------------------------------------------------*/
+/*Accordion*/
+.accordion .card {
+  border: 1px solid rgba(169, 174, 189, 0.3) !important;
+  border-radius: 4px !important;
+  background-color: #fff;
+  margin-bottom: 20px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s; }
+  .accordion .card:last-child {
+    margin-bottom: 0px; }
+  .accordion .card.open {
+    border-color: #e5e5e5 !important;
+    -webkit-box-shadow: 0 0 87px 0 rgba(41, 44, 58, 0.1);
+    box-shadow: 0 0 87px 0 rgba(41, 44, 58, 0.1); }
+  .accordion .card .card-header {
+    padding: 0;
+    background-color: transparent;
+    border: none; }
+    .accordion .card .card-header h5 {
+      margin: 0; }
+      .accordion .card .card-header h5 button {
+        border: none;
+        background-color: transparent;
+        display: block;
+        width: 100%;
+        text-align: left;
+        line-height: 24px;
+        font-weight: 400;
+        padding: 15px 30px;
+        position: relative;
+        color: #333; }
+        .accordion .card .card-header h5 button::before, .accordion .card .card-header h5 button::after {
+          position: absolute;
+          content: "";
+          background-color: #333;
+          top: 50%;
+          margin-top: -1px;
+          width: 10px;
+          height: 2px;
+          right: 20px;
+          -webkit-transition: all 0.3s ease 0s;
+          -o-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s; }
+        .accordion .card .card-header h5 button.collapsed::after {
+          -webkit-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          transform: rotate(90deg); }
+    .accordion .card .card-header h5 {
+      margin: 0; }
+      .accordion .card .card-header h5 button {
+        border: none;
+        background-color: transparent;
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 700;
+        padding: 15px 30px;
+        position: relative;
+        color: #333; }
+        .accordion .card .card-header h5 button::before, .accordion .card .card-header h5 button::after {
+          position: absolute;
+          content: "";
+          background-color: #333;
+          top: 50%;
+          margin-top: -1px;
+          width: 10px;
+          height: 2px;
+          right: 20px;
+          -webkit-transition: all 0.3s ease 0s;
+          -o-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s; }
+        .accordion .card .card-header h5 button.collapsed::after {
+          -webkit-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          transform: rotate(90deg); }
+  .accordion .card .card-body {
+    padding: 0 30px 30px; }

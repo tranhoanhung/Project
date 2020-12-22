@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Slider>
+<section class="hero-area hero-slider-2">
+    <div class="container">
+        <div class="row align-items-lg-center">
+            <div class="col-12">
+                <div class="sb-slick-slider" data-slick-setting='{"autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 1,"dots":true }'>
+                    @foreach (var item in Model)
+                    {
+                        <img src="~/Public/images/bg-images/@item.img" />
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
