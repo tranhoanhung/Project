@@ -1,0 +1,48 @@
+﻿@model BookstoreMVC5.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thông tin liên hệ</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quản Lý Sản Phẩm</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <section class="pt-2 container-fluid">
+        <div class="container pt-2 bg-white card ">
+            <div class="col-md-12 ">
+                <div class="row pl-3 text-center">
+                    <h3> Tiêu đề: @Html.DisplayFor(model => model.title)  </h3>
+                    <br />
+
+                </div>
+                <span>Tên:  <span class="text-cam">@Html.DisplayFor(model => model.fullname)</span></span>
+                <p class="pt-1"> Nội dung: @Html.DisplayFor(model => model.detail)</p>
+                <div class="float-right">
+                    <button class="btn-button-cart btn bg-warning "> Trả lời</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $("#contact").addClass("active");
+    </script>
+

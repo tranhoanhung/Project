@@ -78,19 +78,8 @@
                                                             <input type="number" min="1" step="1" class="txtQuantity" data-id="@iten.book.ID" value="@iten.quantity" />
                                                         </div>
 
-                                                        <!--<div class="count-input-block">
-                                                            <input type="number"--> @*class="form-control text-center"*@ <!--class="txtQuantity"--> @*id="txtQuantity"*@ <!--data-id="@iten.book.ID" value="@iten.quantity">
-                                                            <div class="count-input-btns">
-                                                                <button class="inc-ammount count-btn">
-                                                                    <i class="zmdi zmdi-chevron-up"></i>
-                                                                </button>
-                                                                <button class="dec-ammount count-btn">
-                                                                    <i class="zmdi zmdi-chevron-down"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>-->
+
                                                     </div>
-                                                    
                                                 </td>
                                                 <td class="pro-remove">
                                                     @*<a href="javascript:void(0);" onclick="deleteitem(@iten.book.ID)"><i class="far fa-trash-alt"></i></a>*@
@@ -99,45 +88,45 @@
                                                     </button>
                                                     <br />
                                                     <a href="javascript:void(0);" onclick="deleteitem(@iten.book.ID)"><i class="far fa-trash-alt"></i></a>
-                                                    
+
                                                 </td>
 
                                                 <td class="pro-subtotal"><span>@price1.ToString("N0") VND</span></td>
                                             </tr>
-                                            </form>
-                                            }
+                                        </form>
+                                    }
 
 
 
-                                            <!-- Discount Row  -->
-                                            @*<tr>
-                    <td colspan="6" class="actions">
-                        <div class="coupon-block">
-                            <div class="coupon-text">
-                                <label for="coupon_code">Coupon:</label>
-                                <input type="text" name="coupon_code" class="input-text"
-                                       id="coupon_code" value="" placeholder="Mã khuyến mãi">
-                            </div>
-                            <div class="coupon-btn">
-                                <input type="submit" class="btn btn-outlined"
-                                       name="apply_coupon" value="Áp dụng">
-                            </div>
-                        </div>
-                        <div class="update-block text-right">
-                            <input type="submit" class="btn btn-outlined" name="update_cart"
-                                   value="Cập nhật giỏ hàng">
-                            <input type="hidden" id="_wpnonce" name="_wpnonce"
-                                   value="05741b501f"><input type="hidden"
-                                                             name="_wp_http_referer" value="/petmark/cart/">
-                        </div>
+                                    <!-- Discount Row  -->
+                                    @*<tr>
+                                            <td colspan="6" class="actions">
+                                                <div class="coupon-block">
+                                                    <div class="coupon-text">
+                                                        <label for="coupon_code">Coupon:</label>
+                                                        <input type="text" name="coupon_code" class="input-text"
+                                                               id="coupon_code" value="" placeholder="Mã khuyến mãi">
+                                                    </div>
+                                                    <div class="coupon-btn">
+                                                        <input type="submit" class="btn btn-outlined"
+                                                               name="apply_coupon" value="Áp dụng">
+                                                    </div>
+                                                </div>
+                                                <div class="update-block text-right">
+                                                    <input type="submit" class="btn btn-outlined" name="update_cart"
+                                                           value="Cập nhật giỏ hàng">
+                                                    <input type="hidden" id="_wpnonce" name="_wpnonce"
+                                                           value="05741b501f"><input type="hidden"
+                                                                                     name="_wp_http_referer" value="/petmark/cart/">
+                                                </div>
 
-                        <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
-                        <button id="btnUpdate" class="btn">Cập nhật giỏ hàng</button>
-                        <button id="btnDeleteAll" class="btn">Xoá giỏ hàng</button>
-                        <button id="btnPayment" class="btn">Thanh toán</button>
-                    </td>
-                </tr>*@
-                                    </tbody>
+                                                <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
+                                                <button id="btnUpdate" class="btn">Cập nhật giỏ hàng</button>
+                                                <button id="btnDeleteAll" class="btn">Xoá giỏ hàng</button>
+                                                <button id="btnPayment" class="btn">Thanh toán</button>
+                                            </td>
+                                        </tr>*@
+                                </tbody>
                             </table>
                         </div>
                     </form>
@@ -165,7 +154,7 @@
                 {"breakpoint":320, "settings": {"slidesToShow": 1} }
             ]'>
 
-                        @Html.Action("Bestseller", "Site")
+                        @Html.Action("BestsellerCart", "Site")
                     </div>
                 </div>
                 <!-- Cart Summary -->
@@ -179,7 +168,7 @@
                             <h2>Tổng tiền thanh toán <span class="text-primary">@sum.ToString("N0") VND</span></h2>
                         </div>
                         <div class="cart-summary-button">
-                            <a href="/thanh-toan" class="checkout-btn c-btn btn--primary">Thanh toán</a>
+                            <a href="~/thanh-toan" class="checkout-btn c-btn btn--primary">Thanh toán</a>
                             <button class="update-btn c-btn btn-outlined">Mua thêm</button>
                         </div>
                     </div>
@@ -190,25 +179,25 @@
 </main>
 <!-- Cart Page End -->
 @*<script>
-    function deleteitem(bookid) {
-        $.ajax({
-            url: '/Cart/deleteitem?bookid=' + bookid,
-            type: 'GET',
-            beforeSend: function () {
-            $(".ajaxload-cart").fadeIn("fast");
-            $(".ajaxload-cart").fadeOut("slow");
-        },
-            success: function (data) {
-                console.log(data);
-                $("#cartheaderItem_" + bookid + "").fadeOut("slow");
-                $("#cartItem_" + bookid + "").fadeOut("slow");
+        function deleteitem(bookid) {
+            $.ajax({
+                url: '/Cart/deleteitem?bookid=' + bookid,
+                type: 'GET',
+                beforeSend: function () {
+                $(".ajaxload-cart").fadeIn("fast");
+                $(".ajaxload-cart").fadeOut("slow");
+            },
+                success: function (data) {
+                    console.log(data);
+                    $("#cartheaderItem_" + bookid + "").fadeOut("slow");
+                    $("#cartItem_" + bookid + "").fadeOut("slow");
 
-                var totalCart = formatter.format(data.priceTotal).replace(/\,00 ₫/, '');
-                $('#totalCart').text(totalCart + " VND");
-                $('#CountCart').text(data.countCart);
-                alertify.success("<i class='fas fa-check text-success '></i> Đã xóa 1 sản phẩm");
-            }
-        })
-    }
+                    var totalCart = formatter.format(data.priceTotal).replace(/\,00 ₫/, '');
+                    $('#totalCart').text(totalCart + " VND");
+                    $('#CountCart').text(data.countCart);
+                    alertify.success("<i class='fas fa-check text-success '></i> Đã xóa 1 sản phẩm");
+                }
+            })
+        }
 
-</script>*@
+    </script>*@

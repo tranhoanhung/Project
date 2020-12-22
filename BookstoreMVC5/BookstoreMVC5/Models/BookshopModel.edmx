@@ -27,6 +27,15 @@
           <Property Name="date_updated" Type="datetime" />
           <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CartUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="bookid" Type="int" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="ID" />
@@ -37,6 +46,19 @@
           <Property Name="parentid" Type="int" />
           <Property Name="sort" Type="int" />
           <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="detail" Type="ntext" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -148,6 +170,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Cart_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="CartUser" Type="Self.CartUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartUser">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CartUser" Type="Self.CartUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartUser">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orderdetail_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="Orderdetail" Type="Self.Orderdetail" Multiplicity="*" />
@@ -186,7 +232,9 @@
         </Association>
         <EntityContainer Name="BookshopModelStoreContainer">
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartUser" EntityType="Self.CartUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orderdetail" EntityType="Self.Orderdetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
@@ -201,6 +249,14 @@
           <AssociationSet Name="FK_Book_Publisher" Association="Self.FK_Book_Publisher">
             <End Role="Publisher" EntitySet="Publisher" />
             <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Book" Association="Self.FK_Cart_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="CartUser" EntitySet="CartUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_User" Association="Self.FK_Cart_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CartUser" EntitySet="CartUser" />
           </AssociationSet>
           <AssociationSet Name="FK_Orderdetail_Book" Association="Self.FK_Orderdetail_Book">
             <End Role="Book" EntitySet="Book" />
@@ -221,7 +277,9 @@
       <Schema Namespace="BookshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BookshopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="BookshopModel.Book" />
+          <EntitySet Name="CartUsers" EntityType="BookshopModel.CartUser" />
           <EntitySet Name="Categories" EntityType="BookshopModel.Category" />
+          <EntitySet Name="Contacts" EntityType="BookshopModel.Contact" />
           <EntitySet Name="Orders" EntityType="BookshopModel.Order" />
           <EntitySet Name="Orderdetails" EntityType="BookshopModel.Orderdetail" />
           <EntitySet Name="Posts" EntityType="BookshopModel.Post" />
@@ -237,9 +295,17 @@
             <End Role="Publisher" EntitySet="Publishers" />
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cart_Book" Association="BookshopModel.FK_Cart_Book">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="CartUser" EntitySet="CartUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orderdetail_Book" Association="BookshopModel.FK_Orderdetail_Book">
             <End Role="Book" EntitySet="Books" />
             <End Role="Orderdetail" EntitySet="Orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_User" Association="BookshopModel.FK_Cart_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CartUser" EntitySet="CartUsers" />
           </AssociationSet>
           <AssociationSet Name="FK_Orderdetail_Order" Association="BookshopModel.FK_Orderdetail_Order">
             <End Role="Order" EntitySet="Orders" />
@@ -273,7 +339,19 @@
           <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="BookshopModel.FK_Book_Category1" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="Publisher" Relationship="BookshopModel.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
+          <NavigationProperty Name="CartUsers" Relationship="BookshopModel.FK_Cart_Book" FromRole="Book" ToRole="CartUser" />
           <NavigationProperty Name="Orderdetails" Relationship="BookshopModel.FK_Orderdetail_Book" FromRole="Book" ToRole="Orderdetail" />
+        </EntityType>
+        <EntityType Name="CartUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="bookid" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BookshopModel.FK_Cart_Book" FromRole="CartUser" ToRole="Book" />
+          <NavigationProperty Name="User" Relationship="BookshopModel.FK_Cart_User" FromRole="CartUser" ToRole="User" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -286,6 +364,19 @@
           <Property Name="sort" Type="Int32" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="BookshopModel.FK_Book_Category1" FromRole="Category" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -378,6 +469,7 @@
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CartUsers" Relationship="BookshopModel.FK_Cart_User" FromRole="User" ToRole="CartUser" />
         </EntityType>
         <Association Name="FK_Book_Category1">
           <End Type="BookshopModel.Category" Role="Category" Multiplicity="1" />
@@ -403,6 +495,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Cart_Book">
+          <End Type="BookshopModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BookshopModel.CartUser" Role="CartUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartUser">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orderdetail_Book">
           <End Type="BookshopModel.Book" Role="Book" Multiplicity="1" />
           <End Type="BookshopModel.Orderdetail" Role="Orderdetail" Multiplicity="*" />
@@ -412,6 +516,18 @@
             </Principal>
             <Dependent Role="Orderdetail">
               <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_User">
+          <End Type="BookshopModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="BookshopModel.CartUser" Role="CartUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartUser">
+              <PropertyRef Name="userid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -468,6 +584,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CartUsers">
+            <EntityTypeMapping TypeName="BookshopModel.CartUser">
+              <MappingFragment StoreEntitySet="CartUser">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="BookshopModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -476,6 +602,20 @@
                 <ScalarProperty Name="parentid" ColumnName="parentid" />
                 <ScalarProperty Name="slug" ColumnName="slug" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="BookshopModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

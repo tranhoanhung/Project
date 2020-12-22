@@ -13,7 +13,11 @@ namespace BookstoreMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
+            routes.MapRoute(
+                name: "yeu thich",
+                url: "yeu-thich",
+                defaults: new { controller = "FavoriteCustommer", action = "Additem", id = UrlParameter.Optional }
+            );
             //link tất cả sản phẩm
             routes.MapRoute(
                 name: "all-product",
@@ -113,6 +117,16 @@ namespace BookstoreMVC5
                 name: "thong tin khach hang",
                 url: "thong-tin-kh",
                 defaults: new { controller = "Custommer", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Tai khoan",
+                url: "tai-khoan/{id}",
+                defaults: new { controller = "Custommer", action = "Edit", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Doi mat khau",
+                url: "doi-mat-khau/{id}",
+                defaults: new { controller = "Custommer", action = "ChangePassWord", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "SiteSlug",

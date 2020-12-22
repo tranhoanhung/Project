@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using BookstoreMVC5.library;
 
 namespace BookstoreMVC5.Controllers
 {
@@ -31,9 +32,11 @@ namespace BookstoreMVC5.Controllers
         }
 
 
-        public ActionResult AddItem(long bookid, int quantity)
+        public ActionResult AddItem(int bookid, int quantity)
         {
+            User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
             var cart = Session[SessionCart];
+            CartUser cartUser = new CartUser();
             Book book = db.Books.Find(bookid);
             //if kiểm trả nếu đã có rồi
             if (cart != null)
@@ -79,13 +82,22 @@ namespace BookstoreMVC5.Controllers
                     item.book = book;
                     item.quantity = quantity;
                     list.Add(item);
+                   
+                        
+
                     //gắn vào session
 
                 }
                 Session[SessionCart] = list;
+
+                //cartUser.bookid = bookid;
+                //cartUser.quantity = quantity;
+                //cartUser.userid = sessionUser.ID;
+                //db.CartUsers.Add(cartUser);
             }
             else
             {
+
                 //chưa có gì
                 //tạo đối tượng cart item
                 var item = new CartItem();
@@ -95,7 +107,6 @@ namespace BookstoreMVC5.Controllers
                 list.Add(item);
                 //gán vào session
                 Session[SessionCart] = list;
-
             }
             return RedirectToAction("Index");
         }
@@ -164,35 +175,6 @@ namespace BookstoreMVC5.Controllers
             return View("_cartHeader", list);
         }
 
-        //public RedirectToRouteResult updateitem(long P_SanPhamID, int P_quantity)
-        //{
-        //    var cart = Session[SessionCart];
-        //    var list = (List<CartItem>)cart;
-        //    CartItem itemSua = list.FirstOrDefault(m => m.book.ID == P_SanPhamID);
-        //    if (itemSua != null)
-        //    {
-                
-        //        itemSua.quantity = P_quantity;
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-        //public JsonResult updateitem(long bookid, int quantity)
-        //{
-        //    var item = new CartItem();
-        //    var cart = Session[SessionCart];
-        //    var list = (List<CartItem>)cart;
-        //    CartItem itemSua = list.FirstOrDefault(m => m.book.ID == bookid);
-        //    //kiểm tra 
-        //    if (itemSua != null)
-        //    {
-        //        if (itemSua.quantity + quantity > itemSua.book.number)
-        //        {
-        //            ViewBag.statusCart = "số lượng quá nhiều";
-        //        }
-        //        itemSua.quantity = quantity;
-        //    }
-        //    return Json(item, JsonRequestBehavior.AllowGet);
-        //}
         public JsonResult Update(string cartModel)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
@@ -212,26 +194,6 @@ namespace BookstoreMVC5.Controllers
                 status = true
             });
         }
-
-
-        //public RedirectToRouteResult deleteitem(long productID)
-        //{
-        //    var cart = Session[SessionCart];
-        //    var list = (List<Cart_item>)cart;
-
-        //    Cart_item itemXoa = list.FirstOrDefault(m => m.product.ID == productID);
-        //    if (itemXoa != null)
-        //    {
-        //        list.Remove(itemXoa);
-        //        if (list.Count == 0)
-        //        {
-        //            Session["SessionCart"] = null;
-        //        }
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-
 
     }
 }

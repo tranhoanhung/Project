@@ -54,7 +54,6 @@ namespace BookstoreMVC5.Controllers
             if (!string.IsNullOrEmpty(accessToken))
             {
                 fb.AccessToken = accessToken;
-                // Get the user's information, like email, first name, middle name etc
                 dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,email");
                 string email = me.email;
                 string username = me.email;
@@ -68,9 +67,6 @@ namespace BookstoreMVC5.Controllers
                 user.password = Mystring.ToMD5(email);
                 user.status = 1;
                 user.fullname = lastname + " " + firstname;
-                //db.Users.Add(user);
-                //db.SaveChanges();
-                //Session.Add(Sessions.CUSTOMER_SESSION, user);
                 var resultInsert = new UserDao().InsertForFacebook(user);
                 if (resultInsert > 0)
                 {
@@ -82,7 +78,6 @@ namespace BookstoreMVC5.Controllers
             }
             return Redirect("/");
         }
-        // GET: User
         BookshopEntities db = new BookshopEntities();
 
         public ActionResult Index()
@@ -115,7 +110,6 @@ namespace BookstoreMVC5.Controllers
 
                 else
                 {
-
                     var user = user_account.First();
                     Session.Add(Sessions.CUSTOMER_SESSION, user);
                     if (!Response.IsRequestBeingRedirected)
@@ -128,8 +122,6 @@ namespace BookstoreMVC5.Controllers
         }
         public void logout()
         {
-            Session["id"] = "";
-            Session["user"] = "";
             Session[Sessions.CUSTOMER_SESSION] = null;
             Response.Redirect("~/");
             Message.set_flash("Đăng xuất thành công", "success");

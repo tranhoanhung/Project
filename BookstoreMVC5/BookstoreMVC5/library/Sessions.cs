@@ -9,6 +9,6 @@ namespace BookstoreMVC5.library
     {
         public static string USER_SESSION = "USER_SESSION";
         public static string CUSTOMER_SESSION = "CUSTOMER_SESSION";
-        public static string CartSession = "CartSession";
+        public static string SessionCart = "SessionCart";
     }
 }

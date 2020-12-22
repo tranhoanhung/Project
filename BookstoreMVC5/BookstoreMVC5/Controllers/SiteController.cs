@@ -25,21 +25,6 @@ namespace BookstoreMVC5.Controllers
             }
             else
             {
-               //int countbook = db.Books.Where(m => m.slug == slug && m.status == 1).Count();
-               //if (countbook != 0)
-               //{
-               //   return this.ProductDetail(slug);
-               //}
-               //else
-               //{
-
-               //     int countcategory = db.Categories.Where(m => m.slug == slug && m.status == 1).Count();
-               //     if (countcategory != 0)
-               //     {
-               //         return this.productOfCategory(slug, page);
-               //     }
-
-               // }
                 return this.page404();
 
             }
@@ -75,7 +60,7 @@ namespace BookstoreMVC5.Controllers
             var SingleProduct = db.Books.Where(m => m.status == 1).First();
             ViewBag.category = db.Categories.Single(m => m.ID == SingleProduct.catid).name;
             ViewBag.publisher = db.Publishers.Single(m => m.ID == SingleProduct.publishid).name;
-            return View("reladProduct", list);
+            return View("reladProductCart", list);
         }
         public ActionResult buyWithProduct(int catId, int productId)
         {
@@ -113,6 +98,38 @@ namespace BookstoreMVC5.Controllers
             ViewBag.allItem = db.Books.Where(m => m.status == 1).Count();
             return View("allProduct", list);
         }
+
+        //public ActionResult allProduct(int? page, string sortOrder)
+        //{
+        //    ViewBag.Pricebooksort = String.IsNullOrEmpty(sortOrder) ? "Price_desc" : "";
+        //    ViewBag.Namebooksort = sortOrder == "Name" ? "Name_desc" : "Name";
+        //    var books = db.Books.AsQueryable();
+        //    switch (sortOrder)
+        //    {
+        //        case "Price_desc":
+        //            books = books.OrderByDescending(s => s.price);
+        //            break;
+        //        case "Name":
+        //            books = books.OrderBy(s => s.name);
+        //            break;
+        //        case "DescendingNameBook":
+        //            books = books.OrderByDescending(s => s.name);
+        //            break;
+        //        default:
+        //            books = books.OrderBy(s => s.ID);
+        //            break;
+        //    }
+
+        //    ViewBag.url = "san-pham";
+        //    if (page == null) page = 1;
+        //    int pageSize = 8;
+        //    int pageNumber = (page ?? 1);
+        //    ViewBag.category = db.Categories.Where(m => m.status == 1);
+        //    var list = db.Books.Where(m => m.status == 1).ToList().ToPagedList(pageNumber, pageSize);
+        //    ViewBag.allItem = db.Books.Where(m => m.status == 1).Count();
+        //    return View("allProduct", list);
+        //}
+
         public ActionResult ProductNew()
         {
             var list = db.Books.Where(m => m.status == 1).OrderByDescending(m => m.ID).Take(10)
@@ -124,6 +141,12 @@ namespace BookstoreMVC5.Controllers
             var list = db.Books.Where(m => m.status == 1).OrderBy(m => m.pricesale).Take(3)
                 .ToList();
             return View("reladProduct", list);
+        }
+        public ActionResult BestsellerCart()
+        {
+            var list = db.Books.Where(m => m.status == 1).OrderBy(m => m.pricesale).Take(3)
+                .ToList();
+            return View("reladProductCart", list);
         }
         public ActionResult FlashSale()
         {
@@ -194,21 +217,20 @@ namespace BookstoreMVC5.Controllers
         {
             return View("contact");
         }
-        public ActionResult pagemany()
+        [HttpPost]
+        public ActionResult contact(Contact contact)
         {
-            return View("3page");
-        }
-        public ActionResult bookCategory()
-        {
-            var list = db.Categories.Where(m => m.status == 1).OrderBy(m => m.ID).Take(3)
-                .ToList();
-            return View("BookOfCategory", list);
-        }
-        public ActionResult bookOfCategory(int catId)
-        {
-            var list = db.Books.Where(m => m.status == 1 && m.catid == catId).OrderByDescending(m => m.pricesale).Take(5)
-                .ToList();
-            return View("readProduct", list);
+            if (ModelState.IsValid)
+            {
+                contact.date_created = DateTime.Now;
+                contact.status = 1;
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+                Message.set_flash("Gửi liên hệ thành công", "success");
+                return View("contact");
+            }
+            Message.set_flash("Gửi liên hệ thất bại", "danger");
+            return View("contact");
         }
     }
 }

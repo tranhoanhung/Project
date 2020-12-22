@@ -26,7 +26,9 @@ namespace BookstoreMVC5.Models
         }
     
         public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<CartUser> CartUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Orderdetail> Orderdetails { get; set; }
         public virtual DbSet<Post> Posts { get; set; }

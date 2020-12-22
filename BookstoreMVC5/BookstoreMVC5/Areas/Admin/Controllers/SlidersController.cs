@@ -70,15 +70,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             }
             //Message.set_flash("Thêm thất bại", "danger");
             return View(slider);
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Sliders.Add(slider);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(slider);
         }
 
         // GET: Admin/Sliders/Edit/5
@@ -124,14 +115,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             }
             ViewBag.listCate = db.Sliders.Where(m => m.status != 0).ToList();
             return View(slider);
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(slider).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //return View(slider);
         }
 
         // GET: Admin/Sliders/Delete/5

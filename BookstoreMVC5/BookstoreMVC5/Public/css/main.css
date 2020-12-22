@@ -16519,7 +16519,7 @@ input[type="number"] {
   align-items: center;
   position: relative; }
   .cart-widget .login-block {
-    margin-right: 27px;
+    margin-right: 10px;
     padding: 6px 0;
     text-align: left; }
 
@@ -16528,7 +16528,7 @@ input[type="number"] {
   .cart-block:before {
     content: "\f23d";
     font-family: "Font Awesome 5 Brands";
-    font-size: 34px;
+    font-size: 32px;
     color: #ffba00;
     display: inline-block;
     vertical-align: top;
@@ -16672,10 +16672,12 @@ input[type="number"] {
       background: #62ab00; }
 
 .cart-total {
-  position: relative;
-  padding-right: 28px;
-  display: inline-block;
-  cursor: pointer; }
+    position: relative;
+   /* padding-right: 28px;*/
+    padding-right: 16px;
+    display: inline-block;
+    cursor: pointer;
+}
   .cart-total .text-number {
     width: 23px;
     height: 23px;
@@ -16690,8 +16692,8 @@ input[type="number"] {
 /*    background: #bd0018;*/
     background: #ffba00;
     position: absolute;
-    right: 0px;
-    top: -1px; }
+    right: -5px;
+    top: -5px; }
   .cart-total .text-item {
     display: block;
     margin-bottom: 2px;
@@ -16703,7 +16705,7 @@ input[type="number"] {
     font-style: normal;
     font-weight: 600;
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1; }
     .cart-total .price i {
       /*color: #333;*/

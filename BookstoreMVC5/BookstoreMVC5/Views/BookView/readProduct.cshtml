@@ -15,20 +15,22 @@
             </div>
             <div class="product-card--body">
                 <div class="product-header">
-                    <a href="" class="author">
+                    <a href="~/san-pham/@item.slug" class="author">
                         @item.name
                     </a>
-                    <h3>
+                    @*<h3>
                         <a href="product-details.html">
                             @ViewBag.category
                         </a>
-                    </h3>
+                    </h3>*@
+
                 </div>
                 <div class="price-block">
                     <span class="price">@price.ToString("N0") đ</span>
                     <del class="price-old">@item.price.ToString("N0") đ</del>
                     <span class="price-discount">@item.pricesale%</span>
                 </div>
+               
             </div>
         </div>
     </div>

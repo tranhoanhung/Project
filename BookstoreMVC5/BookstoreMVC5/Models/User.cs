@@ -14,6 +14,12 @@ namespace BookstoreMVC5.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.CartUsers = new HashSet<CartUser>();
+        }
+    
         public int ID { get; set; }
         public string fullname { get; set; }
         public string username { get; set; }
@@ -24,5 +30,8 @@ namespace BookstoreMVC5.Models
         public string phone { get; set; }
         public string img { get; set; }
         public int status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartUser> CartUsers { get; set; }
     }
 }

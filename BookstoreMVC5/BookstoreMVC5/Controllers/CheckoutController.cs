@@ -45,7 +45,6 @@ namespace BookstoreMVC5.Controllers
             int numIterations = 0;
             numIterations = rand.Next(1, 100000);
             DateTime time = DateTime.Now;
-
             string orderCode = Mystring.ToStringNospace(numIterations + "" + time);
             string sumOrder = Request["sumOrder"];
             string payment_method = Request["option_payment"];
@@ -53,7 +52,6 @@ namespace BookstoreMVC5.Controllers
             if (payment_method.Equals("COD"))
             {
                 // cap nhat thong tin sau khi dat hang thanh cong
-
                 saveOrder(order, "COD", 2, orderCode);
                 var cart = Session[SessionCart];
                 var list = new List<CartItem>();
@@ -143,10 +141,8 @@ namespace BookstoreMVC5.Controllers
             {
                 Session["SessionCart"] = null;
                 var OrderInfo = db.Orders.Where(m => m.code == orderId).FirstOrDefault();
-                //OrderInfo.StatusPayment = 1;
                 db.Entry(OrderInfo).State = EntityState.Modified;
                 db.SaveChanges();
-                //ViewBag.paymentStatus = OrderInfo.StatusPayment;
                 ViewBag.Methodpayment = OrderInfo.deliveryPaymentMethod;
                 return View("oderComplete", OrderInfo);
             }
@@ -207,10 +203,6 @@ namespace BookstoreMVC5.Controllers
                     orderdetail.amount = price;
                     db.Orderdetails.Add(orderdetail);
                     db.SaveChanges();
-                    //var updatedProduct = db.Books.Find(item.book.ID);
-                    //db.Books.Attach(updatedProduct);
-                    //db.Entry(updatedProduct).State = EntityState.Modified;
-                    //db.SaveChanges();
                 }
 
             }
@@ -238,8 +230,7 @@ namespace BookstoreMVC5.Controllers
         }
         public ActionResult formCheckOut()
         {
-            //Muser user = (Muser)Session[Common.CommonConstants.CUSTOMER_SESSION];
-            return View("_formCheckout"/*, user*/);
+            return View("_formCheckout");
 
         }
 

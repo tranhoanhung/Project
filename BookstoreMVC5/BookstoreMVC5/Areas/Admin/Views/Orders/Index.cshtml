@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliverydate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryphone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryemail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryPaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliverydate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryphone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryemail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryPaymentMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

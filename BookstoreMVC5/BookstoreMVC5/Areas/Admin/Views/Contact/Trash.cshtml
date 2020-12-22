@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Contact>
+
+@{
+    ViewBag.Title = "Trash";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Quản Lý Sản Phẩm</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Thùng Rác Liên Hệ</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+    <section class="container-fluid ">
+        <div class=" bg-white card  ">
+            <div class="row justify-content-end">
+                <div class="col-md-3">
+                    <div class=" pt-1 ml-5">
+                        <a class="text-white btn-sm btn-success" href="~/admin/contact/Create">Add Product <i class="fas fa-plus"></i></a>
+                        <a class="text-white btn-sm btn-danger " href="~/admin/contact/trash">Thùng rác<i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9  w-100 ">
+                    @Html.Partial("_MessgeAlert")
+                </div>
+                <div class="col-md-12 p-3">
+
+                    <table id="myTable" class="table px-3 table-striped table-bordered dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>Tên người liên hệ</th>
+                                <th>Số điện thoại</th>
+                                <th>Tiêu đề</th>
+                                <th>Ngày tạo</th>
+                                <th>Chức Năng</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                string title = item.title;
+                                <tr>
+
+                                    <td class="pt-4"> @Html.DisplayFor(modelItem => item.fullname)</td>
+                                    <td class="pt-4"> @Html.DisplayFor(modelItem => item.phone)</td>
+                                    <td class="pt-4">
+                                        <a class="text-cam font-weight-bold card-link " href="">
+                                            @if (title.Length > 100)
+                                            {@title.Substring(0, 30)}
+                                        else
+                                        { @title}
+                                        </a>
+
+                                    </td>
+                                    <td class="pt-4">@Html.DisplayFor(modelItem => item.date_created)</td>
+                                    <td class="pt-4">
+                                        <a class="btn btn-sm btn-info" href="@Url.Action("Retrash", "Contact", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                        <a class="btn btn-sm btn-danger text-white" href="@Url.Action("deleteTrash", "Contact", new { id = item.ID })">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-cam pt-4">@Html.DisplayFor(modelItem => item.ID)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $("#contact").addClass("active");
+    </script>

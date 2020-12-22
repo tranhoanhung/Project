@@ -1,2 +1,26 @@
-﻿<span>Xin lỗi không tìm thấy trang bạn yêu cầu</span>
-<a href="~/">Trang chủ</a>
+﻿@{
+    ViewBag.Title = "404";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section bg-white">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="">404</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="hero-area hero-slider-2">
+    <div class="container">
+        <div class="row align-items-lg-center">
+            <div class="col-12">
+                <img width="1100px" src="~/Public/images/loi-404-la-gi.png" />
+            </div>
+        </div>
+    </div>
+</section>

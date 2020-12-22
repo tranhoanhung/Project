@@ -1,0 +1,99 @@
+﻿@model BookstoreMVC5.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliverydate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliverydate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryemail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryemail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryPaymentMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryPaymentMethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

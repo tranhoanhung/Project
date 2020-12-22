@@ -19,6 +19,7 @@ namespace BookstoreMVC5.Controllers
         }
         public ActionResult bookOfCategory(int catId)
         {
+            ViewBag.category = db.Categories.Where(m => m.status == 1).ToList();
             var list = db.Books.Where(m => m.status == 1 && m.catid == catId).OrderByDescending(m => m.pricesale).Take(10)
                 .ToList();
             return View("readProduct", list);

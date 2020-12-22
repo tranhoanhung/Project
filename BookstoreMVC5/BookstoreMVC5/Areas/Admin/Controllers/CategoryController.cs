@@ -52,7 +52,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                //category
                 string slug = Mystring.ToSlug(category.name.ToString());
                 category.slug = slug;
                 db.Categories.Add(category);

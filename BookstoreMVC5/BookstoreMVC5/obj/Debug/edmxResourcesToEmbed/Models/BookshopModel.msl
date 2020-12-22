@@ -24,6 +24,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CartUsers">
+      <EntityTypeMapping TypeName="BookshopModel.CartUser">
+        <MappingFragment StoreEntitySet="CartUser">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="bookid" ColumnName="bookid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="BookshopModel.Category">
         <MappingFragment StoreEntitySet="Category">
@@ -32,6 +42,20 @@
           <ScalarProperty Name="parentid" ColumnName="parentid" />
           <ScalarProperty Name="slug" ColumnName="slug" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="BookshopModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

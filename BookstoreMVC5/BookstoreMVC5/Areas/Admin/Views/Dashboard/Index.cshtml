@@ -40,13 +40,13 @@
                 <!-- small card -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>@ViewBag.product</h3>
                         <p>Tất cả sản phẩm</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="/Admin/product" class="small-box-footer">
+                    <a href="/Admin/books" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                 <!-- small card -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3> </h3>
+                        <h3>@ViewBag.Neworder</h3>
                         <p>Đơn hàng mới</p>
                     </div>
                     <div class="icon">
@@ -72,7 +72,7 @@
                 <!-- small card -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>@ViewBag.contact</h3>
                         <p>Liên hệ Mới</p>
                     </div>
                     <div class="icon">
@@ -89,13 +89,13 @@
                 <!-- small card -->
                 <div class="small-box bg-warning">
                     <div class="inner text-white">
-                        <h3></h3>
+                        <h3>@ViewBag.user</h3>
                         <p>Tài Khoản khách hàng</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-plus"></i>
                     </div>
-                    <a href="~/Admin/user" class="small-box-footer ">
+                    <a href="~/Admin/users" class="small-box-footer ">
                         <span class="text-white">More info <i class="fas fa-arrow-circle-right"></i></span>
                     </a>
 
@@ -118,7 +118,7 @@
                         <span class="info-box-icon bg-info"><i class="nav-icon fas fa-chart-pie"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Loại Sản Phẩm</span>
-                            <span class="info-box-number"></span>
+                            <span class="info-box-number">@ViewBag.category</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -130,7 +130,7 @@
                         <span class="info-box-icon bg-success"><i class="nav-icon fas fa-newspaper"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Bài Viết</span>
-                            <span class="info-box-number"></span>
+                            <span class="info-box-number">@ViewBag.post</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -142,7 +142,7 @@
                         <span class="info-box-icon bg-warning "><i class="nav-icon fas fa-stream text-white"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Chủ đề bài viết</span>
-                            <span class="info-box-number"></span>
+                            <span class="info-box-number">@ViewBag.topic</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -154,7 +154,7 @@
                         <span class="info-box-icon bg-danger"><i class="nav-icon fas fa-images"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Ảnh bìa</span>
-                            <span class="info-box-number"></span>
+                            <span class="info-box-number">@ViewBag.slider</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

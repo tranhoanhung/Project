@@ -10,8 +10,8 @@
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="~/">Home</a></li>
-                    <li class="breadcrumb-item active">Thông tin tài khoảng</li>
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thông tin tài khoản</li>
                 </ol>
             </nav>
         </div>
@@ -30,21 +30,21 @@
                         <div class="myaccount-tab-menu nav" role="tablist">
                             <a href="#dashboad" class="active" data-toggle="tab">
                                 <i class="fas fa-tachometer-alt"></i>
-                                Thông tin tài khoảng
+                                Thông tin tài khoản
                             </a>
-                            <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Đơn hàng</a>
+                            @*<a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Đơn hàng</a>
 
-                            <a href="#payment-method" data-toggle="tab">
-                                <i class="fa fa-credit-card"></i>
-                                Phương thức thanh toán
-                            </a>
-                            <a href="#address-edit" data-toggle="tab">
-                                <i class="fa fa-map-marker"></i>
-                                Địa chỉ
-                            </a>
-                            <a href="#account-info" data-toggle="tab">
-                                <i class="fa fa-user"></i> Chi tiết Tài khoản
-                            </a>
+                                <a href="#payment-method" data-toggle="tab">
+                                    <i class="fa fa-credit-card"></i>
+                                    Phương thức thanh toán
+                                </a>*@
+                            @*<a href="#address-edit" data-toggle="tab">
+                                    <i class="fa fa-map-marker"></i>
+                                    Địa chỉ
+                                </a>*@
+                            @*<a href="#account-info" data-toggle="tab">
+                                    <i class="fa fa-user"></i> Thay đổi mật khẩu
+                                </a>*@
                             <a href="~/Custommer/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                         </div>
                     </div>
@@ -57,18 +57,20 @@
                                 <div class="myaccount-content">
                                     <h3>Tài khoản của bạn</h3>
                                     <div class="welcome mb-20">
-                                        <p>
-                                            Hello, <strong class="text-danger font-weight-bold"> <strong class="text-danger font-weight-bold" id="1_fullname">   @Model.fullname </strong></strong> (Nếu không phải <strong id="2_fullname">
-                                                @Model.fullname
-                                            </strong><a href="~/Custommer/logout" class="logout">
-                                                Đăng xuất
-                                            </a>)
+                                        <p>Hello, <strong class="text-danger font-weight-bold">
+                                                <strong class="text-danger font-weight-bold" id="1_fullname">@Model.fullname </strong>
+                                            </strong>
                                         </p>
                                     </div>
-                                    <p class="mb-0">
-                                        Từ đây bạn có thể dễ dàng xem: thông tin tài khoảng,
-                                        đơn hàng, sản phẩm yêu thích, chỉnh sửa địa chỉ, thông tin...
-                                    </p>
+                                    <p>Mobile: (+84) @Model.phone</p>
+                                    <p>Địa chỉ: @Model.address</p>
+                                    <p>Email: @Model.email</p>
+                                    <a href="tai-khoan/@Model.ID" class="btn btn--primary">
+                                        <i class="fa fa-edit"></i>Sửa thông tin
+                                    </a>
+                                    <a href="doi-mat-khau/@Model.ID" class="btn btn--primary">
+                                        <i class="fa fa-edit"></i>Đổi mật khẩu
+                                    </a>
                                 </div>
                             </div>
                             <!-- Single Tab Content End -->
@@ -90,20 +92,20 @@
                                             </thead>
                                             <tbody>
                                                 @*@foreach (var item in ViewBag.listOrder)
-                                                {
-                                                    <tr>
-                                                        <td>@item.ID</td>
-                                                        <td>@item.deliveryname</td>
-                                                        <td>@item.created_ate</td>
-                                                        @if (@item.status == 2)
-                                                        {
-                                                            <td>Chờ xác nhận</td>
-                                                        }
+                                                    {
+                                                        <tr>
+                                                            <td>@item.ID</td>
+                                                            <td>@item.deliveryname</td>
+                                                            <td>@item.created_ate</td>
+                                                            @if (@item.status == 2)
+                                                            {
+                                                                <td>Chờ xác nhận</td>
+                                                            }
 
-                                                        <td>@item.deliveryphone</td>
-                                                        <td><a href="cart.html" class="btn">View</a></td>
-                                                    </tr>
-                                                }*@
+                                                            <td>@item.deliveryphone</td>
+                                                            <td><a href="cart.html" class="btn">View</a></td>
+                                                        </tr>
+                                                    }*@
                                             </tbody>
                                         </table>
                                     </div>
@@ -136,15 +138,7 @@
                             </div>
                             <!-- Single Tab Content End -->
                             <!-- Single Tab Content Start -->
-                            <div class="tab-pane fade" id="account-info" role="tabpanel">
-                                <div class="myaccount-content">
-                                    <h3>Chi tiết tài khoản</h3>
-                                    <div class="account-details-form">
-
-                                        @*@Html.Action("formEditCustomer", "Custommer")*@
-                                    </div>
-                                </div>
-                            </div>
+                    
                             <!-- Single Tab Content End -->
                         </div>
                     </div>

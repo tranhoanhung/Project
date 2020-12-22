@@ -17,6 +17,7 @@ namespace BookstoreMVC5.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
+            this.CartUsers = new HashSet<CartUser>();
             this.Orderdetails = new HashSet<Orderdetail>();
         }
     
@@ -40,6 +41,8 @@ namespace BookstoreMVC5.Models
     
         public virtual Category Category { get; set; }
         public virtual Publisher Publisher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartUser> CartUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orderdetail> Orderdetails { get; set; }
     }

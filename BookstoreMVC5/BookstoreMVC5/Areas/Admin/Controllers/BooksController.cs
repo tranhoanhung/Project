@@ -20,8 +20,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
         {
             var list = db.Books.Where(m => m.status != 0).OrderByDescending(m => m.ID).ToList();
             return View(list);
-            //var books = db.Books.Include(b => b.Category).Include(b => b.Publisher);
-            //return View(books.ToList());
 
         }
 
@@ -89,14 +87,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("index");
             }
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Books.Add(book);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
             ViewBag.catid = new SelectList(db.Categories, "ID", "name", book.catid);
             ViewBag.publishid = new SelectList(db.Publishers, "ID", "name", book.publishid);
             return View(book);
@@ -157,15 +147,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
                 ViewBag.listCate = db.Categories.Where(m => m.status != 0 && m.ID > 2).ToList();
                 return RedirectToAction("Index");
             }
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(book).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-
             ViewBag.listCate = db.Categories.Where(m => m.status != 0 && m.ID > 2).ToList();
             ViewBag.catid = new SelectList(db.Categories, "ID", "name", book.catid);
             ViewBag.publishid = new SelectList(db.Publishers, "ID", "name", book.publishid);

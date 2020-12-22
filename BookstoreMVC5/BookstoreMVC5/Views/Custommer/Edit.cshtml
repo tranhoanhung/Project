@@ -1,0 +1,97 @@
+﻿@model BookstoreMVC5.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section bg-white">
+    <h2 class="sr-only">Site Breadcrumb </h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thông tin tài khoản</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<div class="page-section inner-page-sec-padding">
+    <div class="container bg-white p-3">
+        <div class="row">
+            <div class="col-sm-12  ">
+                @Html.Partial("_MessgeAlertc")
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="col-lg-3 col-12">
+                        <div class="myaccount-tab-menu nav" role="tablist">
+                            <a href="#dashboad" class="active" data-toggle="tab">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Thay đổi thông tin
+                            </a>
+                            <a href="~/thong-tin-kh"><i class="fas fa-sign-out-alt"></i> Hủy</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-12 mt--30 mt-lg--0">
+                        <div class="tab-content" id="myaccountContent">
+
+                            <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <h3>Thay đổi thông tin</h3>
+                                    <div class="welcome mb-20">
+                                        <div class="account-details-form">
+
+                                            @using (Html.BeginForm("Edit", "Custommer", FormMethod.Post))
+                                            {
+                                                @*@Html.AntiForgeryToken()*@
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.ID)
+                                                @Html.HiddenFor(model => model.password)
+                                                @Html.HiddenFor(model => model.status)
+                                                @Html.HiddenFor(model => model.img)
+                                                @Html.HiddenFor(model => model.username)
+                                                <div class="row">
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="fullname">Tên đầy đủ</label>
+                                                        @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="email">Tên đăng nhập</label>
+                                                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control" } })
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="email">Email</label>
+                                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "email" } })
+                                                    </div>
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="email">SDT</label>
+                                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @type = "number" } })
+                                                    </div>
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="email">Địa chỉ</label>
+                                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                    <div class="col-lg-6 mb--20">
+                                                        <label for="email">Giới tính</label>
+                                                        @Html.DropDownListFor(model => model.gender, new[] { new SelectListItem() { Value = "Nam", Text = "Nam" }, new SelectListItem() { Value = "Nữ", Text = "Nữ" } }, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-outlined">Cập nhật</button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

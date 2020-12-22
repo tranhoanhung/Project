@@ -145,11 +145,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BooksController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublishersController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlidersController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopicsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -185,7 +188,13 @@
       <DependentUpon>BookshopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CartUser.cs">
+      <DependentUpon>BookshopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs">
+      <DependentUpon>BookshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
       <DependentUpon>BookshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MessageModel.cs" />
@@ -305,6 +314,7 @@
     <Content Include="Public\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Public\fonts\themify.svg" />
     <Content Include="Public\images\banks.PNG" />
+    <Content Include="Public\images\bg-images\MMZ-Header-2h.png" />
     <Content Include="Public\images\bg-images\slider1.jpg" />
     <Content Include="Public\images\bg-images\slider2.jpg" />
     <Content Include="Public\images\bg-images\slider3.jpg" />
@@ -326,6 +336,7 @@
     <Content Include="Public\images\logo-1.jpg" />
     <Content Include="Public\images\logo.png" />
     <Content Include="Public\images\logo_light.png" />
+    <Content Include="Public\images\loi-404-la-gi.png" />
     <Content Include="Public\images\momo.PNG" />
     <Content Include="Public\images\NL.png" />
     <Content Include="Public\images\others\home-side-promo.jpg" />
@@ -2232,6 +2243,20 @@
     <Content Include="Areas\Admin\Views\Topics\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2277,10 +2302,8 @@
     <Content Include="Views\Cart\_cartHeader.cshtml" />
     <Content Include="Views\BookView\BookOfCategory.cshtml" />
     <Content Include="Views\BookView\readProduct.cshtml" />
-    <Content Include="Views\Site\BookOfCategory.cshtml" />
     <Content Include="Views\User\loginEndRegister.cshtml" />
     <Content Include="Views\Shared\_MessgeAlertc.cshtml" />
-    <Content Include="Views\User\UserPartial.cshtml" />
     <Content Include="Views\Custommer\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\cancel_order.cshtml" />
@@ -2290,11 +2313,15 @@
     <Content Include="Views\Checkout\_formCheckout.cshtml" />
     <Content Include="Views\Checkout\_productDetailCheckOut.cshtml" />
     <Content Include="Views\Checkout\_subproductOrdersuccess.cshtml" />
+    <Content Include="Views\Custommer\Edit.cshtml" />
+    <Content Include="Views\Custommer\_changePassword.cshtml" />
+    <Content Include="Views\Site\reladProductCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Public\images\tintuc\" />
+    <Folder Include="Views\FavoriteCustommer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

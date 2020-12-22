@@ -98,13 +98,44 @@
     margin-left: auto;
     margin-right: auto;
     width: 65%;
+    height: 210px;
 }
 .img-center-hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 67%;
+    height: 230px;
 }
+.img-centerofday {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+    height: 270px;
+}
+
+.img-centerofday-hover {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 67%;
+    height: 300px;
+}
+.img-centersale {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+.img-centersale-hover {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 67%;
+}
+
 .ajs-message.ajs-success {
     color: #000 !important;
     background-color: #d9ecda !important;

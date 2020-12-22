@@ -45,7 +45,7 @@
                                 Hiển thị 1 tới @Model.PageSize của @ViewBag.allItem ( @Model.PageCount Trang)
                             </span>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-6  mt--10 mt-md--0">
+                        @*<div class="col-lg-2 col-md-2 col-sm-6  mt--10 mt-md--0">
                             <div class="sorting-selection">
                                 <span>Show:</span>
                                 <select class="form-control nice-select sort-select" id="showItemAjax" onchange="ajaxShowItem(this)">
@@ -57,13 +57,13 @@
                                     <option value="48">48</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                             <div class="sorting-selection">
                                 <span>Sắp xếp:</span>
-                                <select class="form-control nice-select sort-select mr-0">
+                                <select class="form-control nice-select sort-select mr-0" id="sortOrder">
                                     <option value="" selected="selected">Mặc định</option>
-                                    <option value="">
+                                    <option value="DescendingNameBook">
                                         Sort
                                         By:Tên (A - Z)
                                     </option>
@@ -103,19 +103,22 @@
                                                 </a>
                                                 <div class="hover-btns">
                                                     <input type="hidden" id="quantity" value="1">
-                                                    <a href="javascript:void(0);" onclick="addcart(@item.ID)" class="single-btn">
+                                                    @*<a href="javascript:void(0);" onclick="addcart(@item.ID)" class="single-btn">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                    </a>*@
+                                                    <a href="/them-sp-gio-hang?bookid=@item.ID&quantity=1" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="javascript:void(0);" onclick="addfavorite(@item.ID)" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
-                                                    <a href="compare.html" class="single-btn">
+                                                    @*<a href="compare.html" class="single-btn">
                                                         <i class="fas fa-random"></i>
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal"
                                                        class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a>*@
                                                 </div>
                                             </div>
                                         </div>
@@ -194,13 +197,13 @@
                                             <span class="fas fa-star "></span>
                                         </div>
                                         <div class="btn-block">
-                                            <a href="" class="btn btn-outlined">Thêm vào giỏ hàng</a>
+                                            <a href="/them-sp-gio-hang?bookid=@item.ID&quantity=1" class="btn btn-outlined">Thêm vào giỏ hàng</a>
                                             <a href="" class="card-link">
                                                 <i class="fas fa-heart"></i> Yêu thích
                                             </a>
-                                            <a href="" class="card-link">
+                                            @*<a href="" class="card-link">
                                                 <i class="fas fa-random"></i> So sánh giá
-                                            </a>
+                                            </a>*@
                                         </div>
                                     </div>
                                 </div>

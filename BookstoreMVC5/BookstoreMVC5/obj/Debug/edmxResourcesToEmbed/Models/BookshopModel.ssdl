@@ -22,6 +22,15 @@
     <Property Name="date_updated" Type="datetime" />
     <Property Name="status" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="CartUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="bookid" Type="int" />
+    <Property Name="quantity" Type="int" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="ID" />
@@ -32,6 +41,19 @@
     <Property Name="parentid" Type="int" />
     <Property Name="sort" Type="int" />
     <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="phone" Type="varchar" MaxLength="15" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="detail" Type="ntext" />
+    <Property Name="date_created" Type="datetime" />
+    <Property Name="status" Type="int" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -143,6 +165,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Cart_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="CartUser" Type="Self.CartUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CartUser">
+        <PropertyRef Name="bookid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="CartUser" Type="Self.CartUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CartUser">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orderdetail_Book">
     <End Role="Book" Type="Self.Book" Multiplicity="1" />
     <End Role="Orderdetail" Type="Self.Orderdetail" Multiplicity="*" />
@@ -181,7 +227,9 @@
   </Association>
   <EntityContainer Name="BookshopModelStoreContainer">
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartUser" EntityType="Self.CartUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orderdetail" EntityType="Self.Orderdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
@@ -196,6 +244,14 @@
     <AssociationSet Name="FK_Book_Publisher" Association="Self.FK_Book_Publisher">
       <End Role="Publisher" EntitySet="Publisher" />
       <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Book" Association="Self.FK_Cart_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="CartUser" EntitySet="CartUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_User" Association="Self.FK_Cart_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CartUser" EntitySet="CartUser" />
     </AssociationSet>
     <AssociationSet Name="FK_Orderdetail_Book" Association="Self.FK_Orderdetail_Book">
       <End Role="Book" EntitySet="Book" />

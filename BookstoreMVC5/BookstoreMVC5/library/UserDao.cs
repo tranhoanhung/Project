@@ -24,5 +24,9 @@ namespace BookstoreMVC5.library
             }
 
         }
+        public User GetById(int id)
+        {
+            return db.Users.SingleOrDefault(x => x.ID == id);
+        }
     }
 }
