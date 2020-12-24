@@ -6,15 +6,12 @@
 <!--Silder-->
 @Html.Action("Slider", "Modules")
 <!--end Silder-->
-
 <!--ADS-->
 @Html.Action("ADS", "Modules")
 <!--end ADS-->
-
 <!--Deal of the day-->
 @Html.Action("ProductDealOfDay", "Site")
 <!-- end deal of day-->
-
 <!--=================================
 Promotion Section One ---------------------------------------------slide khuyen mai
 ===================================== -->
@@ -64,7 +61,7 @@ Home Slider Tab
 
                 <div class="tab-pane active" id="men" role="tabpanel" aria-labelledby="men-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
-                         data-slick-setting='{"autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":1,"dots":true}'
+                         data-slick-setting='{"autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":2,"dots":true}'
                          data-slick-responsive='[{"breakpoint":1200, "settings": {"slidesToShow": 3} },
                                                 {"breakpoint":768, "settings": {"slidesToShow": 2} },
                                                 {"breakpoint":480, "settings": {"slidesToShow": 1} },
@@ -167,40 +164,24 @@ Home Two Column Section
                     <!--end-->
                 </div>
                 @*<div class="home-left-sidebar">
-                    
+
                     </div>*@
-                    <!--end-->
-                </div>
-           
+                <!--end-->
+            </div>
+
             <div class="col-lg-8">
                 @Html.Action("bookCategory", "BookView")
                 @*<div class="home-right-side">
-                    @Html.Action("pagemany", "Site")
+                        @Html.Action("pagemany", "Site")
 
-                </div>*@
+                    </div>*@
             </div>
         </div>
     </div>
 </section>
 
-<section class="section-margin">
-    <div class="container bg-white p-4">
-        <div class="section-title">
-            <h2>BÀI VIẾT</h2>
-        </div>
-        <div class="blog-slider sb-slick-slider" data-slick-setting='{
-                "autoplay": true,
-                "autoplaySpeed": 8000,
-                "slidesToShow": 2,
-                "dots": true
-            }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {"slidesToShow": 1} }
-            ]'>
-            @Html.Action("postHome", "Site")
-            <!--end post-->
-        </div>
-    </div>
-</section>
+@Html.Action("Index", "Post")
+
 <!--=================================
 Promotion Section Two
 ===================================== -->

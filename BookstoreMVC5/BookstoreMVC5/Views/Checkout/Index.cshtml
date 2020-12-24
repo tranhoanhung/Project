@@ -59,13 +59,13 @@
                                                 float sum = 0;
                                                 foreach (var iten in Model)
                                                 {
-                                                    int sale = (int)iten.book.pricesale;
-                                                    float price = (int)iten.book.price - (int)iten.book.price / 100 * (int)sale;
-                                                    float price1 = ((int)iten.book.price - (int)iten.book.price / 100 * (int)sale) * (iten.quantity);
+                                                    int sale = (int)iten.product.pricesale;
+                                                    float price = (int)iten.product.price - (int)iten.product.price / 100 * (int)sale;
+                                                    float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
                                                     sum += price * (int)iten.quantity;
                                                     <ul>
                                                         <li>
-                                                            <span class="left text-success">@iten.book.name  X @iten.quantity</span> <span class="right">@price1.ToString("N0") VND</span>
+                                                            <span class="left text-success">@iten.product.name  X @iten.quantity</span> <span class="right">@price1.ToString("N0") VND</span>
                                                         </li>
                                                     </ul>
                                                 }

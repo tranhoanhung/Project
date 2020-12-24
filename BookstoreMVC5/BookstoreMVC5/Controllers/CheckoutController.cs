@@ -4,9 +4,7 @@ using Newtonsoft.Json.Linq;
 using BookstoreMVC5.MomoAPI;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Collections.Generic;
 using System.Data.Entity;
 using BookstoreMVC5.Models;
 
@@ -185,20 +183,20 @@ namespace BookstoreMVC5.Controllers
                 {
                     Orderdetail orderdetail = new Orderdetail();
                     float price = 0;
-                    int sale = (int)item.book.pricesale;
+                    int sale = (int)item.product.pricesale;
                     if (sale > 0)
                     {
-                        price = ((int)item.book.price - (int)item.book.price / 100 * (int)sale) * ((int)item.quantity);
+                        price = ((int)item.product.price - (int)item.product.price / 100 * (int)sale) * ((int)item.quantity);
                     }
                     else
                     {
-                        price = (float)item.book.price * (int)item.quantity;
+                        price = (float)item.product.price * (int)item.quantity;
                     }
                     orderdetail.orderid = order.ID;
-                    orderdetail.bookid = item.book.ID;
+                    orderdetail.bookid = item.product.ID;
                     
-                    orderdetail.pricesale = (int)item.book.pricesale;
-                    orderdetail.price = item.book.price;
+                    orderdetail.pricesale = (int)item.product.pricesale;
+                    orderdetail.price = item.product.price;
                     orderdetail.quantity = item.quantity;
                     orderdetail.amount = price;
                     db.Orderdetails.Add(orderdetail);

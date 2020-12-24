@@ -266,7 +266,6 @@ H:\Github\Project\BookstoreMVC5\BookstoreMVC5\bin\System.Web.WebPages.Razor.xml
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\bin\Newtonsoft.Json.xml
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\bin\Antlr3.Runtime.pdb
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csprojAssemblyReference.cache
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csproj.CoreCompileInputs.cache
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csproj.CopyComplete
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.dll

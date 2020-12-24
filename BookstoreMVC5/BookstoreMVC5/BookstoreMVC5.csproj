@@ -153,12 +153,14 @@
     <Compile Include="Areas\Admin\Controllers\SlidersController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopicsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
-    <Compile Include="Common\Constants.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CustommerController.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +197,9 @@
       <DependentUpon>BookshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs">
+      <DependentUpon>BookshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Favorite.cs">
       <DependentUpon>BookshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MessageModel.cs" />
@@ -332,6 +337,7 @@
     <Content Include="Public\images\icon\policy-icon-3.png" />
     <Content Include="Public\images\icon\quotation.png" />
     <Content Include="Public\images\icon\title-sep-icon.png" />
+    <Content Include="Public\images\instagram-likes.gif" />
     <Content Include="Public\images\logo--footer.png" />
     <Content Include="Public\images\logo-1.jpg" />
     <Content Include="Public\images\logo.png" />
@@ -398,11 +404,10 @@
     <Content Include="Public\images\product\vanhoa-giaoduc\bay-cuu-xuat-chung---lat-tay-khoang-toi-cua-nen-giao-duc-tinh-hoa-my.jpg" />
     <Content Include="Public\images\product\vanhoa-giaoduc\hanh-trinh-ca-phe.jpg" />
     <Content Include="Public\images\product\vanhoa-giaoduc\mat-kinh-khong-vuong-bui.jpg" />
+    <Content Include="Public\images\unnamed.gif" />
     <Content Include="Public\js\ajax-mail.js" />
     <Content Include="Public\js\ajaxClent.js" />
-    <Content Include="Public\js\CartController.js" />
     <Content Include="Public\js\custom.js" />
-    <Content Include="Public\js\jquery.zoomtoo.js" />
     <Content Include="Public\js\plugins.js" />
     <Content Include="Public\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Public\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
@@ -2279,16 +2284,13 @@
     <Content Include="Views\Shared\_layoutSite.cshtml" />
     <Content Include="Views\Site\allProduct.cshtml" />
     <Content Include="Views\Site\buyWithProduct.cshtml" />
-    <Content Include="Views\Site\contact.cshtml" />
+    <Content Include="Views\Contacts\contact.cshtml" />
     <Content Include="Views\Site\Home.cshtml" />
     <Content Include="Views\Site\page404.cshtml" />
-    <Content Include="Views\Site\allPost.cshtml" />
-    <Content Include="Views\Site\postDetaail.cshtml" />
     <Content Include="Views\Site\ProductDetail.cshtml" />
     <Content Include="Views\Site\reladProduct.cshtml" />
     <Content Include="Views\Site\FlashSale.cshtml" />
     <Content Include="Views\Site\HomeBookOfCategory.cshtml" />
-    <Content Include="Views\Site\PostHome.cshtml" />
     <Content Include="Views\Modules\Header.cshtml" />
     <Content Include="Views\Modules\Slidershow.cshtml" />
     <Content Include="Views\Modules\Footer.cshtml" />
@@ -2316,12 +2318,19 @@
     <Content Include="Views\Custommer\Edit.cshtml" />
     <Content Include="Views\Custommer\_changePassword.cshtml" />
     <Content Include="Views\Site\reladProductCart.cshtml" />
+    <Content Include="Views\Post\PostHome.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\postDetails.cshtml" />
+    <Content Include="Views\Post\allPost.cshtml" />
+    <Content Include="Views\BookView\readProduct2.cshtml" />
+    <Content Include="Views\BookView\BookOfCategory2.cshtml" />
+    <Content Include="Views\Favorite\favoriteList.cshtml" />
+    <Content Include="Views\Favorite\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Public\images\tintuc\" />
-    <Folder Include="Views\FavoriteCustommer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

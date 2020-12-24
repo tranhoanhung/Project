@@ -195,3 +195,68 @@
         transform: rotate(360deg);
     }
 }
+.loading-page-effect {
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    background-color: #282424;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: block;
+}
+
+    .loading-page-effect img {
+        width: 30%;
+        height: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -5%;
+        margin-left: -15%;
+    }
+
+.loading-ajax-effect {
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+}
+
+    .loading-ajax-effect img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+    }
+
+.ajaxload-effect-heart {
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+}
+
+.loading-ajax-effect-heart img {
+    width: 15%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+

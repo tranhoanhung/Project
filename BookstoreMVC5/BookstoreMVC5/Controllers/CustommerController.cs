@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookstoreMVC5.Models;
-using BookstoreMVC5.Common;
 using System.Net;
 using BookstoreMVC5.library;
 using System.Threading.Tasks;
@@ -17,20 +16,20 @@ namespace BookstoreMVC5.Controllers
         BookshopEntities db = new BookshopEntities();
         public ActionResult Index(int? id)
         {
-            User sessionUser = (User)Session[Constants.CUSTOMER_SESSION];
+            User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
             return View(sessionUser);
         }
         public ActionResult logout()
         {
             Message.set_flash("Đăng xuất thành công", "success");
-            Session[Constants.CUSTOMER_SESSION] = null;
+            Session[Sessions.CUSTOMER_SESSION] = null;
             Session["SessionCart"] = null;
             Response.Redirect("~/login-logout");
             return View();
         }
         public ActionResult formEditCustomer()
         {
-            User sessionUser = (User)Session[Constants.CUSTOMER_SESSION];
+            User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
             return View("_formEditCustomer", sessionUser);
 
         }

@@ -12,13 +12,11 @@ namespace BookstoreMVC5.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CartUser
+    public partial class Favorite
     {
         public int ID { get; set; }
         public Nullable<int> userid { get; set; }
         public Nullable<int> bookid { get; set; }
-        public Nullable<int> quantity { get; set; }
-        public string img { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

@@ -15,19 +15,15 @@ namespace BookstoreMVC5.Controllers
         {
             var list = db.Categories.Where(m => m.status == 1).OrderBy(m => m.name).Take(3)
                 .ToList();
-            return View("BookOfCategory", list);
+            return View("BookOfCategory2", list);
         }
         public ActionResult bookOfCategory(int catId)
         {
             ViewBag.category = db.Categories.Where(m => m.status == 1).ToList();
             var list = db.Books.Where(m => m.status == 1 && m.catid == catId).OrderByDescending(m => m.pricesale).Take(10)
                 .ToList();
-            return View("readProduct", list);
+            return View("readProduct2", list);
         }
-
-
-
-
         //     public JsonResult GetQuickView(int id)
         //     {
         //         ImageProducts image = new ImageProducts();

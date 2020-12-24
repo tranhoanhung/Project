@@ -18,6 +18,7 @@ namespace BookstoreMVC5.Models
         public Book()
         {
             this.CartUsers = new HashSet<CartUser>();
+            this.Favorites = new HashSet<Favorite>();
             this.Orderdetails = new HashSet<Orderdetail>();
         }
     
@@ -43,6 +44,8 @@ namespace BookstoreMVC5.Models
         public virtual Publisher Publisher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartUser> CartUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Favorite> Favorites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orderdetail> Orderdetails { get; set; }
     }

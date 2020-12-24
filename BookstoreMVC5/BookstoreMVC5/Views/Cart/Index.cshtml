@@ -48,84 +48,64 @@
                                     }
                                     @foreach (var iten in Model)
                                     {
-                                        int sale = (int)iten.book.pricesale;
-                                        float price = ((int)iten.book.price - (int)iten.book.price / 100 * (int)sale);
-                                        float price1 = ((int)iten.book.price - (int)iten.book.price / 100 * (int)sale) * (iten.quantity);
-                                        float priveNsale = (int)iten.book.price * iten.quantity;
+                                        int sale = (int)iten.product.pricesale;
+                                        float price = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale);
+                                        float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                                        float priveNsale = (int)iten.product.price * iten.quantity;
                                         if (sale > 0)
                                         {
-                                            sum += ((int)iten.book.price - (int)iten.book.price / 100 * (int)sale) * ((int)iten.quantity);
+                                            sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
                                         }
                                         else
                                         {
-                                            sum += (int)iten.book.price * (int)iten.quantity;
+                                            sum += (int)iten.product.price * (int)iten.quantity;
                                         }
                                         <form action="@Url.Action("updateitem")" method="get">
-                                            <tr id="cartItem_@iten.book.ID">
+                                            <tr id="cartItem_@iten.product.ID">
+
                                                 <td class="pro-thumbnail">
                                                     <a href="#">
-                                                        <img src="~/Public/images/product/@iten.book.img" alt="Product">
+                                                        <img src="~/Public/images/product/@iten.product.img" alt="Product">
                                                     </a>
                                                 </td>
-                                                <td class="pro-title"><a href="#">@iten.book.name</a></td>
+                                                <td class="pro-title"><a href="#">@iten.product.name</a></td>
                                                 <td class="pro-price">
-                                                    <del class="price-old">@iten.book.price.ToString("N0") VND</del>
+                                                    <del class="price-old">@iten.product.price.ToString("N0") VND</del>
                                                     <span>@price.ToString("N0") VND </span>
                                                 </td>
                                                 <td class="pro-quantity">
-                                                    <div class="pro-qty">
-                                                        <div class="count-input-block">
-                                                            <input type="number" min="1" step="1" class="txtQuantity" data-id="@iten.book.ID" value="@iten.quantity" />
+                                                    <input type="hidden" name="P_SanPhamID" value="@iten.product.ID" />
+                                                    <input type="number" class="form-control" value="@iten.quantity" min="1" max="10" step="1" data-decimals="0" name="P_quantity" required>
+
+                                                    <!--<div class="count-input-block">-->
+                                                        @*<div class="count-input-block">
+                                                                <input type="number" class="form-control text-center"
+                                                                       value="@iten.quantity">
+                                                            </div>*@
+                                                        <!--<input type="hidden" name="P_SanPhamID" value="@iten.product.ID" />
+                                                        <input type="number" class="form-control" value="@iten.quantity" min="1" max="100" step="1" data-decimals="0" name="P_quantity" required>
+                                                        <div class="count-input-btns">
+                                                            <a class="inc-ammount count-btn">
+                                                                <i class="zmdi zmdi-chevron-up"></i>
+                                                            </a>
+                                                            <a class="dec-ammount count-btn">
+                                                                <i class="zmdi zmdi-chevron-down"></i>
+                                                            </a>
                                                         </div>
-
-
-                                                    </div>
+                                                    </div>-->
                                                 </td>
                                                 <td class="pro-remove">
-                                                    @*<a href="javascript:void(0);" onclick="deleteitem(@iten.book.ID)"><i class="far fa-trash-alt"></i></a>*@
-                                                    <button id="btnUpdate" type="submit">
+                                                    @*<a href="javascript:void(0);" onclick="deleteItem(@iten.product.ID)"><i class="far fa-trash-alt"></i></a>*@
+                                                    <a href="~/xoa-item?productID=@iten.product.ID"><i class="far fa-trash-alt"></i></a>
+                                                    <br />
+                                                    <button type="submit">
                                                         <i class="fas fa-retweet"></i>
                                                     </button>
-                                                    <br />
-                                                    <a href="javascript:void(0);" onclick="deleteitem(@iten.book.ID)"><i class="far fa-trash-alt"></i></a>
-
                                                 </td>
-
                                                 <td class="pro-subtotal"><span>@price1.ToString("N0") VND</span></td>
                                             </tr>
                                         </form>
                                     }
-
-
-
-                                    <!-- Discount Row  -->
-                                    @*<tr>
-                                            <td colspan="6" class="actions">
-                                                <div class="coupon-block">
-                                                    <div class="coupon-text">
-                                                        <label for="coupon_code">Coupon:</label>
-                                                        <input type="text" name="coupon_code" class="input-text"
-                                                               id="coupon_code" value="" placeholder="Mã khuyến mãi">
-                                                    </div>
-                                                    <div class="coupon-btn">
-                                                        <input type="submit" class="btn btn-outlined"
-                                                               name="apply_coupon" value="Áp dụng">
-                                                    </div>
-                                                </div>
-                                                <div class="update-block text-right">
-                                                    <input type="submit" class="btn btn-outlined" name="update_cart"
-                                                           value="Cập nhật giỏ hàng">
-                                                    <input type="hidden" id="_wpnonce" name="_wpnonce"
-                                                           value="05741b501f"><input type="hidden"
-                                                                                     name="_wp_http_referer" value="/petmark/cart/">
-                                                </div>
-
-                                                <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
-                                                <button id="btnUpdate" class="btn">Cập nhật giỏ hàng</button>
-                                                <button id="btnDeleteAll" class="btn">Xoá giỏ hàng</button>
-                                                <button id="btnPayment" class="btn">Thanh toán</button>
-                                            </td>
-                                        </tr>*@
                                 </tbody>
                             </table>
                         </div>
@@ -178,26 +158,3 @@
     </div>
 </main>
 <!-- Cart Page End -->
-@*<script>
-        function deleteitem(bookid) {
-            $.ajax({
-                url: '/Cart/deleteitem?bookid=' + bookid,
-                type: 'GET',
-                beforeSend: function () {
-                $(".ajaxload-cart").fadeIn("fast");
-                $(".ajaxload-cart").fadeOut("slow");
-            },
-                success: function (data) {
-                    console.log(data);
-                    $("#cartheaderItem_" + bookid + "").fadeOut("slow");
-                    $("#cartItem_" + bookid + "").fadeOut("slow");
-
-                    var totalCart = formatter.format(data.priceTotal).replace(/\,00 ₫/, '');
-                    $('#totalCart').text(totalCart + " VND");
-                    $('#CountCart').text(data.countCart);
-                    alertify.success("<i class='fas fa-check text-success '></i> Đã xóa 1 sản phẩm");
-                }
-            })
-        }
-
-    </script>*@

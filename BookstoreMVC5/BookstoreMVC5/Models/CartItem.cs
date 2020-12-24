@@ -5,7 +5,7 @@ namespace BookstoreMVC5.Models
     [Serializable]
     public class CartItem
     {
-        public Book book { get; set; }
+        public Book product { get; set; }
 
         public int quantity { get; set; }
 
@@ -16,5 +16,7 @@ namespace BookstoreMVC5.Models
         public long priceTotal { get; set; }
 
         public long priceSaleee { get; set; }
+
+        public bool f { get; set; }
     }
 }

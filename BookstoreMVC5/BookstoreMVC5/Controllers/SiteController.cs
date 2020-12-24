@@ -84,7 +84,6 @@ namespace BookstoreMVC5.Controllers
                 .Where(m => m.status == 1 && m.catid == single.ID)
                  .ToList();
             return View("allProduct", list.ToPagedList(pageNumber, pageSize));
-            //return View("allProduct");
         }
 
         public ActionResult allProduct(int? page)
@@ -98,37 +97,6 @@ namespace BookstoreMVC5.Controllers
             ViewBag.allItem = db.Books.Where(m => m.status == 1).Count();
             return View("allProduct", list);
         }
-
-        //public ActionResult allProduct(int? page, string sortOrder)
-        //{
-        //    ViewBag.Pricebooksort = String.IsNullOrEmpty(sortOrder) ? "Price_desc" : "";
-        //    ViewBag.Namebooksort = sortOrder == "Name" ? "Name_desc" : "Name";
-        //    var books = db.Books.AsQueryable();
-        //    switch (sortOrder)
-        //    {
-        //        case "Price_desc":
-        //            books = books.OrderByDescending(s => s.price);
-        //            break;
-        //        case "Name":
-        //            books = books.OrderBy(s => s.name);
-        //            break;
-        //        case "DescendingNameBook":
-        //            books = books.OrderByDescending(s => s.name);
-        //            break;
-        //        default:
-        //            books = books.OrderBy(s => s.ID);
-        //            break;
-        //    }
-
-        //    ViewBag.url = "san-pham";
-        //    if (page == null) page = 1;
-        //    int pageSize = 8;
-        //    int pageNumber = (page ?? 1);
-        //    ViewBag.category = db.Categories.Where(m => m.status == 1);
-        //    var list = db.Books.Where(m => m.status == 1).ToList().ToPagedList(pageNumber, pageSize);
-        //    ViewBag.allItem = db.Books.Where(m => m.status == 1).Count();
-        //    return View("allProduct", list);
-        //}
 
         public ActionResult ProductNew()
         {
@@ -165,7 +133,6 @@ namespace BookstoreMVC5.Controllers
             ViewBag.category = db.Categories.Where(m => m.status == 1).ToList();
             var list = db.Books.Where(m => m.status == 1 && m.name.Contains(keyw)).OrderBy(m => m.ID);
             return View("allProduct", list.ToList().ToPagedList(pageNumber, pageSize));
-            //return View("allProduct");
         }
         public ActionResult homeCategory()
         {
@@ -181,56 +148,10 @@ namespace BookstoreMVC5.Controllers
         }
 
 
-        //posst of home
-        public ActionResult postHome()
-        {
-            var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).Take(3)
-                .ToList();
-            return View("PostHome", list);
-        }
-
-        public ActionResult postDetaail(string slug)
-        {
-            var SingleProduct = db.Posts.Where(m => m.status == 1 && m.slug == slug).First();
-            ViewBag.topic = db.Topics.Find(SingleProduct.topid);
-            return View("postDetaail", SingleProduct);
-        }
-
-
-        public ActionResult allPost(int? page)
-        {
-            ViewBag.url = "bai-viet";
-            if (page == null) page = 1;
-            int pageSize = 8;
-            int pageNumber = (page ?? 1);
-            var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID)
-                .ToList().ToPagedList(pageNumber, pageSize);
-            return View("allPost", list);
-        }
-
         public ActionResult page404()
         {
             return View("page404");
         }
-
-        public ActionResult contact()
-        {
-            return View("contact");
-        }
-        [HttpPost]
-        public ActionResult contact(Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                contact.date_created = DateTime.Now;
-                contact.status = 1;
-                db.Contacts.Add(contact);
-                db.SaveChanges();
-                Message.set_flash("Gửi liên hệ thành công", "success");
-                return View("contact");
-            }
-            Message.set_flash("Gửi liên hệ thất bại", "danger");
-            return View("contact");
-        }
+   
     }
 }

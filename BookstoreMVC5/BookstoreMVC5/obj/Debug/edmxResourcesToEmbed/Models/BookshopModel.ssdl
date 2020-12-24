@@ -30,6 +30,7 @@
     <Property Name="userid" Type="int" />
     <Property Name="bookid" Type="int" />
     <Property Name="quantity" Type="int" />
+    <Property Name="img" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -54,6 +55,14 @@
     <Property Name="detail" Type="ntext" />
     <Property Name="date_created" Type="datetime" />
     <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="Favorite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="bookid" Type="int" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -189,6 +198,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Favorite_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="bookid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorite_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orderdetail_Book">
     <End Role="Book" Type="Self.Book" Multiplicity="1" />
     <End Role="Orderdetail" Type="Self.Orderdetail" Multiplicity="*" />
@@ -230,6 +263,7 @@
     <EntitySet Name="CartUser" EntityType="Self.CartUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orderdetail" EntityType="Self.Orderdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
@@ -252,6 +286,14 @@
     <AssociationSet Name="FK_Cart_User" Association="Self.FK_Cart_User">
       <End Role="User" EntitySet="User" />
       <End Role="CartUser" EntitySet="CartUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorite_Book" Association="Self.FK_Favorite_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Favorite" EntitySet="Favorite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorite_User" Association="Self.FK_Favorite_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Favorite" EntitySet="Favorite" />
     </AssociationSet>
     <AssociationSet Name="FK_Orderdetail_Book" Association="Self.FK_Orderdetail_Book">
       <End Role="Book" EntitySet="Book" />

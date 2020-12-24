@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,16 +16,24 @@
     <script src="~/Public/js/plugins.js"></script>
 </head>
 <body>
-
     <div class="site-wrapper bg-light" id="top">
         <!--Header-->
         @Html.Action("Header", "Modules")
         <!--End Header-->
-        <div class="ajaxload-cart ">
-            <i class="fas fa-circle-notch"></i>
+        @*<div class="ajaxload-cart ">
+                <i class="fas fa-circle-notch"></i>
+            </div>*@
+        <div class="ajaxload-effect">
+            <div class="loading-ajax-effect ">
+                <img src="~/Public/images/unnamed.gif" />
+            </div>
+        </div>
+        <div class="ajaxload-effect-heart">
+            <div class="loading-ajax-effect-heart">
+                <img src="~/Public/Images/instagram-likes.gif" />
+            </div>
         </div>
         @RenderBody()
-
         <!-- Modal -->
         <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
              aria-labelledby="quickModal" aria-hidden="true">
@@ -162,9 +169,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <!--Footer-->
     @Html.Action("footer", "Modules")
     <!--End Footer-->
@@ -178,11 +183,8 @@
                 xfbml: true,
                 version: '{v9.0}'
             });
-
             FB.AppEvents.logPageView();
-
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) { return; }
@@ -194,7 +196,6 @@
     <div class="zalo-chat-widget" data-oaid="2656912087002591549" data-welcome-message="Lihudu xin chào! Mình có thể giúp gì cho bạn" data-autopopup="0" data-width="350" data-height="420"></div>
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
     <!-- Use Minified Plugins Version For Fast Page Load -->
-    <script src="~/Public/js/CartController.js"></script>
     <script src="~/Public/js/plugins.js"></script>
     <script src="~/Public/js/ajax-mail.js"></script>
     <script src="~/Public/js/custom.js"></script>

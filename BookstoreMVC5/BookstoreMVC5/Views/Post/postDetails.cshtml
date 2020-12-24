@@ -19,9 +19,9 @@
 <section class="inner-page-sec-padding-bottom">
     <div class="container">
         <div class="blog-post post-details mb--50">
-            <div class="blog-image">
+            @*<div class="blog-image">
                 <img src="~/public/images/post/@Model.img" alt="">
-            </div>
+            </div>*@
             <div class="blog-content mt--30 bg-white p-3">
                 <header>
                     <h3 class="blog-title">@Model.title</h3>
@@ -77,9 +77,10 @@
             }' data-slick-responsive='[
                 {"breakpoint":1200, "settings": {"slidesToShow": 1} }
             ]'>
-                    @Html.Action("postHome", "Site")
+                    @Html.Action("postHome", "Post")
                 </div>
             </div>
         </section>
 </section>
+
 

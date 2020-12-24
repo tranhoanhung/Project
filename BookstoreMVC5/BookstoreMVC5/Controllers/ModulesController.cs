@@ -20,6 +20,7 @@ namespace BookstoreMVC5.Controllers
             if (sessionUser != null)
             {
                 ViewBag.username = sessionUser.username;
+                ViewBag.ID = sessionUser.ID;
                 ViewBag.fullname = sessionUser.fullname;
             }
             return View("Header");
@@ -59,8 +60,11 @@ namespace BookstoreMVC5.Controllers
 
         public ActionResult Mainmenu()
         {
-            //var listParentCate = db.Menus.Where(m => m.status == 1 && m.parentid == 0).OrderBy(m => m.orders).ToList();
-            //return View("_mainmenu", listParentCate);
+            User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
+            if (sessionUser != null)
+            {
+                ViewBag.ID = sessionUser.ID;
+            }
             return View("Mainmenu");
 
         }

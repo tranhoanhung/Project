@@ -1,9 +1,10 @@
-﻿@*<ul class="main-menu menu-right main-menu--white li-last-0">
-    
-    <li class="menu-item">
-        <a href="">Trang Chủ</a>
-    </li>
-</ul>*@
+﻿
+@*<ul class="main-menu menu-right main-menu--white li-last-0">
+
+        <li class="menu-item">
+            <a href="">Trang Chủ</a>
+        </li>
+    </ul>*@
 
 <ul class="main-menu  main-menu--white li-last-0 ">
     @*@foreach (var item in Model)
@@ -20,9 +21,11 @@
         <a href="~/san-pham">Sản phẩm</a>
     </li>
     @Html.Action("Blog", "Modules")
-    
     <li class="menu-item">
-        <a href="@Url.Action("contact","Site")">Liên hệ</a>
+        <a href="~/yeu-thich/@ViewBag.ID">Yêu thích</a>
+    </li>
+    <li class="menu-item">
+        <a href="lien-he">Liên hệ</a>
     </li>
 </ul>
 

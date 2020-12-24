@@ -5,6 +5,7 @@
     <EntitySet Name="CartUsers" EntityType="BookshopModel.CartUser" />
     <EntitySet Name="Categories" EntityType="BookshopModel.Category" />
     <EntitySet Name="Contacts" EntityType="BookshopModel.Contact" />
+    <EntitySet Name="Favorites" EntityType="BookshopModel.Favorite" />
     <EntitySet Name="Orders" EntityType="BookshopModel.Order" />
     <EntitySet Name="Orderdetails" EntityType="BookshopModel.Orderdetail" />
     <EntitySet Name="Posts" EntityType="BookshopModel.Post" />
@@ -24,6 +25,10 @@
       <End Role="Book" EntitySet="Books" />
       <End Role="CartUser" EntitySet="CartUsers" />
     </AssociationSet>
+    <AssociationSet Name="FK_Favorite_Book" Association="BookshopModel.FK_Favorite_Book">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="Favorite" EntitySet="Favorites" />
+    </AssociationSet>
     <AssociationSet Name="FK_Orderdetail_Book" Association="BookshopModel.FK_Orderdetail_Book">
       <End Role="Book" EntitySet="Books" />
       <End Role="Orderdetail" EntitySet="Orderdetails" />
@@ -31,6 +36,10 @@
     <AssociationSet Name="FK_Cart_User" Association="BookshopModel.FK_Cart_User">
       <End Role="User" EntitySet="Users" />
       <End Role="CartUser" EntitySet="CartUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorite_User" Association="BookshopModel.FK_Favorite_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Favorite" EntitySet="Favorites" />
     </AssociationSet>
     <AssociationSet Name="FK_Orderdetail_Order" Association="BookshopModel.FK_Orderdetail_Order">
       <End Role="Order" EntitySet="Orders" />
@@ -65,6 +74,7 @@
     <NavigationProperty Name="Category" Relationship="BookshopModel.FK_Book_Category1" FromRole="Book" ToRole="Category" />
     <NavigationProperty Name="Publisher" Relationship="BookshopModel.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
     <NavigationProperty Name="CartUsers" Relationship="BookshopModel.FK_Cart_Book" FromRole="Book" ToRole="CartUser" />
+    <NavigationProperty Name="Favorites" Relationship="BookshopModel.FK_Favorite_Book" FromRole="Book" ToRole="Favorite" />
     <NavigationProperty Name="Orderdetails" Relationship="BookshopModel.FK_Orderdetail_Book" FromRole="Book" ToRole="Orderdetail" />
   </EntityType>
   <EntityType Name="CartUser">
@@ -75,6 +85,7 @@
     <Property Name="userid" Type="Int32" />
     <Property Name="bookid" Type="Int32" />
     <Property Name="quantity" Type="Int32" />
+    <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Book" Relationship="BookshopModel.FK_Cart_Book" FromRole="CartUser" ToRole="Book" />
     <NavigationProperty Name="User" Relationship="BookshopModel.FK_Cart_User" FromRole="CartUser" ToRole="User" />
   </EntityType>
@@ -102,6 +113,16 @@
     <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date_created" Type="DateTime" Precision="3" />
     <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Favorite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="bookid" Type="Int32" />
+    <NavigationProperty Name="Book" Relationship="BookshopModel.FK_Favorite_Book" FromRole="Favorite" ToRole="Book" />
+    <NavigationProperty Name="User" Relationship="BookshopModel.FK_Favorite_User" FromRole="Favorite" ToRole="User" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -195,6 +216,7 @@
     <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CartUsers" Relationship="BookshopModel.FK_Cart_User" FromRole="User" ToRole="CartUser" />
+    <NavigationProperty Name="Favorites" Relationship="BookshopModel.FK_Favorite_User" FromRole="User" ToRole="Favorite" />
   </EntityType>
   <Association Name="FK_Book_Category1">
     <End Type="BookshopModel.Category" Role="Category" Multiplicity="1" />
@@ -232,6 +254,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Favorite_Book">
+    <End Type="BookshopModel.Book" Role="Book" Multiplicity="0..1" />
+    <End Type="BookshopModel.Favorite" Role="Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="bookid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orderdetail_Book">
     <End Type="BookshopModel.Book" Role="Book" Multiplicity="1" />
     <End Type="BookshopModel.Orderdetail" Role="Orderdetail" Multiplicity="*" />
@@ -252,6 +286,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="CartUser">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorite_User">
+    <End Type="BookshopModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="BookshopModel.Favorite" Role="Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favorite">
         <PropertyRef Name="userid" />
       </Dependent>
     </ReferentialConstraint>

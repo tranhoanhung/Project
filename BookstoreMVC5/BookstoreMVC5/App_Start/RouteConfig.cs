@@ -13,11 +13,7 @@ namespace BookstoreMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "yeu thich",
-                url: "yeu-thich",
-                defaults: new { controller = "FavoriteCustommer", action = "Additem", id = UrlParameter.Optional }
-            );
+            
             //link tất cả sản phẩm
             routes.MapRoute(
                 name: "all-product",
@@ -37,9 +33,9 @@ namespace BookstoreMVC5
                 defaults: new { controller = "Site", action = "productOfCategory", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "additem",
-                url: "them-sp-gio-hang",
-                defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional }
+                name: "them gio hang",
+                url: "them-gio-hang",
+                defaults: new { controller = "Cart", action = "Additem", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Gio hang",
@@ -48,8 +44,18 @@ namespace BookstoreMVC5
             );
             routes.MapRoute(
                 name: "xoa gio hang",
-                url: "xoa-gio-hang",
+                url: "xoa-item",
                 defaults: new { controller = "Cart", action = "deleteitem", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "yeu thich",
+                url: "yeu-thich/{id}",
+                defaults: new { controller = "Favorite", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "them ds yeu thich",
+                url: "them-ds-yeu-thich",
+                defaults: new { controller = "Favorite", action = "Additemlove", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -79,19 +85,19 @@ namespace BookstoreMVC5
             routes.MapRoute(
                 name: "lien he",
                 url: "lien-he",
-                defaults: new { controller = "Site", action = "contact", id = UrlParameter.Optional }
+                defaults: new { controller = "Contacts", action = "contact", id = UrlParameter.Optional }
             );
             //bài viết-- hàm site-post
             routes.MapRoute(
                 name: "bai viet",
                 url: "bai-viet",
-                defaults: new { controller = "Site", action = "allPost", id = UrlParameter.Optional }
+                defaults: new { controller = "Post", action = "allPost", id = UrlParameter.Optional }
             );
-            //chi tiết bài viết -- hàm postDetaail
+            //chi tiết bài viết -- hàm postDetails
             routes.MapRoute(
                 name: "chi tiet bai viet",
                 url: "bai-viet/{slug}",
-                defaults: new { controller = "Site", action = "postDetaail", id = UrlParameter.Optional }
+                defaults: new { controller = "Post", action = "postDetails", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "login logout",

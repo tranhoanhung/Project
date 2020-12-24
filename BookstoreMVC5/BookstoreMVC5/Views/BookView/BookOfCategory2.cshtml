@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Category>
+@foreach (var item in Model)
+{
+    <div class="single-block bg-white">
+        <div class="section-title mt-0">
+            <h2>@item.name</h2>
+        </div>
+        <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
+
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow": 3,
+                                        "dots":true
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                    ]'>
+
+ 
+            @Html.Action("bookOfCategory", "BookView", new { catId = item.ID })
+
+        </div>
+    </div>
+}
+
+

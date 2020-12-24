@@ -4,15 +4,15 @@
     minimumFractionDigits: 2
 })
 
-function addcart(bookid) {
+function addcart(productID) {
 
     var quantity = $("#quantity").val();
     $.ajax({
-        url: '/them-sp-gio-hang?bookid=' + bookid + '&quantity=' + quantity + '',
+        url: '/them-gio-hang?productID=' + productID + '&quantity=' + quantity + '',
         type: 'GET',
         beforeSend: function () {
-            $(".ajaxload-cart").fadeIn("fast");
-                $(".ajaxload-cart").fadeOut("slow");
+            $('.loading-ajax-effect').fadeIn('slow');
+            $('.loading-ajax-effect').fadeOut('slow');
         },
         success: function (data) {
             if (data.meThod == "updateQuantity") {
@@ -50,12 +50,12 @@ function addcart(bookid) {
                     }
                     var productItem = '<div class="single-cart-block" id="cartheaderItem_' + data.product.ID + '">' +
                         '<div class="cart-product">' +
-                        '<a href="product-details.html" class="image">' +
+                        '<a href="#" class="image">' +
                         '<img src="/public/images/product/' + data.product.img + '" alt="">' +
                         '</a>' +
                         '<div class="content">' +
                         '<h3 class="title">' +
-                        '<a href="product-details.html">' +
+                        '<a href="#">' +
                         '' + data.product.name + '' +
                         '</a>' +
                         '</h3>' +
@@ -78,74 +78,30 @@ function addcart(bookid) {
                     $('#totalCart').text(totalCart + " VND");
                     $('#CountCart').text("1");
 
-                    var productItem = '<div class="single-cart-block" id="cartheaderItem_' + data.product.ID + '">'+
-                        '<div class="cart-product">'+
-                        '<a href="product-details.html" class="image">' +
-                        '<img src="/public/images/product/'+ data.product.img +'" alt="">' +
-                            '</a>'+
-                                '<div class="content">'+
-                                    '<h3 class="title">'+
-                                        '<a href="product-details.html">'+
-                                ''+ data.product.name + ''+
-                            '</a>'+
-                                    '</h3>'+
-                        '<p class="price"><span class="qty price" id="CountCart_' + data.product.ID + '">' + data.quantity + ' </span> × <span id="sum_' + data.product.ID + '"> ' + data.priceSaleee + ' </span></p>'+
-                        ' <a href="javascript:void(0);" onclick="deleteItem(' + data.product.ID + ')" class="cross-btn"><i class="fas fa-times"></i></a>'+
-                                '</div>'+
-                        '</div>'+
-                            '</div>';                    
+                    var productItem = '<div class="single-cart-block" id="cartheaderItem_' + data.product.ID + '">' +
+                        '<div class="cart-product">' +
+                        '<a href="#" class="image">' +
+                        '<img src="/public/images/product/' + data.product.img + '" alt="">' +
+                        '</a>' +
+                        '<div class="content">' +
+                        '<h3 class="title">' +
+                        '<a href="#">' +
+                        '' + data.product.name + '' +
+                        '</a>' +
+                        '</h3>' +
+                        '<p class="price"><span class="qty price" id="CountCart_' + data.product.ID + '">' + data.quantity + ' </span> × <span id="sum_' + data.product.ID + '"> ' + data.priceSaleee + ' </span></p>' +
+                        ' <a href="javascript:void(0);" onclick="deleteItem(' + data.product.ID + ')" class="cross-btn"><i class="fas fa-times"></i></a>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                     $("#cardheaderAppenIemId").prepend(productItem);
                 }
             }
             alertify.success("<i class='fas fa-check text-success '></i> Đã thêm vào giỏ");
+           
 
         }
     })
 }
 
-
-function deleteItem(productID) {
-    $.ajax({
-        url: '/Cart/deleteitem?productID=' + productID,
-        type: 'GET',
-        beforeSend: function () {
-            $(".ajaxload-cart").fadeIn("fast");
-            $(".ajaxload-cart").fadeOut("slow");
-        },
-        success: function (data) {
-            console.log(data);
-            $("#cartheaderItem_" + productID + "").fadeOut("slow");
-            $("#cartItem_" + productID + "").fadeOut("slow"); 
-
-            var totalCart = formatter.format(data.priceTotal).replace(/\,00 ₫/, '');
-            $('#totalCart').text(totalCart + " VND");
-            $('#CountCart').text(data.countCart);
-            alertify.success("<i class='fas fa-check text-success '></i> Đã xóa 1 sản phẩm");
-        }
-    })
-}
-
-function addfavorite(productID) {
-    $.ajax({
-        url: '/ForeverProduct/Additem?productID=' + productID + '',
-        type: 'GET',
-        beforeSend: function () {
-            $(".ajaxload-cart").fadeIn("fast");
-            $(".ajaxload-cart").fadeOut("slow");
-        },
-        success: function (data) {
-            if (data.status == 1) {
-                alertify.warning("<i class='fas fa-check text-success '></i> Đã có trong sản phẩm yêu thích rồi.");
-            }
-            else if (data.status == 3) {
-                alertify.success("<i class='fas fa-check text-success '></i> Đã thêm sản phẩm vào danh sách yêu thích");
-            }
-          
-        },
-        error: function (e) {
-            alertify.error("<span class='font-weight-bold'>Thông báo: </span>Lỗi: " + e.statusText);
-            return false;
-        }
-    })
-}
 
