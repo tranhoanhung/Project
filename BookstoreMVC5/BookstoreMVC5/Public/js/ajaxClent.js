@@ -3,7 +3,28 @@
     currency: 'VND',
     minimumFractionDigits: 2
 })
+function checklogin() {
+    alertify.warning("<i class='fas fa-check text-success '></i> Vui lòng đăng nhập.");
+    return false;
+}
+function additembook(UserId,productID) {
 
+    var quantity = $("#quantity").val();
+    $.ajax({
+        url: '/them-gh?userID=' + UserId + '&productID=' + productID + '&quantity=' + quantity + '',
+        type: 'GET',
+        beforeSend: function () {
+            $('.loading-ajax-effect').fadeIn('slow');
+            $('.loading-ajax-effect').fadeOut('slow');
+        },
+        success: function (data) {
+
+            alertify.success("<i class='fas fa-check text-success '></i> Đã thêm vào giỏ");
+
+
+        }
+    })
+}
 function addcart(productID) {
 
     var quantity = $("#quantity").val();
@@ -103,5 +124,7 @@ function addcart(productID) {
         }
     })
 }
+
+
 
 

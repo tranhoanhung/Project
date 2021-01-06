@@ -27,7 +27,6 @@
     <EntitySetMapping Name="CartUsers">
       <EntityTypeMapping TypeName="BookshopModel.CartUser">
         <MappingFragment StoreEntitySet="CartUser">
-          <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="bookid" ColumnName="bookid" />
           <ScalarProperty Name="userid" ColumnName="userid" />
@@ -92,8 +91,6 @@
         <MappingFragment StoreEntitySet="Orderdetail">
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="pricesale" ColumnName="pricesale" />
-          <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="bookid" ColumnName="bookid" />
           <ScalarProperty Name="orderid" ColumnName="orderid" />

@@ -30,7 +30,6 @@
     <Property Name="userid" Type="int" />
     <Property Name="bookid" Type="int" />
     <Property Name="quantity" Type="int" />
-    <Property Name="img" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -88,8 +87,6 @@
     <Property Name="orderid" Type="int" Nullable="false" />
     <Property Name="bookid" Type="int" Nullable="false" />
     <Property Name="userid" Type="int" Nullable="false" />
-    <Property Name="price" Type="float" Nullable="false" />
-    <Property Name="pricesale" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="amount" Type="float" Nullable="false" />
   </EntityType>

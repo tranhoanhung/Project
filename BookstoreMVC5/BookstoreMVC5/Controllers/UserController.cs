@@ -144,6 +144,12 @@ namespace BookstoreMVC5.Controllers
             if (ModelState.IsValid)
             {
                 var Luser = db.Users.Where(m => m.status == 1 && m.username == uname && m.status == 1);
+                var Lemail = db.Users.Where(m => m.status == 1 && m.email == email && m.status == 1);
+                if (Lemail.Count() > 0)
+                {
+                    ViewBag.erroremail = "Email đã tồn tại";
+                    return View("loginEndRegister");
+                }
                 if (Luser.Count() > 0)
                 {
                     ViewBag.error = "Tên Đăng Nhập đã tồn tại";

@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_layoutSite.cshtml";
 }
 <section class="breadcrumb-section bg-white">
-    <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Bài viết</li>
+                    <li class="breadcrumb-item active"><a href="~/bai-viet">Bài viết</a></li>
+                    <li class="breadcrumb-item active">Chi tiết bài viết</li>
                 </ol>
             </nav>
         </div>
@@ -19,9 +19,6 @@
 <section class="inner-page-sec-padding-bottom">
     <div class="container">
         <div class="blog-post post-details mb--50">
-            @*<div class="blog-image">
-                <img src="~/public/images/post/@Model.img" alt="">
-            </div>*@
             <div class="blog-content mt--30 bg-white p-3">
                 <header>
                     <h3 class="blog-title">@Model.title</h3>
@@ -48,12 +45,13 @@
                 </article>
                 <footer class="blog-meta">
                     <div>
-                        <a href="#">3 Bình luận </a> / TAGS: <a href="#">fashion</a>, <a href="#">t-shirt</a>,
-                        <a href="#">white</a>
+                        <a href="#">Bình luận </a>
+                        / TAGS: <a href="#"></a>
                     </div>
                 </footer>
             </div>
         </div>
+
         <div class="share-block mb--50">
             <h3>Share Now</h3>
             <div class="social-links  justify-content-center  mt--10">
@@ -64,6 +62,7 @@
                 <a href="#" class="single-social social-rounded"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
+
         <section class="section-margin">
             <div class="container bg-white p-4">
                 <div class="section-title">
@@ -81,6 +80,7 @@
                 </div>
             </div>
         </section>
+    </div>
 </section>
 
 

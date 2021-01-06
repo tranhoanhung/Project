@@ -270,3 +270,4 @@ H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csproj.Cor
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csproj.CopyComplete
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.dll
 H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.pdb
+H:\Github\Project\BookstoreMVC5\BookstoreMVC5\obj\Debug\BookstoreMVC5.csprojAssemblyReference.cache

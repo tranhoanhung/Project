@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_layoutSite.cshtml";
 }
 <section class="breadcrumb-section bg-white">
-    <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Bài viết</li>
+
                 </ol>
             </nav>
         </div>
@@ -29,7 +29,6 @@
                         </a>
                         <div class="card-content">
                             <h3 class="title"><a href="~/@item.slug">@item.title</a></h3>
-                            <p class="post-meta"><span>30/10/2017 </span> | <a href="#">Admin</a></p>
                             <article>
                                 <h2 class="sr-only">
                                     Blog Article
@@ -37,7 +36,7 @@
                                 <p class="text-lowercase">
                                     @item.title ...
                                 </p>
-                                <a href="blog-details.html" class="blog-link">Đọc thêm</a>
+                                <a href="~/bai-viet/@item.slug" class="blog-link">Đọc thêm</a>
                             </article>
                         </div>
                     </div>
@@ -107,4 +106,3 @@
         console.log(t.value)
     }
 </script>
-<!--=========

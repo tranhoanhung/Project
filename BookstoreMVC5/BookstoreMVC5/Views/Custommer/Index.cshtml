@@ -32,12 +32,12 @@
                                 <i class="fas fa-tachometer-alt"></i>
                                 Thông tin tài khoản
                             </a>
-                            @*<a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Đơn hàng</a>
+                            <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Đơn hàng</a>
 
-                                <a href="#payment-method" data-toggle="tab">
-                                    <i class="fa fa-credit-card"></i>
-                                    Phương thức thanh toán
-                                </a>*@
+                            <a href="#payment-method" data-toggle="tab">
+                                <i class="fa fa-credit-card"></i>
+                                Phương thức thanh toán
+                            </a>
                             @*<a href="#address-edit" data-toggle="tab">
                                     <i class="fa fa-map-marker"></i>
                                     Địa chỉ
@@ -57,7 +57,8 @@
                                 <div class="myaccount-content">
                                     <h3>Tài khoản của bạn</h3>
                                     <div class="welcome mb-20">
-                                        <p>Hello, <strong class="text-danger font-weight-bold">
+                                        <p>
+                                            Hello, <strong class="text-danger font-weight-bold">
                                                 <strong class="text-danger font-weight-bold" id="1_fullname">@Model.fullname </strong>
                                             </strong>
                                         </p>
@@ -84,28 +85,30 @@
                                                 <tr>
                                                     <th>Mã đơn hàng</th>
                                                     <th>Tên KH</th>
-                                                    <th>Ngày tạo</th>
+                                                    <th>Điện thoại</th>
                                                     <th>Trạng thái</th>
-                                                    <th>Total</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @*@foreach (var item in ViewBag.listOrder)
-                                                    {
-                                                        <tr>
-                                                            <td>@item.ID</td>
-                                                            <td>@item.deliveryname</td>
-                                                            <td>@item.created_ate</td>
-                                                            @if (@item.status == 2)
-                                                            {
-                                                                <td>Chờ xác nhận</td>
-                                                            }
-
-                                                            <td>@item.deliveryphone</td>
-                                                            <td><a href="cart.html" class="btn">View</a></td>
-                                                        </tr>
-                                                    }*@
+                                                @foreach (var item in ViewBag.listOrder)
+                                                {
+                                                    <tr>
+                                                        <td>@item.ID</td>
+                                                        <td>@item.deliveryname</td>
+                                                        <td>@item.deliveryphone</td>
+                                                        @if (@item.status == 2)
+                                                        {
+                                                            <td>Đang giao hàng</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>Chờ xác nhận</td>
+                                                        }
+                                                        
+                                                        <td><a href="#" class="btn">View</a></td>
+                                                    </tr>
+                                                }
                                             </tbody>
                                         </table>
                                     </div>
@@ -138,7 +141,6 @@
                             </div>
                             <!-- Single Tab Content End -->
                             <!-- Single Tab Content Start -->
-                    
                             <!-- Single Tab Content End -->
                         </div>
                     </div>

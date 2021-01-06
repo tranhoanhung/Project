@@ -85,7 +85,6 @@
     <Property Name="userid" Type="Int32" />
     <Property Name="bookid" Type="Int32" />
     <Property Name="quantity" Type="Int32" />
-    <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Book" Relationship="BookshopModel.FK_Cart_Book" FromRole="CartUser" ToRole="Book" />
     <NavigationProperty Name="User" Relationship="BookshopModel.FK_Cart_User" FromRole="CartUser" ToRole="User" />
   </EntityType>
@@ -149,8 +148,6 @@
     <Property Name="orderid" Type="Int32" Nullable="false" />
     <Property Name="bookid" Type="Int32" Nullable="false" />
     <Property Name="userid" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Double" Nullable="false" />
-    <Property Name="pricesale" Type="Int32" Nullable="false" />
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="amount" Type="Double" Nullable="false" />
     <NavigationProperty Name="Book" Relationship="BookshopModel.FK_Orderdetail_Book" FromRole="Orderdetail" ToRole="Book" />

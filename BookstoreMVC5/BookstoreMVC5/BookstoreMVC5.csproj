@@ -155,7 +155,9 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CartUserController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CheckoutUserController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CustommerController.cs" />
     <Compile Include="Controllers\FavoriteController.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="Models\Publisher.cs">
       <DependentUpon>BookshopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuickViewProduct.cs" />
     <Compile Include="Models\Slider.cs">
       <DependentUpon>BookshopModel.tt</DependentUpon>
     </Compile>
@@ -319,6 +322,20 @@
     <Content Include="Public\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Public\fonts\themify.svg" />
     <Content Include="Public\images\banks.PNG" />
+    <Content Include="Public\images\banner\1.jpg" />
+    <Content Include="Public\images\banner\2.jpg" />
+    <Content Include="Public\images\banner\5.jpg" />
+    <Content Include="Public\images\banner\50-2.jpg" />
+    <Content Include="Public\images\banner\50.jpg" />
+    <Content Include="Public\images\banner\70.jpg" />
+    <Content Include="Public\images\banner\banner-11.4-e1586320111477.png" />
+    <Content Include="Public\images\banner\hmodule_banner_img1_1.jpg" />
+    <Content Include="Public\images\banner\logo\images.png" />
+    <Content Include="Public\images\banner\logo\logo-nxb_-slogan-new_.jpg" />
+    <Content Include="Public\images\banner\logo\logo.jpg" />
+    <Content Include="Public\images\banner\logo\nxbkd.png" />
+    <Content Include="Public\images\banner\logo\nxbtre.png" />
+    <Content Include="Public\images\banner\nhung-cuon-sach-van-hoc-hay.jpg" />
     <Content Include="Public\images\bg-images\MMZ-Header-2h.png" />
     <Content Include="Public\images\bg-images\slider1.jpg" />
     <Content Include="Public\images\bg-images\slider2.jpg" />
@@ -338,9 +355,6 @@
     <Content Include="Public\images\icon\quotation.png" />
     <Content Include="Public\images\icon\title-sep-icon.png" />
     <Content Include="Public\images\instagram-likes.gif" />
-    <Content Include="Public\images\logo--footer.png" />
-    <Content Include="Public\images\logo-1.jpg" />
-    <Content Include="Public\images\logo.png" />
     <Content Include="Public\images\logo_light.png" />
     <Content Include="Public\images\loi-404-la-gi.png" />
     <Content Include="Public\images\momo.PNG" />
@@ -2220,17 +2234,14 @@
       <DependentUpon>BookshopModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sliders\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Sliders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Publishers\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Publishers\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Publishers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Publishers\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Books\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Index.cshtml" />
@@ -2238,30 +2249,26 @@
     <Content Include="Areas\Admin\Views\Sliders\trash.cshtml" />
     <Content Include="Areas\Admin\Views\Books\trash.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Posts\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Topics\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Topics\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Topics\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Topics\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Topics\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\Contact\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Orderdetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_productDetailCheckOut.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_subproductOrdersuccess.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Trash.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2325,7 +2332,19 @@
     <Content Include="Views\BookView\readProduct2.cshtml" />
     <Content Include="Views\BookView\BookOfCategory2.cshtml" />
     <Content Include="Views\Favorite\favoriteList.cshtml" />
-    <Content Include="Views\Favorite\Index.cshtml" />
+    <Content Include="Views\CartUser\cartList.cshtml" />
+    <Content Include="Views\Favorite\loveRight.cshtml" />
+    <Content Include="Views\CartUser\_cartHeader.cshtml" />
+    <Content Include="Views\CheckoutUser\cancel_order.cshtml" />
+    <Content Include="Views\CheckoutUser\confirm_orderPaymentOnline.cshtml" />
+    <Content Include="Views\CheckoutUser\Index.cshtml" />
+    <Content Include="Views\CheckoutUser\oderComplete.cshtml" />
+    <Content Include="Views\CheckoutUser\PaymentView2.cshtml" />
+    <Content Include="Views\CheckoutUser\_formCheckout.cshtml" />
+    <Content Include="Views\CheckoutUser\_productDetailCheckOut.cshtml" />
+    <Content Include="Views\CheckoutUser\_subproductOrdersuccess.cshtml" />
+    <Content Include="Views\CartUser\cartRight.cshtml" />
+    <Content Include="Views\Site\QuickView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

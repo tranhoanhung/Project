@@ -1,0 +1,143 @@
+﻿@model List<BookstoreMVC5.Models.CartUser>
+@{
+    ViewBag.Title = "cartuserList";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+@{ float sum = 0;
+}
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Giỏ hàng</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- Cart Page Start -->
+<main class="cart-page-main-block inner-page-sec-padding-bottom">
+    <div class="cart_area cart-area-padding  ">
+        <div class="container">
+            <div class="page-section-title">
+                <h1>Giỏ hàng</h1>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    @Html.Partial("_MessgeAlertc")
+                    <form action="#" class="">
+                        <!-- Cart Table -->
+                        <div class="cart-table table-responsive mb--40">
+                            <table class="table">
+                                <!-- Head Row -->
+                                <thead>
+                                    <tr>
+                                        <th class="pro-thumbnail">Ảnh</th>
+                                        <th class="pro-title">Tên sản phẩm</th>
+                                        <th class="pro-price">giá</th>
+                                        <th class="pro-quantity">Số lượng</th>
+                                        <th class="pro-remove">option</th>
+                                        <th class="pro-subtotal">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Product Row -->
+                                    @if (Model.Count() == 0)
+                                    {
+                                        <spam class="text-danger">
+                                            Chưa có sản phẩm trong giỏ hàng
+                                        </spam>
+                                        //ok
+                                    }
+                                    @foreach (var iten in Model)
+                                    {
+                                        int sale = (int)iten.Book.pricesale;
+                                        float price = ((int)iten.Book.price - (int)iten.Book.price / 100 * (int)sale);
+                                        float price1 = ((int)iten.Book.price - (int)iten.Book.price / 100 * (int)sale) * ((int)iten.quantity);
+                                        float priveNsale = (int)iten.Book.price * ((int)iten.quantity);
+                                        if (sale > 0)
+                                        {
+                                            sum += ((int)iten.Book.price - (int)iten.Book.price / 100 * (int)sale) * ((int)iten.quantity);
+                                        }
+                                        else
+                                        {
+                                            sum += (int)iten.Book.price * (int)iten.quantity;
+                                        }
+
+                                        <tr id="cartItem_@iten.Book.ID">
+
+                                            <td class="pro-thumbnail">
+                                                <a href="#">
+                                                    <img src="~/Public/images/product/@iten.Book.img" alt="Product">
+                                                </a>
+                                            </td>
+                                            <td class="pro-title"><a href="#">@iten.Book.name</a></td>
+                                            <td class="pro-price">
+                                                <del class="price-old">@iten.Book.price.ToString("N0") VND</del>
+                                                <span>@price.ToString("N0") VND </span>
+                                            </td>
+                                            <td class="pro-quantity">
+                                                <input type="hidden" name="P_SanPhamID" value="@iten.Book.ID" />
+                                                <input type="number" class="form-control" value="@iten.quantity" min="1" max="10" step="1" data-decimals="0" name="P_quantity" required>
+                                            </td>
+                                            <td class="pro-remove">
+                                                <a href="~/xoa-san-pham/@iten.ID"><i class="far fa-trash-alt"></i></a>
+
+                                            </td>
+                                            <td class="pro-subtotal"><span>@price1.ToString("N0") VND</span></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-section-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12 mb--30 mb-lg--0">
+                    <!-- slide Block 5 / Normal Slider -->
+                    <div class="cart-block-title">
+                        <h2>Có thể bạn thích</h2>
+                    </div>
+                    <div class="product-slider sb-slick-slider" data-slick-setting='{
+							          "autoplay": true,
+							          "autoplaySpeed": 8000,
+							          "slidesToShow": 2
+									  }' data-slick-responsive='[{"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                                                    {"breakpoint":768, "settings": {"slidesToShow": 3} },
+                                                                    {"breakpoint":575, "settings": {"slidesToShow": 2} },
+                                                                    {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                                    {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                                                ]'>
+
+                        @Html.Action("BestsellerCart", "Site")
+                    </div>
+                </div>
+                <!-- Cart Summary -->
+                <div class="col-lg-6 col-12 d-flex">
+                    <div class="cart-summary">
+                        <div class="cart-summary-wrap">
+                            <h4><span>Thanh toán</span></h4>
+                            <p>Tổng tiền hàng <span class="text-primary">@sum.ToString("N0") VND</span></p>
+                            <p>Tiền shipping <span class="text-primary">0 VND</span></p>
+                            <p>Tiền mã giảm giá(nếu có) <span class="text-primary">0 VND</span></p>
+                            <h2>Tổng tiền thanh toán <span class="text-primary">@sum.ToString("N0") VND</span></h2>
+                        </div>
+                        <div class="cart-summary-button">
+                            <a href="~/thanh-toan-user/@ViewBag.ID" class="checkout-btn c-btn btn--primary">Thanh toán</a>
+                            <button class="update-btn c-btn btn-outlined">Mua thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

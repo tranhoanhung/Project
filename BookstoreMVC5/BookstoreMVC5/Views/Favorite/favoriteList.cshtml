@@ -5,7 +5,6 @@
 }
 
 <section class="breadcrumb-section bg-white">
-    <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
@@ -17,6 +16,7 @@
         </div>
     </div>
 </section>
+
 <!-- Wishlist Page Start -->
 <div class="cart_area inner-page-sec-padding-bottom">
     <div class="container bg-white p-3">
@@ -37,12 +37,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-
                                 @if (Model.Count() == 0)
                                 {
                                     <spam class="text-danger">
-                                        Chưa có sản phẩm yêu thích nào
+                                        Chưa có sản phẩm yêu thích nào?
                                     </spam>
                                 }
                                 @foreach (var iten in Model)
@@ -56,11 +54,11 @@
                                             </a>
                                         </td>
                                         <td class="pro-title"><a href="~/san-pham/@iten.Book.slug">@iten.Book.name</a></td>
-
                                         <td class="pro-price"><span>@iten.Book.price.ToString("N0") VND</span></td>
                                         <td class="pro-price"><span>@price.ToString("N0") VND</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
+                                        <td class="pro-remove"><a href="~/xoa-yeu-thich/@iten.ID"><i class="far fa-trash-alt"></i></a></td>
                                     </tr>
+                                    //ok
                                 }
                             </tbody>
                         </table>

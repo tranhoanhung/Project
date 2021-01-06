@@ -18,8 +18,6 @@ namespace BookstoreMVC5.Models
         public int orderid { get; set; }
         public int bookid { get; set; }
         public int userid { get; set; }
-        public double price { get; set; }
-        public int pricesale { get; set; }
         public int quantity { get; set; }
         public double amount { get; set; }
     

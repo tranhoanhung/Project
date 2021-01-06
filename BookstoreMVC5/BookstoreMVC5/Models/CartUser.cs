@@ -18,7 +18,6 @@ namespace BookstoreMVC5.Models
         public Nullable<int> userid { get; set; }
         public Nullable<int> bookid { get; set; }
         public Nullable<int> quantity { get; set; }
-        public string img { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

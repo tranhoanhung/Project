@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BookstoreMVC5.Models.Orderdetail>
+<table class="table order-details-table">
+    <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Tổng tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int sum = 0;}
+        @foreach (var item in Model)
+        {
+            sum += (int)item.amount;
+            <tr>
+                <td> 
+                @Html.Action("subnameProduct", "Checkout", new { id = item.bookid })  
+                <strong>× @item.quantity</strong></td>
+                <td><span>@item.amount.ToString("N0") VND</span></td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Tạm tính:</th>
+            <td><span>@sum.ToString("N0") VND</span></td>
+        </tr>
+        <tr>
+            <th>Tổng:</th>
+            <td><span>@sum.ToString("N0") VND</span></td>
+        </tr>
+    </tfoot>
+</table>

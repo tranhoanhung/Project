@@ -16,6 +16,7 @@ namespace BookstoreMVC5.Controllers
         BookshopEntities db = new BookshopEntities();
         // GET: Checkout
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //Index
         public ActionResult Index()
         {
             var cart = Session[SessionCart];
@@ -33,9 +34,7 @@ namespace BookstoreMVC5.Controllers
 
             return View(list);
         }
-
-
-        //ok thanh toán
+        //Xử lý thành toán check payment_metmod
         [HttpPost]
         public ActionResult Index(Order order)
         {
@@ -46,10 +45,10 @@ namespace BookstoreMVC5.Controllers
             string orderCode = Mystring.ToStringNospace(numIterations + "" + time);
             string sumOrder = Request["sumOrder"];
             string payment_method = Request["option_payment"];
-            // Neu Ship COde
+            // payment_method = COD
             if (payment_method.Equals("COD"))
             {
-                // cap nhat thong tin sau khi dat hang thanh cong
+                // Cập nhật thông tin khi thanh toán thành công
                 saveOrder(order, "COD", 2, orderCode);
                 var cart = Session[SessionCart];
                 var list = new List<CartItem>();
@@ -58,7 +57,7 @@ namespace BookstoreMVC5.Controllers
                 var listProductOrder = db.Orders.Where(m => m.ID == order.ID).FirstOrDefault();
                 return View("oderComplete", listProductOrder);
             }
-            //Neu Thanh toan MOMO
+            // payment_method = MOMO
             else if (payment_method.Equals("MOMO"))
             {
                 //request params need to request to MoMo system
@@ -119,11 +118,8 @@ namespace BookstoreMVC5.Controllers
             }
             return View("payment");
         }
-        //end
-
-
-
-        //Khi huy thanh toán MOMO
+ 
+        //Khi hủy thanh toán MOMO
         public ActionResult cancel_order_momo()
         {
 
@@ -151,7 +147,7 @@ namespace BookstoreMVC5.Controllers
 
             return View("confirm_orderPaymentOnline");
         }
-        //function ssave order when order success!
+        //Save thông tin order and ordertails
         public void saveOrder(Order order, string paymentMethod, int StatusPayment, string ordercode)
         {
             var cart = Session[SessionCart];
@@ -164,7 +160,7 @@ namespace BookstoreMVC5.Controllers
             if (ModelState.IsValid)
             {
                 order.code = ordercode;
-                order.userid = 1;
+                order.userid = 0;
                 order.deliveryPaymentMethod = paymentMethod;
                 order.date_created = DateTime.Now;
                 order.status = 2;
@@ -176,8 +172,7 @@ namespace BookstoreMVC5.Controllers
                 ViewBag.email = order.deliveryemail;
                 ViewBag.address = order.deliveryaddress;
                 ViewBag.code = order.code;
-                ViewBag.phone = order.deliveryphone;
-                
+                ViewBag.phone = order.deliveryphone;        
 
                 foreach (var item in list)
                 {
@@ -193,45 +188,41 @@ namespace BookstoreMVC5.Controllers
                         price = (float)item.product.price * (int)item.quantity;
                     }
                     orderdetail.orderid = order.ID;
-                    orderdetail.bookid = item.product.ID;
-                    
-                    orderdetail.pricesale = (int)item.product.pricesale;
-                    orderdetail.price = item.product.price;
+                    orderdetail.bookid = item.product.ID;                  
+                    //orderdetail.pricesale = (int)item.product.pricesale;
+                    //orderdetail.price = item.product.price;
                     orderdetail.quantity = item.quantity;
                     orderdetail.amount = price;
                     db.Orderdetails.Add(orderdetail);
                     db.SaveChanges();
                 }
-
             }
         }
-        //
-
+        //Product list checkout hoàn tất
         public ActionResult productDetailCheckOut(int orderId)
         {
             var list = db.Orderdetails.Where(m => m.orderid == orderId).ToList();
             return View("_productDetailCheckOut", list);
-
         }
+        //Thông tin order 
         public ActionResult orderDetail(int orderId)
         {
 
             var single = db.Orders.Find(orderId);
             return View("oderComplete", single);
         }
-
+        //Lấy link book
         public ActionResult subnameProduct(int id)
         {
             var list = db.Books.Find(id);
             return View("_subproductOrdersuccess", list);
 
         }
+        //Form fill 
         public ActionResult formCheckOut()
         {
             return View("_formCheckout");
 
         }
-
-
     }
 }

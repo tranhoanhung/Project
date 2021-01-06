@@ -21,12 +21,14 @@ Promotion Section One ---------------------------------------------slide khuyen 
         <div class="row space-db--30">
             <div class="col-lg-6 mb--30">
                 <a href="" class="promo-image promo-overlay">
-                    <img src="~/public/images/others/promo-banner-with-text.jpg" alt="">
+                    <img width="540px" height="246px" src="~/Public/images/banner/2.jpg" />
+                    @*<img src="~/public/images/others/promo-banner-with-text.jpg" alt="">*@
                 </a>
             </div>
             <div class="col-lg-6 mb--30">
                 <a href="" class="promo-image promo-overlay">
-                    <img src="~/public/images/others/promo-banner-with-text-2.jpg" alt="">
+                    <img src="~/Public/images/banner/1.jpg" />
+                    @*<img src="~/public/images/others/promo-banner-with-text-2.jpg" alt="">*@
                 </a>
             </div>
         </div>
@@ -76,7 +78,7 @@ Home Slider Tab
                 <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
                          data-slick-setting='{
-                                        "autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":1,"dots":true}'
+                                        "autoplay": true,"autoplaySpeed": 8000,"slidesToShow": 5,"rows":2,"dots":true}'
                          data-slick-responsive='[{"breakpoint":1200, "settings": {"slidesToShow": 3} },
                                                 {"breakpoint":768, "settings": {"slidesToShow": 2} },
                                                 {"breakpoint":480, "settings": {"slidesToShow": 1} },
@@ -121,8 +123,8 @@ Home Two Column Section
 
                     <div class="single-side">
                         <a href="#" class="promo-image promo-overlay">
+                            <img src="~/Public/images/banner/5.jpg" />
 
-                            <img src="~/Public/images/others/promo-banner-small-with-text.jpg" />
                         </a>
                     </div>
                     <div class="single-block bg-white">
@@ -180,7 +182,7 @@ Home Two Column Section
     </div>
 </section>
 
-@Html.Action("Index", "Post")
+
 
 <!--=================================
 Promotion Section Two
@@ -193,15 +195,51 @@ Promotion Section Two
                 <img src="~/public/images/others/promo-banner-contained.jpg" alt="Alternate Text" />
             </a>
             <div class="promo-text w-100 justify-content-center justify-content-md-left">
-                <div class="row w-100">
-                    <div class="col-lg-8">
-                        <div class="promo-text-inner">
-                            <h2>Mua 10 tặng 1.</h2>
-                            <h3>Sinh nhật shop giảm sốc, giảm đến 65% .</h3>
-                            <a href="#" class="btn btn-outlined--red-faded">Xem thêm</a>
+                    <div class="row w-100">
+                        <div class="col-lg-8">
+                            <div class="promo-text-inner">
+                                <h2>Mua 10 tặng 1.</h2>
+                                <h3>Sinh nhật shop giảm sốc, giảm đến 65% .</h3>
+                                <a href="#" class="btn btn-outlined--red-faded">Xem thêm</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+        </div>
+    </div>
+</section>
+@Html.Action("Index", "Post")
+<section class="section-margin">
+    <h2 class="sr-only">Brand Slider</h2>
+    <div class="container">
+        <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
+                                                "autoplay": true,
+                                                "autoplaySpeed": 8000,
+                                                "slidesToShow": 6
+                                                }' data-slick-responsive='[
+                    {"breakpoint":992, "settings": {"slidesToShow": 4} },
+                    {"breakpoint":768, "settings": {"slidesToShow": 3} },
+                    {"breakpoint":575, "settings": {"slidesToShow": 3} },
+                    {"breakpoint":480, "settings": {"slidesToShow": 2} },
+                    {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                ]'>
+            <div class="single-slide">
+
+                <img width="180px" height="100px"  src="~/Public/images/banner/logo/images.png" />
+
+            </div>
+            <div class="single-slide">
+                <img width="180px" height="100px" src="~/Public/images/banner/logo/logo-nxb_-slogan-new_.jpg" />
+                 
+            </div>
+            <div class="single-slide">
+                <img width="180px" height="100px" src="~/Public/images/banner/logo/logo.jpg" />
+            </div>
+            <div class="single-slide">
+                <img width="180px" height="100px" src="~/Public/images/banner/logo/nxbkd.png" />
+            </div>
+            <div class="single-slide">
+                <img width="180px" height="100px" src="~/Public/images/banner/logo/nxbtre.png" />
             </div>
         </div>
     </div>

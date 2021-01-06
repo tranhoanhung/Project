@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <!-- Header top menu left -->
-                <div class="col-lg-8">
+                <div class="col-lg-4">
                     <ul class="header-top-list">
                         <li>
                             <a> Mở cửa: 9h đến 20h, chủ nhật 10h đến 19h</a>
@@ -14,7 +14,7 @@
                     </ul>
                 </div>
                 <!-- Header top menu right -->
-                <div class="col-lg-4 flex-lg-right">
+                <div class="col-lg-8 flex-lg-right">
                     <ul class="header-top-list">
                         <li class="dropdown-trigger language-dropdown">
                             @if (ViewBag.username == null)
@@ -28,15 +28,28 @@
                             else
                             {
                                 <a href=""><i class="icons-left fas fa-user"></i>Helu: @ViewBag.fullname</a>
+
                                 <i class="fas fa-chevron-down dropdown-arrow"></i>
                                 <ul class="dropdown-box">
                                     <li> <a href="~/thong-tin-kh">Tài khoản</a></li>
                                     <li> <a href="~/yeu-thich/@ViewBag.ID">Yêu thích</a></li>
-                                    <li> <a href="">Quản trị</a></li>
+                                    <li> <a href="/admin">Quản trị</a></li>
                                     <li> <a href="~/Custommer/logout">Thoát</a></li>
                                 </ul>
                             }
                         </li>
+
+                        @*<li>
+                            <a href=""><i class="icons-left fas fa-user"></i> Đăng ký</a>
+                        </li>                       
+                        <li>
+                            <a href=""><i class="icons-left fas fa-heart"></i> Yêu thích (0)</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="icons-left fas fa-share"></i> Thanh toán</a>
+                        </li>*@
+
+
                         <li>
                             <a href=""><i class="icons-left fas fa-star"></i> Khuyến mãi hot</a>
                         </li>
@@ -78,9 +91,11 @@
                                         <p>Hỗ trợ 24/7</p>
                                         <p class="font-weight-bold number"> +84783403999</p>
                                     </div>
+
                                 </div>
                             </div>
                             @Html.Action("cart_header", "Cart")
+                            @*@Html.Action("cart_header", "CartUser")*@
                         </div>
                         <!-- include('menu.htm') -->
                     </div>
@@ -94,7 +109,7 @@
             <div class="row  ">
                 <!--Category-->
                 <div class="col-lg-3">
-                    @Html.Action("Category", "Modules") 
+                    @Html.Action("Category", "Modules")
                 </div>
 
                 <!--Main menu-->
@@ -127,7 +142,7 @@
                             <button>Tìm kiếm</button>
                         </form>
                     </div>
-                    
+
                     @Html.Action("MobileCategory", "Modules")
                 </div>
                 <div class="col-md-3 col-5  order-md-3 text-right">
@@ -156,9 +171,9 @@
             <!-- search box start -->
             <div class="search-box offcanvas">
                 @*<form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
-                    <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
-                    <button>Tìm kiếm</button>
-                </form>*@
+                        <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
+                        <button>Tìm kiếm</button>
+                    </form>*@
                 <form method="GET" action="~/tim-kiem/">
                     <input type="search" name="keyw" placeholder="Tìm kiếm sách...">
                     <button class="search-btn"><i class="ion-ios-search-strong"></i></button>
@@ -171,7 +186,7 @@
                 <nav class="off-canvas-nav">
                     <ul class="mobile-menu main-mobile-menu">
                         <div class="main-navigation ">
-                          @Html.Action("Mainmenu", "Modules")
+                            @Html.Action("Mainmenu", "Modules")
                         </div>
                     </ul>
                 </nav>
@@ -285,11 +300,12 @@
     .text-darkk ul li a {
         color: #1a1717 !important;
     }
+
         .text-darkk ul li a:hover {
             color: #62ab00 !important;
         }
-</style>    
+</style>
 
-        
 
-    
+
+

@@ -17,11 +17,12 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+            var list = db.Orders.Where(m => m.status != 0).OrderByDescending(m => m.ID).ToList();
+            return View(list);
         }
 
         // GET: Admin/Orders/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detail(int? id)
         {
             if (id == null)
             {
@@ -32,96 +33,64 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(order);
+            var sigleOrder = db.Orders.Where(m => m.ID == id).First();
+
+            return View("Orderdetail", sigleOrder);
         }
 
-        // GET: Admin/Orders/Create
-        public ActionResult Create()
+        public ActionResult Status(int id)
         {
-            return View();
-        }
-
-        // POST: Admin/Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,code,userid,date_created,deliverydate,deliveryaddress,deliveryname,deliveryphone,deliveryemail,deliveryPaymentMethod,status")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(order);
-        }
-
-        // GET: Admin/Orders/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,code,userid,date_created,deliverydate,deliveryaddress,deliveryname,deliveryphone,deliveryemail,deliveryPaymentMethod,status")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(order);
-        }
-
-        // GET: Admin/Orders/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
+            Order morder = db.Orders.Find(id);
+            morder.status = (morder.status == 1) ? 2 : 1;
+            db.Entry(morder).State = EntityState.Modified;
             db.SaveChanges();
+            Message.set_flash("Thay đổi trang thái thành công", "success");
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
+        //trash
+        public ActionResult trash()
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            var list = db.Orders.Where(m => m.status == 0).ToList();
+            return View("Trash", list);
+        }
+        public ActionResult Deltrash(int id)
+        {
+            Order morder = db.Orders.Find(id);
+            morder.status = 0;
+            db.Entry(morder).State = EntityState.Modified;
+            db.SaveChanges();
+            Message.set_flash("Xóa thành công", "success");
+            return RedirectToAction("Index");
+        }
+        public ActionResult productDetailCheckOut(int orderId)
+        {
+            var list = db.Orderdetails.Where(m => m.orderid == orderId).ToList();
+            return View("_productDetailCheckOut", list);
+
+        }
+
+        public ActionResult subnameProduct(int id)
+        {
+            var list = db.Books.Find(id);
+            return View("_subproductOrdersuccess", list);
+
+        }
+        public ActionResult Retrash(int id)
+        {
+            Order morder = db.Orders.Find(id);
+            morder.status = 2;
+            db.Entry(morder).State = EntityState.Modified;
+            db.SaveChanges();
+            Message.set_flash("Khôi phục thành công", "success");
+            return RedirectToAction("trash");
+        }
+        public ActionResult deleteTrash(int id)
+        {
+            Order morder = db.Orders.Find(id);
+            db.Orders.Remove(morder);
+            db.SaveChanges();
+            Message.set_flash("Đã xóa vĩnh viễn 1 Đơn hàng", "success");
+            return RedirectToAction("trash");
         }
     }
 }

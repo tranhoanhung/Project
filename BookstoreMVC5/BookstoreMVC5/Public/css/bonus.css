@@ -1,4 +1,12 @@
-
+.cart-widget .icon {
+    font-size: 34px;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 5px;
+    margin-left: 5px;
+}
 .bg-greendark {
   background: #008744 !important; }
 
@@ -259,4 +267,135 @@
     margin-top: -100px;
     margin-left: -100px;
 }
+
+.tempFixed .itemFixed.cartFixed {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 33px;
+    background: #62ab00;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, .3);
+    bottom: 130px;
+}
+
+.tempFixed .cartFixed.loading:after {
+    content: '';
+    border: 2px solid #f8f8f8;
+    border-top: 2px solid #1ba8ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    opacity: 1;
+}
+
+.tempFixed .itemFixed.cartFixed a {
+    color: #fff;
+    line-height: 55px;
+}
+
+    .tempFixed .itemFixed.cartFixed a i {
+        font-size: 25px;
+    }
+
+#cartCount {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1ba8ff;
+    top: -5px;
+    right: -8px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 5;
+}
+
+
+.tempFixed .itemFixed.favoriteFixed {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 33px;
+    background: #d21212;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, .3);
+    bottom: 70px;
+}
+
+.tempFixed .favoriteFixed.loading:after {
+    content: '';
+    border: 2px solid #f8f8f8;
+    border-top: 2px solid #1ba8ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    opacity: 1;
+}
+
+.tempFixed .itemFixed.favoriteFixed a {
+    color: #fff;
+    line-height: 55px;
+}
+
+    .tempFixed .itemFixed.favoriteFixed a i {
+        font-size: 25px;
+    }
+
+#favoriteCount {
+    width: 25px;
+    height: 25 px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1ba8ff;
+    top: -5px;
+    right: -8px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 5;
+}
+
+
+
+.tempFixed .itemFixed {
+    margin-top: 10px;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+    .tempFixed .itemFixed.hotLine label {
+        display: block;
+        position: relative;
+    }
+
+        .tempFixed .itemFixed.hotLine label a > span {
+            margin: 0 5px 0 -25px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            background: url(../images/hot.png) top left no-repeat;
+        }
 

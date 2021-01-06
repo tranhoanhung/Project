@@ -43,6 +43,22 @@ namespace BookstoreMVC5
                 defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Gio hang user",
+                url: "gio-hang-user/{id}",
+                defaults: new { controller = "CartUser", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "them gh",
+                url: "them-gh",
+                defaults: new { controller = "CartUser", action = "Additembook", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "xoa san pham",
+                url: "xoa-san-pham/{id}",
+                defaults: new { controller = "CartUser", action = "detete", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "xoa gio hang",
                 url: "xoa-item",
                 defaults: new { controller = "Cart", action = "deleteitem", id = UrlParameter.Optional }
@@ -56,6 +72,11 @@ namespace BookstoreMVC5
                 name: "them ds yeu thich",
                 url: "them-ds-yeu-thich",
                 defaults: new { controller = "Favorite", action = "Additemlove", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "xoa yeu thich",
+                url: "xoa-yeu-thich/{id}",
+                defaults: new { controller = "Favorite", action = "detete", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -72,6 +93,22 @@ namespace BookstoreMVC5
                 name: "thanh toan thanh cong",
                 url: "confirm-orderPaymentOnlin",
                 defaults: new { controller = "Checkout", action = "confirm_orderPaymentOnline", id = UrlParameter.Optional }
+            );
+            //test user
+            routes.MapRoute(
+                name: "thanh toan 2",
+                url: "thanh-toan-user/{id}",
+                defaults: new { controller = "CheckoutUser", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "thanh toan momo 2",
+                url: "confirm-orderPaymentOnline-momo2",
+                defaults: new { controller = "CheckoutUser", action = "confirm_orderPaymentOnline_momo", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "thanh toan thanh cong 2",
+                url: "confirm-orderPaymentOnlin2",
+                defaults: new { controller = "CheckoutUser", action = "confirm_orderPaymentOnline", id = UrlParameter.Optional }
             );
 
 
@@ -134,16 +171,16 @@ namespace BookstoreMVC5
                 url: "doi-mat-khau/{id}",
                 defaults: new { controller = "Custommer", action = "ChangePassWord", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "SiteSlug",
-                url: "{slug}",
-                defaults: new { controller = "Site", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "SiteSlug",
+            //    url: "{slug}",
+            //    defaults: new { controller = "Site", action = "Index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Site", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Site", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

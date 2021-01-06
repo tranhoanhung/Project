@@ -201,7 +201,7 @@ input[type="number"] {
   float: none; }
 
 #scrollUp {
-  bottom: 80px;
+  bottom: 200px;
   right: 10px;
   padding: 10px 15px;
   text-align: center;
@@ -15324,7 +15324,9 @@ input[type="number"] {
     @media (min-width: 992px) {
       .section-title h2 {
         font-size: 25px;
-        padding-bottom: 31px; } }
+        padding-bottom: 31px;
+        padding-top: 30px;
+      } }
   .section-title--bordered {
     position: relative;
     border-bottom: 1px solid #e5e5e5; }
@@ -15417,7 +15419,9 @@ input[type="number"] {
     flex: 50%;
     padding-right: 10px; }
     .blog-card .image img {
-      width: 100%; }
+        height:200px;
+      width: 100%;
+    }
   .blog-card .content {
     -webkit-box-flex: 50%;
     -ms-flex: 50%;
@@ -16526,7 +16530,7 @@ input[type="number"] {
 .cart-block {
   padding: 10px 0; }
   .cart-block:before {
-    content: "\f23d";
+/*    content: "\f23d";*/
     font-family: "Font Awesome 5 Brands";
     font-size: 32px;
     color: #ffba00;

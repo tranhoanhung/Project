@@ -14,14 +14,12 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
     {
         private BookshopEntities db = new BookshopEntities();
 
-        // GET: Admin/Topics
         public ActionResult Index()
         {
             var list = db.Topics.Where(m => m.status != 0).OrderByDescending(m => m.ID).ToList();
             return View(list);
         }
 
-        // GET: Admin/Topics/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,16 +34,12 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(topic);
         }
 
-        // GET: Admin/Topics/Create
         public ActionResult Create()
         {
             ViewBag.listtopic = db.Topics.Where(m => m.status != 0).ToList();
             return View();
         }
 
-        // POST: Admin/Topics/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Topic topic)
@@ -64,7 +58,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(topic);
         }
 
-        // GET: Admin/Topics/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,9 +73,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(topic);
         }
 
-        // POST: Admin/Topics/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Topic topic)
@@ -131,39 +121,14 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return RedirectToAction("trash");
         }
 
-        // GET: Admin/Topics/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult deleteTrash(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Topic topic = db.Topics.Find(id);
-            if (topic == null)
-            {
-                return HttpNotFound();
-            }
-            return View(topic);
-        }
-
-        // POST: Admin/Topics/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Topic topic = db.Topics.Find(id);
-            db.Topics.Remove(topic);
+            Topic mtopic = db.Topics.Find(id);
+            db.Topics.Remove(mtopic);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            Message.set_flash("Đã xóa vĩnh viễn 1 Chủ đề", "success");
+            return RedirectToAction("trash");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

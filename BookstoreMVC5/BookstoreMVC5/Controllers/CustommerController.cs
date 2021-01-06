@@ -17,6 +17,7 @@ namespace BookstoreMVC5.Controllers
         public ActionResult Index(int? id)
         {
             User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
+            ViewBag.listOrder = db.Orders.Where(m => m.userid == sessionUser.ID).ToList();
             return View(sessionUser);
         }
         public ActionResult logout()
@@ -111,7 +112,6 @@ namespace BookstoreMVC5.Controllers
                     updatedPass.img = "bav";
                     updatedPass.password = newPass;
                     updatedPass.status = 1;
-
                     db.Users.Attach(updatedPass);
                     db.Entry(updatedPass).State = System.Data.Entity.EntityState.Modified;
                     await db.SaveChangesAsync();

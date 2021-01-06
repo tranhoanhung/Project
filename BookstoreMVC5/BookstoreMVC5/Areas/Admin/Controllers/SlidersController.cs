@@ -37,16 +37,12 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(slider);
         }
 
-        // GET: Admin/Sliders/Create
         public ActionResult Create()
         {
             ViewBag.listCate = db.Sliders.Where(m => m.status != 0).ToList();
             return View();
         }
 
-        // POST: Admin/Sliders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Slider slider, HttpPostedFileBase file)
@@ -65,10 +61,10 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
                 slider.date_created = DateTime.Now;
                 db.Sliders.Add(slider);
                 db.SaveChanges();
-                //Message.set_flash("Thêm thành công", "success");
+                Message.set_flash("Thêm thành công", "success");
                 return RedirectToAction("Index");
             }
-            //Message.set_flash("Thêm thất bại", "danger");
+            Message.set_flash("Thêm thất bại", "danger");
             return View(slider);
         }
 
@@ -88,9 +84,7 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(slider);
         }
 
-        // POST: Admin/Sliders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Slider slider)
@@ -117,38 +111,13 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(slider);
         }
 
-        // GET: Admin/Sliders/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Slider slider = db.Sliders.Find(id);
-            if (slider == null)
-            {
-                return HttpNotFound();
-            }
-            return View(slider);
-        }
-
-        // POST: Admin/Sliders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Slider slider = db.Sliders.Find(id);
-            db.Sliders.Remove(slider);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
         public ActionResult Status(int id)
         {
             Slider slider = db.Sliders.Find(id);
             slider.status = (slider.status == 1) ? 2 : 1;
             db.Entry(slider).State = EntityState.Modified;
             db.SaveChanges();
-            //Message.set_flash("Thay đổi trang thái thành công", "success");
+            Message.set_flash("Thay đổi trang thái thành công", "success");
             return RedirectToAction("Index");
         }
 
@@ -173,14 +142,13 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("trash");
         }
-
-        protected override void Dispose(bool disposing)
+        public ActionResult deleteTrash(int id)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            Slider slider = db.Sliders.Find(id);
+            db.Sliders.Remove(slider);
+            db.SaveChanges();
+            Message.set_flash("Đã xóa vĩnh viễn 1 sản phẩm", "success");
+            return RedirectToAction("trash");
         }
     }
 }

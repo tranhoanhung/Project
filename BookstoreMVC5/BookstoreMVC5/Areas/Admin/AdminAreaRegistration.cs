@@ -53,6 +53,16 @@ namespace BookstoreMVC5.Areas.Admin
                 new { Controller = "Contact", action = "Index", id = UrlParameter.Optional }
             );
             context.MapRoute(
+                "Admin_orders",
+                "Admin/Orders",
+                new { Controller = "Orders", action = "Index", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
+                "Admin_users",
+                "Admin/Users",
+                new { Controller = "Users", action = "Index", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { Controller = "Dashboard", action = "Index", id = UrlParameter.Optional } 

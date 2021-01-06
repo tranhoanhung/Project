@@ -1,0 +1,73 @@
+﻿@model List<BookstoreMVC5.Models.CartUser>
+<div class="icon">
+    <i class="ion-bag"></i>
+</div>
+<div class="cart-block">
+    <div class="cart-total">
+        @if (ViewBag.username == null)
+        {
+
+        }
+        else
+        {
+            <span id="CountCart" class="text-number">@ViewBag.total</span>
+        }
+        <span class="text-item">
+            Giỏ hàng
+        </span>
+    </div>
+    <div class="cart-dropdown-block" id="cardheaderAppenIemId">
+        @*@Html.Action("productDetailUser", "CartUser", new { userId = @ViewBag.ID })*@
+        @*@{ float sum = 0;
+        }*@
+        @if (ViewBag.username == null)
+        {
+            <h2>giỏ hàng trống</h2>
+        }
+        else
+        {
+            @foreach (var item in ViewBag.listCart)
+            {
+                //int sale = (int)item.Book.pricesale;
+                //float price = ((int)item.Book.price - (int)item.Book.price / 100 * (int)sale);
+                //float price1 = ((int)item.Book.price - (int)item.Book.price / 100 * (int)sale) * ((int)item.quantity);
+                //float priveNsale = (int)item.Book.price * ((int)item.quantity);
+                //if (sale > 0)
+                //{
+                //    sum += ((int)item.Book.price - (int)item.Book.price / 100 * (int)sale) * ((int)item.quantity);
+                //}
+                //else
+                //{
+                //    sum += (int)item.Book.price * (int)item.quantity;
+                //}
+                <div class="single-cart-block" id="cartheaderItem_@item.Book.ID">
+                    <div class="cart-product">
+                        <a href="#" class="image">
+                            <img src="~/public/images/product/@item.Book.img" alt="">
+                        </a>
+                        <div class="content">
+                            <h3 class="title">
+                                <a href="#">
+                                    @item.Book.name
+                                </a>
+                            </h3>
+                            <p class="price"><span class="qty price" id="CountCart_@item.Book.ID">@item.quantity </span> × <span id="sum_@item.Book.ID">@*@price.ToString("N0")*@ VND </span></p>
+                            <a href="javascript:void(0);" onclick="deleteItem(@item.Book.ID)" class="cross-btn"><i class="fas fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class=" single-cart-block ">
+            <div class="btn-block">
+                <a href="~/gio-hang-user/@ViewBag.ID" class="btn">
+                    Xem giỏ hàng <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="~/thanh-toan-user/@ViewBag.ID" class="btn btn--primary">
+                    Thanh toán <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

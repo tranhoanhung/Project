@@ -1,66 +1,9 @@
 ﻿@model List<BookstoreMVC5.Models.CartItem>
-@*<div class="cart-block">
-    <div class="cart-total">
-        <span id="CountCart" class="text-number">
-            @Model.Count()
-        </span>
-        <span class="text-item">
-            Giỏ hàng 
-        </span>
-        <span class="price">
-            <span id="totalCart">
-                @ViewBag.CartTotal.ToString("N0") VND
-            </span>  <i class="fas fa-chevron-down"></i>
-        </span>
-    </div>
-    <div class="cart-dropdown-block" id="cardheaderAppenIemId">
-        @{ float sum = 0;
-        }
-        @foreach (var item in Model)
-        {
-            int sale = (int)item.product.pricesale;
-            float price = ((int)item.product.price - (int)item.product.price / 100 * (int)sale);
-            float price1 = ((int)item.product.price - (int)item.product.price / 100 * (int)sale) * (item.quantity);
-            float priveNsale = (int)item.product.price * item.quantity;
-            if (sale > 0)
-            {
-                sum += ((int)item.product.price - (int)item.product.price / 100 * (int)sale) * ((int)item.quantity);
-            }
-            else
-            {
-                sum += (int)item.product.price * (int)item.quantity;
-            }
-            <div class="single-cart-block" id="cartheaderItem_@item.product.ID">
-                <div class="cart-product">
-                    <a href="#" class="image">
-                        <img height="75px" width="50px" src="~/public/images/product/@item.product.img" alt="">
-                    </a>
-                    <div class="content">
-                        <h3 class="title">
-                            <a href="product-details.html">
-                                @item.product.name
-                            </a>
-                        </h3>
-                        <p class="price"><span class="qty price" id="CountCart_@item.product.ID">@item.quantity </span> × <span id="sum_@item.product.ID">@price.ToString("N0") VND </span></p>
-                        <a href="javascript:void(0);" onclick="deleteItem(@item.product.ID)" class="cross-btn"><i class="fas fa-times"></i></a>
-                    </div>
-                </div>
-            </div>
-        }
-            <div class=" single-cart-block ">
-                <div class="btn-block">
-                    <a href="~/gio-hang" class="btn">
-                        Xem giỏ hàng <i class="fas fa-chevron-right"></i>
-                    </a>
-                    <a href="~/thanh-toan" class="btn btn--primary">
-                        Thanh toán <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-</div>*@
-
+<div class="icon">
+    <i class="ion-bag"></i>
+</div>
 <div class="cart-block">
+
     <div class="cart-total">
         <span id="CountCart" class="text-number">
             @Model.Count()

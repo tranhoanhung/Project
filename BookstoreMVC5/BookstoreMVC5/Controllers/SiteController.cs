@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookstoreMVC5.library;
 using BookstoreMVC5.Models;
 using PagedList;
 
@@ -12,25 +13,24 @@ namespace BookstoreMVC5.Controllers
     {
         // GET: Site
         BookshopEntities db = new BookshopEntities();
-        public ActionResult Index(String slug = "")
-        {
-            int page = 1;
-            if (!string.IsNullOrEmpty(Request.QueryString["page"]))
-            {
-                page = int.Parse(Request.QueryString["page"].ToString());
-            }
-            if (slug == "")
-            {
-                return this.Home();
-            }
-            else
-            {
-                return this.page404();
+        //public ActionResult Index(String slug = "")
+        //{
+        //    int page = 1;
+        //    if (!string.IsNullOrEmpty(Request.QueryString["page"]))
+        //    {
+        //        page = int.Parse(Request.QueryString["page"].ToString());
+        //    }
+        //    if (slug == "")
+        //    {
+        //        return this.Home();
+        //    }
+        //    else
+        //    {
+        //        return this.page404();
 
-            }
-            //return View();
+        //    }
 
-        }
+        //}
 
         public ActionResult Home()
         {
@@ -39,6 +39,15 @@ namespace BookstoreMVC5.Controllers
 
         public ActionResult ProductDealOfDay()
         {
+            User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
+            if (sessionUser != null)
+            {
+                ViewBag.ID = sessionUser.ID;
+            }
+            else
+            {
+                ViewBag.ID = null;
+            }
             var ProductDealOfDay = db.Books.Where(m => m.status == 1 && m.pricesale != 0).OrderByDescending(m => m.pricesale).Take(10).ToList();
             ViewBag.category = db.Categories.Where(m => m.status == 1).ToList();
             var kmCaonhat = db.Books.Where(m => m.status == 1 && m.pricesale != 0).OrderByDescending(m => m.pricesale).First();
@@ -100,13 +109,13 @@ namespace BookstoreMVC5.Controllers
 
         public ActionResult ProductNew()
         {
-            var list = db.Books.Where(m => m.status == 1).OrderByDescending(m => m.ID).Take(10)
+            var list = db.Books.Where(m => m.status == 1).OrderByDescending(m => m.ID).Take(20)
                 .ToList();
             return View("reladProduct", list);
         }
         public ActionResult Bestseller()
         {
-            var list = db.Books.Where(m => m.status == 1).OrderBy(m => m.pricesale).Take(3)
+            var list = db.Books.Where(m => m.status == 1).OrderBy(m => m.pricesale).Take(20)
                 .ToList();
             return View("reladProduct", list);
         }
@@ -152,6 +161,29 @@ namespace BookstoreMVC5.Controllers
         {
             return View("page404");
         }
-   
+        public JsonResult GetQuickView(int id)
+        {
+            var result = (from b in db.Books
+                          join c in db.Categories
+                          on b.catid equals c.ID
+                          where b.ID == id && b.status == 1
+                          select new QuickViewProduct
+                          {
+                              ID = b.ID,
+                              ProductName = b.name,
+                              CategoryName = c.name,
+                              Images = b.img,
+                              Details = b.detail,
+                              Price = b.price,
+                              Pricesale = b.pricesale,
+                              Author = b.author,
+                              Translator = b.translator,
+                              Pagesize = b.pagesize,
+                              Pagetotal = b.pagetotal,
+                              
+                          }).ToList();
+            return new JsonResult() { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
     }
 }

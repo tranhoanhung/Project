@@ -14,13 +14,11 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
     {
         private BookshopEntities db = new BookshopEntities();
 
-        // GET: Admin/Publishers
         public ActionResult Index()
         {
             return View(db.Publishers.ToList());
         }
 
-        // GET: Admin/Publishers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,15 +33,11 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(publisher);
         }
 
-        // GET: Admin/Publishers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Publishers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Publisher publisher)
@@ -60,7 +54,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(publisher);
         }
 
-        // GET: Admin/Publishers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,9 +68,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(publisher);
         }
 
-        // POST: Admin/Publishers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Publisher publisher)
@@ -93,39 +83,46 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(publisher);
         }
 
-        // GET: Admin/Publishers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Publisher publisher = db.Publishers.Find(id);
-            if (publisher == null)
-            {
-                return HttpNotFound();
-            }
-            return View(publisher);
-        }
+        //public ActionResult Status(int id)
+        //{
+        //    Publisher publisher = db.Publishers.Find(id);
+        //    publisher.s = (publisher.status == 1) ? 2 : 1;
+        //    db.Entry(slider).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    Message.set_flash("Thay đổi trang thái thành công", "success");
+        //    return RedirectToAction("Index");
+        //}
 
-        // POST: Admin/Publishers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //public ActionResult trash()
+        //{
+        //    var list = db.Sliders.Where(m => m.status == 0).ToList();
+        //    return View("Trash", list);
+        //}
+        //public ActionResult Deltrash(int id)
+        //{
+        //    Slider slider = db.Sliders.Find(id);
+        //    slider.status = 0;
+        //    db.Entry(slider).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+        //public ActionResult Retrash(int id)
+        //{
+        //    Slider slider = db.Sliders.Find(id);
+        //    slider.status = 2;
+        //    db.Entry(slider).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("trash");
+        //}
+
+
+        public ActionResult deleteTrash(int id)
         {
             Publisher publisher = db.Publishers.Find(id);
             db.Publishers.Remove(publisher);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            Message.set_flash("Đã xóa vĩnh viễn 1 sản phẩm", "success");
+            return RedirectToAction("trash");
         }
     }
 }

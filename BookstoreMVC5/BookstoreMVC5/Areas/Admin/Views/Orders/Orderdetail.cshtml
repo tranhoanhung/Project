@@ -1,0 +1,109 @@
+﻿@model BookstoreMVC5.Models.Order
+@{
+    var cus = @ViewBag.customer;
+
+    ViewBag.Title = "Order";
+
+}
+@{
+    ViewBag.Title = "Orderdetail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Quản Lý Đơn hàng</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quản đơn hàng</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+    <section class="container-fluid ">
+        <div class=" bg-white card  ">
+
+            <div class="row">
+                <div class="col-md-9  w-100 ">
+
+                    <table class="table order-details-table">
+                        <tfoot>
+                            <tr>
+                                <th>Mã đơn hàng:</th>
+                                <td><span>@Model.ID</span></td>
+                            </tr>
+                            <tr>
+                                <th>Tên khách hàng:</th>
+                                <td>@Model.deliveryname</td>
+                            </tr>
+                            <tr>
+                                <th>Số thiện thoại:</th>
+                                <td><span>@Model.deliveryphone</span></td>
+                            </tr>
+                            <tr>
+                                <th>Email: </th>
+                                <td><span>@Model.deliveryemail</span></td>
+                            </tr>
+                            <tr>
+                                <th>địa chỉ nhận hàng:</th>
+                                <td><span>@Model.deliveryaddress</span></td>
+                            </tr>
+                            <tr>
+                                <th>Ngày đặt hàng:</th>
+                                <td><span>@Model.date_created <span class="text-danger">(MM/DD/YY)</span> </span></td>
+                            </tr>
+                            @if (Model.status == 1)
+                            {
+                                <tr>
+                                    <th>Trạng thái thanh toán:</th>
+                                    <td><span class="text-success">Đã thanh toán.</span></td>
+                                </tr>
+                            }
+                            else if (Model.deliveryPaymentMethod == "COD")
+                            {
+                                <tr>
+                                    <th>Trạng thái thanh toán:</th>
+                                    <td><span>Thanh toán khi nhận hàng.</span></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th>Trạng thái thanh toán:</th>
+                                    <td><span>Chưa thanh toán vui lòng thanh toán lại.</span></td>
+                                </tr>
+                            }
+                            <tr>
+                                <th>Phương thức thanh toán: </th>
+                                <td><span>@Model.deliveryPaymentMethod.</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <h3 class="order-table-title">Chi tiết đơn hàng</h3>
+                    <div class="table-responsive">
+                        @Html.Action("productDetailCheckOut", "Orders", new { orderId = Model.ID })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $("#order").addClass("active");
+    </script>
+
+

@@ -128,41 +128,15 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return RedirectToAction("trash");
         }
 
-
-
-        // GET: Admin/Category/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult deleteTrash(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Admin/Category/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Category mcategory = db.Categories.Find(id);
+            db.Categories.Remove(mcategory);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            Message.set_flash("Đã xóa vĩnh viễn 1 sản phẩm", "success");
+            return RedirectToAction("trash");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

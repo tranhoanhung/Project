@@ -14,13 +14,11 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
     {
         private BookshopEntities db = new BookshopEntities();
 
-        // GET: Admin/Users
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
-        // GET: Admin/Users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,15 +33,11 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(user);
         }
 
-        // GET: Admin/Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,fullname,username,password,email,gender,address,phone,img,status")] User user)
@@ -58,7 +52,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(user);
         }
 
-        // GET: Admin/Users/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,9 +66,6 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(user);
         }
 
-        // POST: Admin/Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,fullname,username,password,email,gender,address,phone,img,status")] User user)
@@ -89,39 +79,49 @@ namespace BookstoreMVC5.Areas.Admin.Controllers
             return View(user);
         }
 
-        // GET: Admin/Users/Delete/5
-        public ActionResult Delete(int? id)
+        //status
+        public ActionResult Status(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Admin/Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            User muser = db.Users.Find(id);
+            muser.status = (muser.status == 1) ? 2 : 1;
+            db.Entry(muser).State = EntityState.Modified;
             db.SaveChanges();
+            Message.set_flash("Thay đổi trang thái thành công", "success");
+            return RedirectToAction("Index");
+        }
+        //trash
+        public ActionResult trash()
+        {
+            var list = db.Users.Where(m => m.status == 0).ToList();
+            return View("Trash", list);
+        }
+        public ActionResult Deltrash(int id)
+        {
+            User muser = db.Users.Find(id);
+            muser.status = 0;
+            db.Entry(muser).State = EntityState.Modified;
+            db.SaveChanges();
+            Message.set_flash("Xóa thành công", "success");
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        public ActionResult Retrash(int id)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            User muser = db.Users.Find(id);
+            muser.status = 2;
+            db.Entry(muser).State = EntityState.Modified;
+            db.SaveChanges();
+            Message.set_flash("khôi phục thành công", "success");
+            return RedirectToAction("trash");
         }
+        public ActionResult deleteTrash(int id)
+        {
+            User muser = db.Users.Find(id);
+            db.Users.Remove(muser);
+            db.SaveChanges();
+            Message.set_flash("Đã xóa vĩnh viễn 1 User", "success");
+            return RedirectToAction("trash");
+        }
+
     }
 }

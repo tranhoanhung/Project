@@ -1,0 +1,21 @@
+﻿@model List<BookstoreMVC5.Models.Favorite>
+<div class="tempFixed">
+    <div class="itemFixed favoriteFixed">
+        @if (@ViewBag.ID != null)
+        {
+            <a href="/yeu-thich/@ViewBag.ID">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+                <span id="cartCount" class="cartItemCount"> @ViewBag.total</span>
+            </a>
+        }
+        else
+        {
+            <a href="javascript:void(0);" onclick="checklogin()">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+            </a>
+            //ok
+        }
+    </div>
+</div>
+
+

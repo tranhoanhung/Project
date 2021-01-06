@@ -26,9 +26,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
-
     <section class="container-fluid ">
         <div class=" bg-white card  ">
             <div class="row justify-content-end">
@@ -51,6 +48,7 @@
                                 <th>Số điện thoại</th>
                                 <th>Tiêu đề</th>
                                 <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
                                 <th>Chức Năng</th>
                                 <th>ID</th>
                             </tr>
@@ -58,6 +56,8 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                String dh1 = "Đã xác nhận";
+                                String dh2 = "chờ xác nhận";
                                 string title = item.title;
                                 <tr>
 
@@ -76,11 +76,19 @@
                                     <td>
                                         @if (item.status == 1)
                                         {
-                                            <a class="btn btn-sm btn-light border a33 text-success" href="@Url.Action("Status", "contact", new { id = item.ID })"> Đã xử lý @*<i class="fas fa-toggle-on"></i>*@ </a>
+                                            <p class="text-success"> @dh1</p>
+                                        }
+                                        else
+                                        { <p class="text-danger"> @dh2</p>}
+                                    </td>
+                                    <td>
+                                        @if (item.status == 1)
+                                        {
+                                            <a class="btn btn-sm btn-light border a33 text-success" href="@Url.Action("Status", "contact", new { id = item.ID })"><i class="fas fa-toggle-on"></i> </a>
                                         }
                                         else
                                         {
-                                            <a class="btn btn-sm btn-light border a33 text-danger" href="@Url.Action("Status", "contact", new { id = item.ID })"> Chưa xử lý @*<i class="fas fa-toggle-off"></i>*@ </a>
+                                            <a class="btn btn-sm btn-light border a33 text-danger" href="@Url.Action("Status", "contact", new { id = item.ID })"><i class="fas fa-toggle-off"></i> </a>
                                         }
                                         <a class="btn btn-sm btn-light border text-danger" href="@Url.Action("Deltrash", "contact", new { id = item.ID })"> <i class="fas fa-trash-alt"></i></a>
 
