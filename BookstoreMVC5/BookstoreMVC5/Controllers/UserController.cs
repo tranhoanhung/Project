@@ -82,8 +82,9 @@ namespace BookstoreMVC5.Controllers
 
         public ActionResult Index()
         {
-            return View("loginEndRegister");
+            return View("login");
         }
+        
 
         [HttpPost]
         public void login(FormCollection fc)
@@ -91,7 +92,7 @@ namespace BookstoreMVC5.Controllers
             string Username = fc["txtusername"];
             string Pass = Mystring.ToMD5(fc["txtpassword"]);
             string PassNoMD5 = fc["txtpassword"];
-            var user_account = db.Users.Where(m => (m.username == Username) && (m.status == 1));
+            var user_account = db.Users.Where(m => m.username == Username);
 
             if (user_account.Count() == 0)
             {
@@ -100,7 +101,7 @@ namespace BookstoreMVC5.Controllers
             }
             else
             {
-                var pass_account = db.Users.Where(m => m.status == 1 && (m.password == Pass) && (m.status == 1));
+                var pass_account = db.Users.Where(m => m.password == Pass );
 
                 if (pass_account.Count() == 0)
                 {
@@ -126,6 +127,10 @@ namespace BookstoreMVC5.Controllers
             Response.Redirect("~/");
             Message.set_flash("Đăng xuất thành công", "success");
         }
+        public ActionResult Registeruser()
+        {
+            return View("register");
+        }
 
         public ActionResult register(User user, FormCollection fc)
         {
@@ -136,11 +141,11 @@ namespace BookstoreMVC5.Controllers
             if (Pass2 != Pass)
             {
                 ViewBag.error = "Mật khẩu không khớp";
-                return View("loginEndRegister");
+                return View("register");
             }
             string email = fc["txtemail"];
-            string address = fc["txtaddress"];
-            string phone = fc["txtphone"];
+            //string address = fc["txtaddress"];
+            //string phone = fc["txtphone"];
             if (ModelState.IsValid)
             {
                 var Luser = db.Users.Where(m => m.status == 1 && m.username == uname && m.status == 1);
@@ -148,12 +153,12 @@ namespace BookstoreMVC5.Controllers
                 if (Lemail.Count() > 0)
                 {
                     ViewBag.erroremail = "Email đã tồn tại";
-                    return View("loginEndRegister");
+                    return View("register");
                 }
                 if (Luser.Count() > 0)
                 {
                     ViewBag.error = "Tên Đăng Nhập đã tồn tại";
-                    return View("loginEndRegister");
+                    return View("register");
                 }
                 else
                 {
@@ -162,18 +167,18 @@ namespace BookstoreMVC5.Controllers
                     user.username = uname;
                     user.fullname = fname;
                     user.email = email;
-                    user.address = address;
-                    user.phone = phone;
-                    user.status = 1;
+                    //user.address = address;
+                    //user.phone = phone;
+                    user.status = 0;
                     db.Users.Add(user);
                     db.SaveChanges();
                     Message.set_flash("Đăng ký tài khoản thành công ", "success");
-                    return View("loginEndRegister");
+                    return View("login");
                 }
 
             }
             Message.set_flash("Đăng ký tài khoản thất bại", "danger");
-            return View("loginEndRegister");
+            return View("register");
         }
     }
 }

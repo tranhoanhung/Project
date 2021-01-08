@@ -14,7 +14,7 @@ namespace BookstoreMVC5.Controllers
     {
         // GET: Customer
         BookshopEntities db = new BookshopEntities();
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
             User sessionUser = (User)Session[Sessions.CUSTOMER_SESSION];
             ViewBag.listOrder = db.Orders.Where(m => m.userid == sessionUser.ID).ToList();

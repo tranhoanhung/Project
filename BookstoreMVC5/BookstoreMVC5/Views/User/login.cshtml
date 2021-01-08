@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<section class="breadcrumb-section bg-white">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/">Home</a></li>
+                    <li class="breadcrumb-item active">Đăng ký</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!--=============================================
+=            Login Register page content         =
+=============================================-->
+
+<main class="page-section inner-page-sec-padding-bottom">
+
+    <div class="container bg-white pt-3">
+
+        <div class="row">
+            <div class="col-sm-3  ">
+                @Html.Partial("_MessgeAlertc")</div>
+
+            <div class="col-sm-6 col-md-6  col-xs-6">
+
+
+
+                <form action="~/login" method="POST">
+                    <div class="login-form">
+                        
+                        <h4 class="login-title">Đăng nhập</h4>
+                        @*<p><span class="font-weight-bold">Đăng nhập</span></p>*@
+
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--15">
+                                <label for="email">Tên đăng nhập</label>
+                                <input class="mb-0 form-control" type="text" name="txtusername"
+                                       placeholder="Nhập tên đăng nhập">
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="password">Mật khẩu</label>
+                                <input class="mb-0 form-control" type="password" name="txtpassword" id="login-password" placeholder="Nhập mật khẩu">
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-outlined">Đăng nhập</button>
+                                @*<a class="btn btn-facebook" href="/User/LoginFacebook">
+                                        <i class="fab fa-facebook-square"></i>
+                                        Đăng nhập bằng Facebook
+                                    </a>*@
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

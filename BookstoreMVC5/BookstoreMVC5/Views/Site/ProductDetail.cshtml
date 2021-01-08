@@ -85,45 +85,40 @@
                             <a href="" onclick="addcart(@Model.ID)" class="btn btn-outlined--primary">
                                 <span class="plus-icon"></span>Thêm giỏ hàng
                             </a>
-                            @*<a href="/them-sp-gio-hang?bookid=@Model.ID&quantity=1"  class="btn btn-outlined--primary">
-                                <span class="plus-icon"></span>Thêm giỏ hàng
-                            </a>*@
-                            @*<a href="" data-id="@Model.ID" id="Addtocart" class="btn btn-outlined--primary">
-                                <span class="plus-icon"></span>Thêm giỏ hàng
-                            </a>*@
+
                         </div>
 
                     </div>
-                    <article class="product-details-article">
-                        <h4 class="sr-only">Product Summery</h4>
-                        <p>
-                            Khách hàng cũng mua kèm những sách này.
-                        </p>
-                    </article>
+                    @*<article class="product-details-article">
+                            <h4 class="sr-only">Product Summery</h4>
+                            <p>
+                                Khách hàng cũng mua kèm những sách này.
+                            </p>
+                        </article>
 
-                    <div class="product-group-block">
-                        <ul class="product-group">
-                            @Html.Action("buyWithProduct", "Site", new { catId = Model.catid, productId = Model.ID })
-                        </ul>
-                    </div>
+                        <div class="product-group-block">
+                            <ul class="product-group">
+                                @Html.Action("buyWithProduct", "Site", new { catId = Model.catid, productId = Model.ID })
+                            </ul>
+                        </div>*@
 
                 </div>
-                </div>
+            </div>
         </div>
-        <div class="sb-custom-tab review-tab section-padding">
+        <div class="sb-custom-tab review-tab section-padding bg-white">
             <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
-                <li class="nav-item  bg-light">
-                    <a class="nav-link active  bg-light" id="tab1" data-toggle="tab" href="#tab-1" role="tab"
+                <li class="nav-item">
+                    <a class="nav-link active" id="tab1" data-toggle="tab" href="#tab-1" role="tab"
                        aria-controls="tab-1" aria-selected="true">
                         Thông tin sản phẩm
                     </a>
                 </li>
-                <li class="nav-item bg-light">
-                    <a class="nav-link bg-light" id="tab2" data-toggle="tab" href="#tab-2" role="tab"
-                       aria-controls="tab-2" aria-selected="true">
-                        ĐÁNH GIÁ (1)
-                    </a>
-                </li>
+                @*<li class="nav-item bg-light">
+                        <a class="nav-link bg-light" id="tab2" data-toggle="tab" href="#tab-2" role="tab"
+                           aria-controls="tab-2" aria-selected="true">
+                            ĐÁNH GIÁ (1)
+                        </a>
+                    </li>*@
             </ul>
             <div class="tab-content space-db--20" id="myTabContent">
                 <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
@@ -136,29 +131,6 @@
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                     <div class="review-wrapper">
-                        @*<h2 class="title-lg mb--20">1 REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
-                        <div class="review-comment mb--20">
-                            <div class="avatar">
-                                <img src="image/icon/author-logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <div class="rating-block mb--15">
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                </div>
-                                <h6 class="author">
-                                    ADMIN – <span class="font-weight-400">March 23, 2015</span>
-                                </h6>
-                                <p>
-                                    Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                    quis mi.
-                                </p>
-                            </div>
-                        </div>*@
-                        @*<h2 class="title-lg mb--20 pt--15">Thêm nhận xét</h2>*@
                         <div class="rating-row pt-2">
                             <p class="d-block">Đánh giá của bạn</p>
                             <span class="rating-widget-block">
@@ -236,5 +208,3 @@
             </div>
         </div>
     </section>
-    <!-- Modal -->
-<!--=================================

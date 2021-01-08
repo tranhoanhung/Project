@@ -22,6 +22,7 @@ namespace BookstoreMVC5.Controllers
                 ViewBag.username = sessionUser.username;
                 ViewBag.ID = sessionUser.ID;
                 ViewBag.fullname = sessionUser.fullname;
+                ViewBag.status = sessionUser.status;
             }
             return View("Header");
         }

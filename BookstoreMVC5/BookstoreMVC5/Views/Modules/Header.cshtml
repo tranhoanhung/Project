@@ -16,38 +16,36 @@
                 <!-- Header top menu right -->
                 <div class="col-lg-8 flex-lg-right">
                     <ul class="header-top-list">
-                        <li class="dropdown-trigger language-dropdown">
-                            @if (ViewBag.username == null)
-                            {
-                                <a href=""><i class="icons-left fas fa-user"></i>Tài khoản</a>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                <ul class="dropdown-box">
-                                    <li> <a href="~/login-logout">Đăng nhập</a></li>
-                                </ul>
-                            }
-                            else
-                            {
+
+                        @if (ViewBag.username == null)
+                        {
+                            <li class="dropdown-trigger language-dropdown">
+                            <li>
+                                <a href="~/dang-nhap"><i class="icons-left fas fa-user"></i> Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="~/dang-ky"><i class="icons-left fas fa-user"></i> Đăng ký</a>
+                            </li>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown-trigger language-dropdown">
                                 <a href=""><i class="icons-left fas fa-user"></i>Helu: @ViewBag.fullname</a>
 
                                 <i class="fas fa-chevron-down dropdown-arrow"></i>
                                 <ul class="dropdown-box">
                                     <li> <a href="~/thong-tin-kh">Tài khoản</a></li>
+                                    @if (ViewBag.status == 1)
+                                    {
+                                        <li> <a href="/admin">Quản trị</a></li>
+                                    }
                                     <li> <a href="~/yeu-thich/@ViewBag.ID">Yêu thích</a></li>
-                                    <li> <a href="/admin">Quản trị</a></li>
+
                                     <li> <a href="~/Custommer/logout">Thoát</a></li>
                                 </ul>
-                            }
-                        </li>
-
-                        @*<li>
-                            <a href=""><i class="icons-left fas fa-user"></i> Đăng ký</a>
-                        </li>                       
-                        <li>
-                            <a href=""><i class="icons-left fas fa-heart"></i> Yêu thích (0)</a>
-                        </li>
-                        <li>
-                            <a href=""><i class="icons-left fas fa-share"></i> Thanh toán</a>
-                        </li>*@
+                            </li>
+                        }
 
 
                         <li>
@@ -149,7 +147,7 @@
                     <div class="mobile-header-btns header-top-widget">
                         <ul class="header-links">
                             <li class="sin-link">
-                                <a href="cart.html" class="cart-link link-icon"><i class="ion-bag"></i></a>
+                                <a href="~/gio-hang" class="cart-link link-icon"><i class="ion-bag"></i></a>
                             </li>
                             <li class="sin-link">
                                 <a href="javascript:" class="link-icon hamburgur-icon off-canvas-btn">
@@ -170,10 +168,6 @@
         <div class="off-canvas-inner">
             <!-- search box start -->
             <div class="search-box offcanvas">
-                @*<form class="form-inline my-2 my-lg-0" method="GET" action="~/tim-kiem/">
-                        <input type="search" name="keyw" placeholder="Tìm kiếm sách ...">
-                        <button>Tìm kiếm</button>
-                    </form>*@
                 <form method="GET" action="~/tim-kiem/">
                     <input type="search" name="keyw" placeholder="Tìm kiếm sách...">
                     <button class="search-btn"><i class="ion-ios-search-strong"></i></button>
@@ -186,7 +180,20 @@
                 <nav class="off-canvas-nav">
                     <ul class="mobile-menu main-mobile-menu">
                         <div class="main-navigation ">
-                            @Html.Action("Mainmenu", "Modules")
+                            <ul class="main-menu  main-menu--white li-last-0 ">
+                                <li class="menu-item">
+                                    <a href="~/">Trang Chủ</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="~/bai-viet/gioi-thieu">Giới thiệu</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="~/san-pham">Sản phẩm</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/lien-he">Liên hệ</a>
+                                </li>
+                            </ul>
                         </div>
                     </ul>
                 </nav>
@@ -195,13 +202,25 @@
             <!-- mobile menu end -->
             <nav class="off-canvas-nav">
                 <ul class="mobile-menu menu-block-2">
-                    <li class="menu-item-has-children">
-                        <a href="#">Tài khoản <i class="fas fa-angle-down"></i></a>
-                        <ul class="sub-menu">
-                            <li><a href="">Thông tin</a></li>
-                            <li><a href="">Giỏ hàng</a></li>
-                        </ul>
-                    </li>
+                    @if (ViewBag.username == null)
+                    {
+                        <li class="menu-item-has-children">
+                            <a href="~/login-logout">Đăng nhập</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="menu-item-has-children">
+                            <a href="#">Helu: @ViewBag.fullname <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li> <a href="~/thong-tin-kh">Tài khoản</a></li>
+                                <li> <a href="~/yeu-thich/@ViewBag.ID">Yêu thích</a></li>
+                                <li> <a href="/admin">Quản trị</a></li>
+                                <li> <a href="~/Custommer/logout">Thoát</a></li>
+                            </ul>
+                        </li>
+                    }
+
                 </ul>
             </nav>
             <div class="off-canvas-bottom">

@@ -2345,6 +2345,8 @@
     <Content Include="Views\CheckoutUser\_subproductOrdersuccess.cshtml" />
     <Content Include="Views\CartUser\cartRight.cshtml" />
     <Content Include="Views\Site\QuickView.cshtml" />
+    <Content Include="Views\User\login.cshtml" />
+    <Content Include="Views\User\register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

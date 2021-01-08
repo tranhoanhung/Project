@@ -22,12 +22,25 @@
                             <a href="" onclick="addcart(@item.ID)" class="single-btn">
                                 <i class="fas fa-shopping-basket"></i>
                             </a>
-                            <a href="/them-ds-yeu-thich?bookID=@item.ID" class="single-btn">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                            <a href="#" class="single-btn">
-                                <i class="fas fa-heart"></i>
-                            </a>
+                            @if (ViewBag.ID != null)
+                            {
+                                <a href="/them-ds-yeu-thich?bookID=@item.ID" class="single-btn">
+                                    <i class="fas fa-heart"></i>
+                                </a>
+                                <a href="" onclick="additembook(@ViewBag.ID,@item.ID)" class="single-btn">
+                                    <i class="ion-bag"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="javascript:void(0);" onclick="checklogin()" class="single-btn">
+                                    <i class="fas fa-heart"></i>
+                                </a>
+                                <a href="javascript:void(0);" onclick="checklogin()" class="single-btn">
+                                    <i class="ion-bag"></i>
+                                </a>
+                            }
+
                         </div>
                     </div>
                 </div>

@@ -21,19 +21,20 @@
 
         }
 
-    <div class="count-input-block">
-        <input type="number" class="form-control text-center" id="quantity" value="1">
-        <div class="count-input-btns">
-            <button class="inc-ammount count-btn">
-                <i class="zmdi zmdi-chevron-up"></i>
-            </button>
-            <button class="dec-ammount count-btn">
-                <i class="zmdi zmdi-chevron-down"></i>
-            </button>
-        </div>
-    </div>
+        @*<div class="count-input-block">
+            <input type="number" class="form-control text-center" id="quantity" value="1">
+            <div class="count-input-btns">
+                <button class="inc-ammount count-btn">
+                    <i class="zmdi zmdi-chevron-up"></i>
+                </button>
+                <button class="dec-ammount count-btn">
+                    <i class="zmdi zmdi-chevron-down"></i>
+                </button>
+            </div>
+        </div>*@
         <span class="price-new mt-0">@price.ToString("N0") đ</span>
         <div class="add-cart-btn">
+            <input type="hidden" id="quantity" value="1">
             <a href="" onclick="addcart(@item.ID)" class="btn btn-outlined--primary">
                 <span class="plus-icon"></span>Thêm giỏ hàng
             </a>

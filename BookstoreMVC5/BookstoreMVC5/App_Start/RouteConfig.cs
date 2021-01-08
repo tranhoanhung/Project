@@ -137,8 +137,8 @@ namespace BookstoreMVC5
                 defaults: new { controller = "Post", action = "postDetails", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "login logout",
-                url: "login-logout",
+                name: "dang-nhap",
+                url: "dang-nhap",
                 defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -152,9 +152,9 @@ namespace BookstoreMVC5
                 defaults: new { controller = "User", action = "logout", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "register",
-                url: "register",
-                defaults: new { controller = "User", action = "register", id = UrlParameter.Optional }
+                name: "dang-ky",
+                url: "dang-ky",
+                defaults: new { controller = "User", action = "Registeruser", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "thong tin khach hang",
